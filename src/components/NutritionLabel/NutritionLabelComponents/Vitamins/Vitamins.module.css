@@ -1,0 +1,42 @@
+.Table {
+    width:100%;
+    font-style: 14pt;
+    border-collapse: collapse;
+}
+
+.Table tr {
+    border-bottom: 1px solid black;
+}
+
+.Table tr > td {
+    text-align: center;
+}
+
+.Table tr > td:first-of-type {
+    text-align: left;
+}
+
+.Table tr > td:last-of-type {
+    text-align: right;
+}
+
+.FootNotes {
+    font-size: 11pt;
+    text-align: left;
+    margin-top: 3px;
+}
+
+.Vitamins {
+    margin-top: 6px;
+    border-bottom: 5px solid black;
+}
+
+.Vitamins ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.Vitamins li {
+    border-top: 1px solid black;
+}

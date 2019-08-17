@@ -1,0 +1,52 @@
+.Container {
+    text-align: left;
+    margin-top: 6px;
+}
+
+.Headline {
+    font-size: 13pt;
+    font-weight: 800;
+    border-bottom: 1px solid black;
+}
+
+.CalorieSummary {
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border-bottom: 3px solid black;
+    font-size: 14pt;
+    white-space: nowrap;
+}
+
+.CalorieSummary span:first-of-type{
+    margin-top:8px;
+}
+
+.PeriodIndication {
+    font-size: 11pt;
+    text-align: right;
+    margin-top: 3px;
+}
+
+.Nutrients {
+    margin-top: 6px;
+    border-bottom: 5px solid black;
+}
+
+.Nutrients ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.Nutrients ul ul {
+    padding-left: 8px;
+}
+
+.Nutrients li {
+    border-top: 1px solid black;
+}
+
+.Calories {
+    font-weight: 800;
+}
