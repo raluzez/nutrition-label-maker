@@ -66,7 +66,27 @@ class ProductsList extends Component {
                       label : "Sodium",
                       quantity : 14854.027320000001,
                       unit : "mg"
-                    }
+                    },
+                    CA:{
+                      label:"Calcium",
+                      quantity:10.92,
+                      unit:"mg"
+                    },
+                    FE:{
+                      label:"Iron",
+                      quantity:0.2184,
+                      unit:"mg"
+                    },
+                    VITA_RAE:{
+                      label:"Vitamin A",
+                      quantity:5.46,
+                      unit:"µg"
+                    },
+                    VITC:{
+                      label:"Vitamin C",
+                      quantity:8.372,
+                      unit:"mg"
+                  }
                 }
             },{
                 name:"Egg",
@@ -122,7 +142,27 @@ class ProductsList extends Component {
                       label : "Sodium",
                       quantity : 14854.027320000001,
                       unit : "mg"
-                    }
+                    },
+                    CA:{
+                      label:"Calcium",
+                      quantity:10.92,
+                      unit:"mg"
+                  },
+                  FE:{
+                      label:"Iron",
+                      quantity:0.2184,
+                      unit:"mg"
+                  },
+                  VITA_RAE:{
+                      label:"Vitamin A",
+                      quantity:5.46,
+                      unit:"µg"
+                  },
+                  VITC:{
+                      label:"Vitamin C",
+                      quantity:8.372,
+                      unit:"mg"
+                  }
                 }
             },{
                 name:"Superone Foods Hotdog Buns",
@@ -178,7 +218,27 @@ class ProductsList extends Component {
                       label : "Sodium",
                       quantity : 14854.027320000001,
                       unit : "mg"
-                    }
+                    },
+                    CA:{
+                      label:"Calcium",
+                      quantity:10.92,
+                      unit:"mg"
+                  },
+                  FE:{
+                      label:"Iron",
+                      quantity:0.2184,
+                      unit:"mg"
+                  },
+                  VITA_RAE:{
+                      label:"Vitamin A",
+                      quantity:5.46,
+                      unit:"µg"
+                  },
+                  VITC:{
+                      label:"Vitamin C",
+                      quantity:8.372,
+                      unit:"mg"
+                  }
                 }
             }
         ]}
@@ -197,7 +257,7 @@ class ProductsList extends Component {
           <Aux>
             <Modal show={this.props.showModal}>
               <ProductModal
-              name={this.props.clickedProduct.name}
+              product={this.props.clickedProduct}
               buttonClickced={this.productSelectedHandler}
               inputValue={this.state.amountInput}
               inputChanged={event =>this.amountInputHandler(event)}
