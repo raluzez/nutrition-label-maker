@@ -1,3 +1,6 @@
 1) Phone sidedraw
 2) Modal phone version
-3) Modal and Sidedraw animations
+3) Sidedraw animations
+4) export actions in index
+5) merge reducers
+6) clean up reducers switch statements

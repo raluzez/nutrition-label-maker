@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
 import Modal from "../../components/UI/Modal/Modal";
-import NutritionLabel from "../../components/NutritionLabel/NutritionLabel";
 import Aux from "../../hoc/Aux/Aux";
-import * as actions from "../../Store/actions/home";
+import ProductModal from "../../components/Product/ProductModal/ProductModal";
+import * as actions from "../../Store/actions/productsList";
 import Styles from "./ProductsList.module.css";
 
 
 class ProductsList extends Component {
-    state = {products:[
+    state = {
+      amountInput:"",
+      products:[
             {
                 name:"Cheese",
                 quantity:100,
@@ -181,11 +183,26 @@ class ProductsList extends Component {
             }
         ]}
 
+    productSelectedHandler = () => {
+      this.props.onSelectProduct(this.props.clickedProduct, this.state.amountInput);
+      this.props.history.push("/")
+    }
+
+    amountInputHandler = (event) => {
+      this.setState({amountInput:event.target.value})
+    }
+
     render(){
         return(
           <Aux>
-            <Modal>
-              <NutritionLabel/>
+            <Modal show={this.props.showModal}>
+              <ProductModal
+              name={this.props.clickedProduct.name}
+              buttonClickced={this.productSelectedHandler}
+              inputValue={this.state.amountInput}
+              inputChanged={event =>this.amountInputHandler(event)}
+              closeIconClicked={()=>this.props.onCloseModal()}
+              />
             </Modal>
             <div className={Styles.ProductList}>
                 {this.state.products.map(product =>(
@@ -194,7 +211,7 @@ class ProductsList extends Component {
                         fatCalories={product.totalNutrients.FAT.quantity*9}
                         carbohydratesCalories={product.totalNutrients.CHOCDF.quantity*4}
                         proteinCalories={product.totalNutrients.PROCNT.quantity*4}
-                        clicked={()=>this.props.onSelectProduct(product)}
+                        clicked={()=>this.props.onClickedProduct(product)}
                     />
                 ))}
             </div>
@@ -203,10 +220,19 @@ class ProductsList extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    onSelectProduct: (product) => dispatch(actions.selectProduct(product))
+    showModal: state.showModal,
+    clickedProduct: state.clickedProduct
   }
 }
 
-export default connect(null, mapDispatchToProps)(ProductsList);
+const mapDispatchToProps = dispatch => {
+  return {
+    onSelectProduct: (product, amount) => dispatch(actions.productSelected(product, amount)),
+    onClickedProduct: (product) => dispatch(actions.productClicked(product)),
+    onCloseModal:() => dispatch(actions.closeModal())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
