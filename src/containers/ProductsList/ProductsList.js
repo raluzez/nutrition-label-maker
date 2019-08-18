@@ -95,74 +95,74 @@ class ProductsList extends Component {
                 totalNutrients : {
                     ENERC_KCAL:{
                       label : "Energy",
-                      quantity : 21814.306200000003,
+                      quantity : 144,
                       unit : "kcal"
                     },
                     FAT : {
                       label : "Fat",
-                      quantity : 1562.5579472000002,
+                      quantity : 9.6,
                       unit : "g"
                     },
                     FASAT : {
                       label : "Saturated",
-                      quantity : 538.5602623999998,
+                      quantity : 3.2,
                       unit : "g"
                     },
                     FATRN : {
                       label : "Trans",
-                      quantity : 0.015,
+                      quantity : 0,
                       unit : "g"
                     },
                     CHOCDF : {
                       label : "Carbs",
-                      quantity : 390.41195,
+                      quantity : 0.7,
                       unit : "g"
                     },
                     FIBTG : {
                       label : "Fiber",
-                      quantity : 48.5609,
+                      quantity : 0,
                       unit : "g"
                     },
                     SUGAR : {
                       label : "Sugars",
-                      quantity : 205.60635,
+                      quantity : 0.4,
                       unit : "g"
                     },
                     PROCNT : {
                       label : "Protein",
-                      quantity : 1466.6697507999997,
+                      quantity : 12.6,
                       unit : "g"
                     },
                     CHOLE : {
                       label : "Cholesterol",
-                      quantity : 6153.39888,
+                      quantity : 372,
                       unit : "mg"
                     },
                     NA : {
                       label : "Sodium",
-                      quantity : 14854.027320000001,
+                      quantity : 142,
                       unit : "mg"
                     },
                     CA:{
                       label:"Calcium",
-                      quantity:10.92,
+                      quantity:44,
                       unit:"mg"
-                  },
-                  FE:{
+                    },
+                    FE:{
                       label:"Iron",
-                      quantity:0.2184,
+                      quantity:1.47,
                       unit:"mg"
-                  },
-                  VITA_RAE:{
+                    },
+                    VITA_RAE:{
                       label:"Vitamin A",
-                      quantity:5.46,
+                      quantity:0.0658,
                       unit:"µg"
-                  },
-                  VITC:{
+                    },
+                    VITC:{
                       label:"Vitamin C",
-                      quantity:8.372,
+                      quantity:0,
                       unit:"mg"
-                  }
+                    }
                 }
             },{
                 name:"Superone Foods Hotdog Buns",

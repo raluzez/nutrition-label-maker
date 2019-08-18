@@ -4,3 +4,4 @@
 4) export actions in index
 5) merge reducers
 6) clean up reducers switch statements
+7) Nutrition table vitamins when value in %
