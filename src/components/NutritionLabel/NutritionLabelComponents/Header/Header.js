@@ -9,13 +9,9 @@ const header = (props) => (
         </div>
         <div className={Styles.Summary}>
             {typeof props.servingSize !== "undefined" ?
-                <div>{`Serving size ${props.servingSize}`}</div> :
+                <div>{`Serving size ${props.servingSize} g`}</div> :
                 null
-            }
-            {typeof props.servingPerContainer !== "undefined" ?
-                <div>{`Serving Size ${props.servingPerContainer}`}</div> :
-                null
-            }     
+            }  
         </div>
     </div>
 );

@@ -18,7 +18,7 @@
     white-space: nowrap;
 }
 
-.CalorieSummary span:first-of-type{
+.CalorieSummary span{
     margin-top:8px;
 }
 
@@ -49,4 +49,5 @@
 
 .Calories {
     font-weight: 800;
+    justify-content: space-between;
 }

@@ -6,9 +6,9 @@ const nutrients = (props) => (
         <div className={Styles.Headline}></div>
         <div className={Styles.CalorieSummary}>
             <span>
-                <b className={Styles.Calories}>Calories</b> {props.calories}
+                <b className={Styles.Calories}>Calories {props.calories}</b>
             </span>
-            <span></span>
+            <span>Daily Values %</span>
         </div>
         <div className={Styles.PeriodIndication}></div>
         <div className={Styles.Nutrients}>{props.children}</div>
