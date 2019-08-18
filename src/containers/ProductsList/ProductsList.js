@@ -19,72 +19,72 @@ class ProductsList extends Component {
                 totalNutrients : {
                     ENERC_KCAL:{
                       label : "Energy",
-                      quantity : 21814.306200000003,
+                      quantity : 405.57,
                       unit : "kcal"
                     },
                     FAT : {
                       label : "Fat",
-                      quantity : 1562.5579472000002,
+                      quantity : 33.21429,
                       unit : "g"
                     },
                     FASAT : {
                       label : "Saturated",
-                      quantity : 538.5602623999998,
+                      quantity : 18.93,
                       unit : "g"
                     },
                     FATRN : {
                       label : "Trans",
-                      quantity : 0.015,
+                      quantity : 0.893,
                       unit : "g"
                     },
                     CHOCDF : {
                       label : "Carbs",
-                      quantity : 390.41195,
+                      quantity : 3.125,
                       unit : "g"
                     },
                     FIBTG : {
                       label : "Fiber",
-                      quantity : 48.5609,
+                      quantity : 0,
                       unit : "g"
                     },
                     SUGAR : {
                       label : "Sugars",
-                      quantity : 205.60635,
+                      quantity : 0.44643,
                       unit : "g"
                     },
                     PROCNT : {
                       label : "Protein",
-                      quantity : 1466.6697507999997,
+                      quantity : 22.857,
                       unit : "g"
                     },
                     CHOLE : {
                       label : "Cholesterol",
-                      quantity : 6153.39888,
+                      quantity : 100,
                       unit : "mg"
                     },
                     NA : {
                       label : "Sodium",
-                      quantity : 14854.027320000001,
+                      quantity : 653.5714,
                       unit : "mg"
                     },
                     CA:{
                       label:"Calcium",
-                      quantity:10.92,
+                      quantity:780,
                       unit:"mg"
                     },
                     FE:{
                       label:"Iron",
-                      quantity:0.2184,
+                      quantity:0.162,
                       unit:"mg"
                     },
                     VITA_RAE:{
                       label:"Vitamin A",
-                      quantity:5.46,
+                      quantity:0.252,
                       unit:"µg"
                     },
                     VITC:{
                       label:"Vitamin C",
-                      quantity:8.372,
+                      quantity:0,
                       unit:"mg"
                   }
                 }
@@ -171,72 +171,72 @@ class ProductsList extends Component {
                 totalNutrients : {
                     ENERC_KCAL:{
                       label : "Energy",
-                      quantity : 21814.306200000003,
+                      quantity : 282.05,
                       unit : "kcal"
                     },
                     FAT : {
                       label : "Fat",
-                      quantity : 1562.5579472000002,
+                      quantity : 2.564,
                       unit : "g"
                     },
                     FASAT : {
                       label : "Saturated",
-                      quantity : 538.5602623999998,
+                      quantity : 0,
                       unit : "g"
                     },
                     FATRN : {
                       label : "Trans",
-                      quantity : 0.015,
+                      quantity : 0,
                       unit : "g"
                     },
                     CHOCDF : {
                       label : "Carbs",
-                      quantity : 390.41195,
+                      quantity : 51.282,
                       unit : "g"
                     },
                     FIBTG : {
                       label : "Fiber",
-                      quantity : 48.5609,
+                      quantity : 1.282,
                       unit : "g"
                     },
                     SUGAR : {
                       label : "Sugars",
-                      quantity : 205.60635,
+                      quantity : 5.128,
                       unit : "g"
                     },
                     PROCNT : {
                       label : "Protein",
-                      quantity : 1466.6697507999997,
+                      quantity : 7.6923,
                       unit : "g"
                     },
                     CHOLE : {
                       label : "Cholesterol",
-                      quantity : 6153.39888,
+                      quantity : 0,
                       unit : "mg"
                     },
                     NA : {
                       label : "Sodium",
-                      quantity : 14854.027320000001,
+                      quantity : 461.5385,
                       unit : "mg"
                     },
                     CA:{
                       label:"Calcium",
-                      quantity:10.92,
+                      quantity: 120.9,
                       unit:"mg"
-                  },
-                  FE:{
+                    },
+                    FE:{
                       label:"Iron",
-                      quantity:0.2184,
+                      quantity:3.24,
                       unit:"mg"
-                  },
-                  VITA_RAE:{
+                    },
+                    VITA_RAE:{
                       label:"Vitamin A",
-                      quantity:5.46,
+                      quantity:0,
                       unit:"µg"
-                  },
-                  VITC:{
+                    },
+                    VITC:{
                       label:"Vitamin C",
-                      quantity:8.372,
+                      quantity:0,
                       unit:"mg"
                   }
                 }

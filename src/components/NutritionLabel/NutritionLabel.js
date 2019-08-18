@@ -3,9 +3,7 @@ import Header from "./NutritionLabelComponents/Header/Header";
 import Nutrients from "./NutritionLabelComponents/Nutrients/Nutrients";
 import Vitamins from "./NutritionLabelComponents/Vitamins/Vitamins";
 import Styles from "./NutritionLabel.module.css";
-// import get from "lodash.get";
-
-var get = require('lodash.get');
+import get from "lodash.get";
 
 const nutritionLabel = (props) => {  
         
