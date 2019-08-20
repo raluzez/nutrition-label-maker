@@ -34,14 +34,11 @@ const addToRecipieNutrients = (productNutrients,amountOfProduct) => {
     Object.keys(totalRecipies).map((key) => {
         totalRecipies[key].quantity += (productNutrients[key].quantity/100)*amountOfProduct
     })
-    console.log(totalRecipies)
     return totalRecipies
 }
 
-const addToRecipieAmount = (amount) => {
-    const totalAmount = initialState.reciepieNutrients.quantity + Number(amount)
-    return totalAmount
-    // initialState.reciepieNutrients.quantity always 0 event when redux tools showing differently
+const addToRecipieAmount = (state,amount) => {
+    return state.reciepieNutrients.quantity + Number(amount)
 }
 
 const reducer = (state = initialState, action) => {
@@ -56,7 +53,7 @@ const reducer = (state = initialState, action) => {
                 reciepieNutrients : {
                     ...state.reciepieNutrients,
                     totalNutrients : addToRecipieNutrients(action.product.totalNutrients, action.amount),
-                    quantity : addToRecipieAmount(action.amount)
+                    quantity : addToRecipieAmount(state, action.amount)
                 }
             }
         case actionTypes.CLICKED_PRODUCT:

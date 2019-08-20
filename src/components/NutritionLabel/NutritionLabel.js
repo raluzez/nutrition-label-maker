@@ -31,13 +31,17 @@ const nutritionLabel = (props) => {
         }
 
         const fixToTwo = (obj, path, def) => {
-            return Math.round(get(obj, path, def)*100)/100
+            if(product.quantity) {
+                // combined two operations Math.round(result*100)/100 to get number with 2 or less numbers after comma and recalculation for 100g (result*100/product.quantity)
+                return Math.round(get(obj, path, def)*10000/product.quantity)/100 
+            } else { return Math.round(get(obj, path, def)*100)/100 }
+            
             
         }
 
         return(
             <div className={Styles.Container}>
-                <Header servingSize={fixToTwo(product,"quantity.toFixed(1)",100)}/>
+                <Header servingSize={100}/>
                 <Nutrients calories={fixToTwo(product,"totalNutrients.ENERC_KCAL.quantity",0)}>
                     <ul>
                         <li>
