@@ -267,6 +267,7 @@ class ProductsList extends Component {
             <div className={Styles.ProductList}>
                 {this.state.products.map(product =>(
                     <Product
+                        key={product.name}
                         name={product.name}
                         fatCalories={product.totalNutrients.FAT.quantity*9}
                         carbohydratesCalories={product.totalNutrients.CHOCDF.quantity*4}

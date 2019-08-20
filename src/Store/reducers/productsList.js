@@ -29,8 +29,8 @@ const initialState = {
 
 
 
-const addToRecipieNutrients = (productNutrients,amountOfProduct) => {
-    let totalRecipies = initialState.reciepieNutrients.totalNutrients
+const addToRecipieNutrients = (state, productNutrients, amountOfProduct) => {
+    let totalRecipies = state.reciepieNutrients.totalNutrients
     Object.keys(totalRecipies).map((key) => {
         totalRecipies[key].quantity += (productNutrients[key].quantity/100)*amountOfProduct
     })
@@ -40,6 +40,18 @@ const addToRecipieNutrients = (productNutrients,amountOfProduct) => {
 const addToRecipieAmount = (state,amount) => {
     return state.reciepieNutrients.quantity + Number(amount)
 }
+
+const deleteFromRecipieNutrients = (state, productNutrients, amountOfProduct) => {
+    let totalRecipies = state.reciepieNutrients.totalNutrients
+    Object.keys(totalRecipies).map((key) => {
+        totalRecipies[key].quantity -= (productNutrients[key].quantity/100)*amountOfProduct
+    })
+    return totalRecipies
+}
+
+const deleteFromRecipieAmount = (state, amount) => (
+    state.reciepieNutrients.quantity - Number(amount)
+)
 
 const reducer = (state = initialState, action) => {
 
@@ -52,8 +64,18 @@ const reducer = (state = initialState, action) => {
                 showModal:false,
                 reciepieNutrients : {
                     ...state.reciepieNutrients,
-                    totalNutrients : addToRecipieNutrients(action.product.totalNutrients, action.amount),
+                    totalNutrients : addToRecipieNutrients(state, action.product.totalNutrients, action.amount),
                     quantity : addToRecipieAmount(state, action.amount)
+                }
+            }
+        case actionTypes.DELETE_PRODUCT:
+            return {
+                ...state,
+                selectedProducts: state.selectedProducts.filter(product => action.productName !== product.name),
+                reciepieNutrients : {
+                    ...state.reciepieNutrients,
+                    totalNutrients : deleteFromRecipieNutrients(state, action.product.totalNutrients, action.product.quantity),
+                    quantity : deleteFromRecipieAmount(state, action.product.quantity)
                 }
             }
         case actionTypes.CLICKED_PRODUCT:

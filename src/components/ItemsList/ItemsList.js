@@ -1,25 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import Styles from "./ItemsList.module.css";
-import { connect } from "react-redux";
 import Items from "./Items/Items";
 
-class ItemsList extends Component {
-
-    render(){
-        return(
+const itemsList = (props) => (
             <div className={Styles.ItemsList}>
-                <i className={`fas fa-plus ${Styles.Plus}`}></i><input type="text" placeholder="search bar"/>
+                <i className={`fas fa-plus ${Styles.Plus}`} onClick={props.addProductClicked}></i><input type="text" placeholder="search bar"/>
                 <hr/>
-                <Items items={this.props.selectedItems}/>
+                <Items items={props.selectedItems}/>
             </div>
         )
-    }
-}
 
-const mapStateToProps = state => {
-    return {
-        selectedItems: state.selectedProducts
-    }
-}
-
-export default connect(mapStateToProps)(ItemsList);
+export default itemsList;

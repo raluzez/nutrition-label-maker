@@ -8,6 +8,14 @@ export const productSelected = (product, amount) => {
     }
 }
 
+export const productDeleted = (productName, product) => {
+    return {
+        type : actionTypes.DELETE_PRODUCT,
+        productName : productName,
+        product : product
+    }
+}
+
 export const productClicked = (product) => {
     return {
         type: actionTypes.CLICKED_PRODUCT,

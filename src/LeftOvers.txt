@@ -5,3 +5,5 @@
 5) merge reducers
 6) clean up reducers switch statements
 7) Nutrition table vitamins when value in %
+8) Find better way to delete items from itemList (not by name)
+9) If IemsList.length === 0 reset whole table

@@ -1,20 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Aux from "../../hoc/Aux/Aux";
 import ItemsList from "../../components/ItemsList/ItemsList";
 import NutritionLabel from "../../components/NutritionLabel/NutritionLabel";
 
 
-class Home extends Component {
-    render(){
-        return(
+const home = (props) =>(
             <Aux>
-                <ItemsList/>
-                <NutritionLabel product={this.props.recipieAsProduct}/>
+                <ItemsList addProductClicked={() =>props.history.push("/productlist")}/>
+                <NutritionLabel product={props.recipieAsProduct}/>
             </Aux>
-        )
-    }
-}
+)
 
 const mapStateToProps = state => {
     return {
@@ -22,4 +18,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(home);
