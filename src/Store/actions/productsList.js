@@ -23,6 +23,14 @@ export const productClicked = (product) => {
     }
 }
 
+export const changeItemAmount = (amount, product) => {
+    return {
+        type: actionTypes.CHANGE_AMOUNT,
+        product,
+        amount
+    }
+}
+
 export const closeModal = () => {
     return {
         type:actionTypes.CLOSE_MODAL

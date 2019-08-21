@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
 import Modal from "../../components/UI/Modal/Modal";
-import Aux from "../../hoc/Aux/Aux";
 import ProductModal from "../../components/Product/ProductModal/ProductModal";
 import * as actions from "../../Store/actions/productsList";
 import Styles from "./ProductsList.module.css";
@@ -254,7 +253,7 @@ class ProductsList extends Component {
 
     render(){
         return(
-          <Aux>
+          <>
             <Modal show={this.props.showModal}>
               <ProductModal
               product={this.props.clickedProduct}
@@ -265,7 +264,7 @@ class ProductsList extends Component {
               />
             </Modal>
             <div className={Styles.ProductList}>
-                {this.state.products.map(product =>(
+                {(this.state.products || []).map(product =>(
                     <Product
                         key={product.name}
                         name={product.name}
@@ -276,7 +275,7 @@ class ProductsList extends Component {
                     />
                 ))}
             </div>
-          </Aux>
+          </>
         )
     }
 }

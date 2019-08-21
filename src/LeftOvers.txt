@@ -7,3 +7,4 @@
 7) Nutrition table vitamins when value in %
 8) Find better way to delete items from itemList (not by name)
 9) If IemsList.length === 0 reset whole table
+10) totalNutrients and change amount copied mutably.
