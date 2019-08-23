@@ -31,6 +31,13 @@ export const changeItemAmount = (amount, product) => {
     }
 }
 
+export const addProduct = (product) => {
+    return {
+        type: actionTypes.ADD_PRODUCT,
+        product
+    }
+}
+
 export const closeModal = () => {
     return {
         type:actionTypes.CLOSE_MODAL

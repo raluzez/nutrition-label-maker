@@ -1,6 +1,237 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
+    products:[
+        {
+            name:"Cheese",
+            quantity:100,
+            units:"g",
+            totalNutrients : {
+                ENERC_KCAL:{
+                  label : "Energy",
+                  quantity : 405.57,
+                  unit : "kcal"
+                },
+                FAT : {
+                  label : "Fat",
+                  quantity : 33.21429,
+                  unit : "g"
+                },
+                FASAT : {
+                  label : "Saturated",
+                  quantity : 18.93,
+                  unit : "g"
+                },
+                FATRN : {
+                  label : "Trans",
+                  quantity : 0.893,
+                  unit : "g"
+                },
+                CHOCDF : {
+                  label : "Carbs",
+                  quantity : 3.125,
+                  unit : "g"
+                },
+                FIBTG : {
+                  label : "Fiber",
+                  quantity : 0,
+                  unit : "g"
+                },
+                SUGAR : {
+                  label : "Sugars",
+                  quantity : 0.44643,
+                  unit : "g"
+                },
+                PROCNT : {
+                  label : "Protein",
+                  quantity : 22.857,
+                  unit : "g"
+                },
+                CHOLE : {
+                  label : "Cholesterol",
+                  quantity : 100,
+                  unit : "mg"
+                },
+                NA : {
+                  label : "Sodium",
+                  quantity : 653.5714,
+                  unit : "mg"
+                },
+                CA:{
+                  label:"Calcium",
+                  quantity:780,
+                  unit:"mg"
+                },
+                FE:{
+                  label:"Iron",
+                  quantity:0.162,
+                  unit:"mg"
+                },
+                VITA_RAE:{
+                  label:"Vitamin A",
+                  quantity:0.252,
+                  unit:"µg"
+                },
+                VITC:{
+                  label:"Vitamin C",
+                  quantity:0,
+                  unit:"mg"
+              }
+            }
+        },{
+            name:"Egg",
+            quantity:100,
+            units:"g",
+            totalNutrients : {
+                ENERC_KCAL:{
+                  label : "Energy",
+                  quantity : 144,
+                  unit : "kcal"
+                },
+                FAT : {
+                  label : "Fat",
+                  quantity : 9.6,
+                  unit : "g"
+                },
+                FASAT : {
+                  label : "Saturated",
+                  quantity : 3.2,
+                  unit : "g"
+                },
+                FATRN : {
+                  label : "Trans",
+                  quantity : 0,
+                  unit : "g"
+                },
+                CHOCDF : {
+                  label : "Carbs",
+                  quantity : 0.7,
+                  unit : "g"
+                },
+                FIBTG : {
+                  label : "Fiber",
+                  quantity : 0,
+                  unit : "g"
+                },
+                SUGAR : {
+                  label : "Sugars",
+                  quantity : 0.4,
+                  unit : "g"
+                },
+                PROCNT : {
+                  label : "Protein",
+                  quantity : 12.6,
+                  unit : "g"
+                },
+                CHOLE : {
+                  label : "Cholesterol",
+                  quantity : 372,
+                  unit : "mg"
+                },
+                NA : {
+                  label : "Sodium",
+                  quantity : 142,
+                  unit : "mg"
+                },
+                CA:{
+                  label:"Calcium",
+                  quantity:44,
+                  unit:"mg"
+                },
+                FE:{
+                  label:"Iron",
+                  quantity:1.47,
+                  unit:"mg"
+                },
+                VITA_RAE:{
+                  label:"Vitamin A",
+                  quantity:0.0658,
+                  unit:"µg"
+                },
+                VITC:{
+                  label:"Vitamin C",
+                  quantity:0,
+                  unit:"mg"
+                }
+            }
+        },{
+            name:"Superone Foods Hotdog Buns",
+            quantity:100,
+            units:"g",
+            totalNutrients : {
+                ENERC_KCAL:{
+                  label : "Energy",
+                  quantity : 282.05,
+                  unit : "kcal"
+                },
+                FAT : {
+                  label : "Fat",
+                  quantity : 2.564,
+                  unit : "g"
+                },
+                FASAT : {
+                  label : "Saturated",
+                  quantity : 0,
+                  unit : "g"
+                },
+                FATRN : {
+                  label : "Trans",
+                  quantity : 0,
+                  unit : "g"
+                },
+                CHOCDF : {
+                  label : "Carbs",
+                  quantity : 51.282,
+                  unit : "g"
+                },
+                FIBTG : {
+                  label : "Fiber",
+                  quantity : 1.282,
+                  unit : "g"
+                },
+                SUGAR : {
+                  label : "Sugars",
+                  quantity : 5.128,
+                  unit : "g"
+                },
+                PROCNT : {
+                  label : "Protein",
+                  quantity : 7.6923,
+                  unit : "g"
+                },
+                CHOLE : {
+                  label : "Cholesterol",
+                  quantity : 0,
+                  unit : "mg"
+                },
+                NA : {
+                  label : "Sodium",
+                  quantity : 461.5385,
+                  unit : "mg"
+                },
+                CA:{
+                  label:"Calcium",
+                  quantity: 120.9,
+                  unit:"mg"
+                },
+                FE:{
+                  label:"Iron",
+                  quantity:3.24,
+                  unit:"mg"
+                },
+                VITA_RAE:{
+                  label:"Vitamin A",
+                  quantity:0,
+                  unit:"µg"
+                },
+                VITC:{
+                  label:"Vitamin C",
+                  quantity:0,
+                  unit:"mg"
+              }
+            }
+        }
+    ],
     selectedProducts:[],
     clickedProduct: "",
     showModal:false,
@@ -133,6 +364,12 @@ const reducer = (state = initialState, action) => {
                     totalNutrients,
                     quantity
                 }
+            }
+        case actionTypes.ADD_PRODUCT:
+            return {
+                ...state,
+                products: state.products.concat(action.product),
+                showModal:false
             }
         case actionTypes.CLOSE_MODAL:
             return {
