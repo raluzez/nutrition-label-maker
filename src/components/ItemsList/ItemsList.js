@@ -4,8 +4,8 @@ import Items from "./Items/Items";
 
 const itemsList = (props) => (
             <div className={Styles.ItemsList}>
-                <i className={`fas fa-plus ${Styles.Plus}`} onClick={props.addProductClicked}></i><input type="text" placeholder="search bar"/>
-                <hr/>
+                <i className={`fas fa-plus ${Styles.Plus}`} onClick={props.addProductClicked}></i>
+                <span className={Styles.Line}/>
                 <Items items={props.selectedItems}/>
             </div>
         )

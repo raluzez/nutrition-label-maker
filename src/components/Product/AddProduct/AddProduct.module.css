@@ -1,0 +1,27 @@
+.AddProduct {
+    border: 2px solid #e8e8e8;
+    border-radius: 8px;
+    margin: auto;
+    margin-bottom: 15px;
+    font-size:1rem;
+    text-align: center;
+}
+
+.AddProduct:hover{
+    background-color: #e8e8e8;
+}
+
+.AddProduct div:first-of-type{
+    background-color: #e8e8e8;
+}
+
+.Plus{
+    color:#79d693;
+    width:300px;
+    height: 150px;
+    font-size:7.5em;
+}
+
+.Plus:hover {
+    color:green;
+}

@@ -1,0 +1,45 @@
+.Container {
+    display:flex;
+    flex-flow: column;
+    padding: 3px;
+    background-color: white;
+    border:1px solid black;
+    box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.25);
+    width: 500px;
+    margin: auto;
+}
+
+.Attribute {
+    font-weight: 800;
+}
+
+.Italic {
+    font-style: italic;
+}
+
+.Float {
+    float:right;
+    width: 125px;
+}
+
+input {
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    margin-left: 1rem;
+    font-weight: bold;
+    font-size: 1em;
+    width: 50%;
+    text-align: right;;
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color:#e6727b
+}

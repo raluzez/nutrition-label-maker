@@ -1,16 +1,17 @@
+.ItemContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .ItemContainer p{
-    display: inline-block;
-    vertical-align:top;
     padding-left:1rem;
     max-width: 320px;
 }
 
 .Minus {
-    margin: auto;
-    margin-top:1em;
-    color: #e6727b;
-    display: inline-block;
-    vertical-align:top;
+    color: #e6727b; 
+    align-self:center
 }
 
 .Minus:hover {
@@ -18,16 +19,12 @@
 }
 
 .Units {
-    float: right;
 }
 
 .Input {
-    width: 14%;
-    display: inline-block;
-    vertical-align:top;
-    float: right;
+    width: 14%;  
     font-size: 1.5rem;
-    margin-top:1em;
+    margin-left: auto;
 }
 
 .Line {

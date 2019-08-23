@@ -94,7 +94,7 @@ const reducer = (state = initialState, action) => {
 
     switch (action.type) {
         case actionTypes.SELECT_PRODUCT: 
-            action.product.quantity = action.amount
+            action.product.quantity = Number(action.amount)
             return {
                 ...state,
                 selectedProducts: state.selectedProducts.concat(action.product),
@@ -137,7 +137,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.CLOSE_MODAL:
             return {
                 ...state,
-                showModal:false
+                showModal:false, 
+                clickedProduct: ""
             }
         default: return state
     }

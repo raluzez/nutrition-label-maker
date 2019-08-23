@@ -13,8 +13,6 @@
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-    margin-left:1rem;
-    
 }
 
 .Plus{
@@ -31,6 +29,15 @@
 
 .ItemsList input::placeholder {
     color:black
+}
+
+.Line {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,.1);
+    margin: auto;
+    display:block;
 }
 
 @media (max-width:550px){

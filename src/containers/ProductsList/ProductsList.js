@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
+import AddProduct from "../../components/Product/AddProduct/AddProduct";
 import Modal from "../../components/UI/Modal/Modal";
 import ProductModal from "../../components/Product/ProductModal/ProductModal";
+import AddProductModal from "../../components/Product/AddProductModal/AddProductModal";
 import * as actions from "../../Store/actions/productsList";
 import Styles from "./ProductsList.module.css";
 
@@ -255,25 +257,28 @@ class ProductsList extends Component {
         return(
           <>
             <Modal show={this.props.showModal}>
-              <ProductModal
-              product={this.props.clickedProduct}
-              buttonClickced={this.productSelectedHandler}
-              inputValue={this.state.amountInput}
-              inputChanged={event =>this.amountInputHandler(event)}
-              closeIconClicked={()=>this.props.onCloseModal()}
-              />
+              {this.props.clickedProduct 
+              ? <ProductModal
+                  product={this.props.clickedProduct}
+                  buttonClickced={this.productSelectedHandler}
+                  inputValue={this.state.amountInput}
+                  inputChanged={event =>this.amountInputHandler(event)}
+                  closeIconClicked={()=>this.props.onCloseModal()}/> 
+              : <AddProductModal
+                  closeIconClicked={()=>this.props.onCloseModal()}/>}
             </Modal>
             <div className={Styles.ProductList}>
-                {(this.state.products || []).map(product =>(
-                    <Product
-                        key={product.name}
-                        name={product.name}
-                        fatCalories={product.totalNutrients.FAT.quantity*9}
-                        carbohydratesCalories={product.totalNutrients.CHOCDF.quantity*4}
-                        proteinCalories={product.totalNutrients.PROCNT.quantity*4}
-                        clicked={()=>this.props.onClickedProduct(product)}
-                    />
-                ))}
+              <AddProduct clicked={()=>this.props.onClickedProduct(null)}/>
+              {(this.state.products || []).map(product =>(
+                  <Product
+                      key={product.name}
+                      name={product.name}
+                      fatCalories={product.totalNutrients.FAT.quantity*9}
+                      carbohydratesCalories={product.totalNutrients.CHOCDF.quantity*4}
+                      proteinCalories={product.totalNutrients.PROCNT.quantity*4}
+                      clicked={()=>this.props.onClickedProduct(product)}
+                  />
+              ))}
             </div>
           </>
         )
@@ -283,7 +288,8 @@ class ProductsList extends Component {
 const mapStateToProps = state => {
   return {
     showModal: state.showModal,
-    clickedProduct: state.clickedProduct
+    clickedProduct: state.clickedProduct,
+    selectedProducts: state.selectedProducts
   }
 }
 

@@ -34,15 +34,15 @@ const nutritionLabel = (props) => {
             if(product.quantity) {
                 // combined two operations Math.round(result*100)/100 to get number with 2 or less numbers after comma and recalculation for 100g (result*100/product.quantity)
                 return Math.round(get(obj, path, def)*10000/product.quantity)/100 
-            } else { return Math.round(get(obj, path, def)*100)/100 }
-            
-            
+            } else { 
+                return Math.round(get(obj, path, def)*100)/100 
+            }
         }
 
         return(
             <div className={Styles.Container}>
                 <Header servingSize={100}/>
-                <Nutrients calories={fixToTwo(product,"totalNutrients.ENERC_KCAL.quantity",0)}>
+                <Nutrients calories={fixToTwo(product,"totalNutrients.ENERC_KCAL.quantity",0)} dailyValue={"Daily Values %"}>
                     <ul>
                         <li>
                             <div className={Styles.Float}>{dailyIntakePercent(fixToTwo(product, 'totalNutrients.FAT.quantity', 0),get(dailyIntake, 'FAT'))}</div>

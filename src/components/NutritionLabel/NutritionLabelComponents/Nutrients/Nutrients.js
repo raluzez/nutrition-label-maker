@@ -8,7 +8,7 @@ const nutrients = (props) => (
             <span>
                 <b className={Styles.Calories}>Calories {props.calories}</b>
             </span>
-            <span>Daily Values %</span>
+            <span>{props.dailyValue}</span>
         </div>
         <div className={Styles.PeriodIndication}></div>
         <div className={Styles.Nutrients}>{props.children}</div>
