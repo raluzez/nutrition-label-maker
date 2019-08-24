@@ -17,8 +17,7 @@ const product = (props) =>(
             }}
             options={{
                 legend:{
-                    display: false,
-                    position:"left"
+                    display: false
                 },
                 tooltips: {
                     callbacks: {

@@ -43,3 +43,10 @@ export const closeModal = () => {
         type:actionTypes.CLOSE_MODAL
     }
 }
+
+export const addRecipeName = (recipeName) => {
+    return {
+        type: actionTypes.ADD_RECIPE_NAME,
+        recipeName: recipeName
+    }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import AddProductNutritionLabel from "../../NutritionLabel/AddProductNutritionLabel/AddProductNutritionLabel";
+import Button from "../../UI/Button/Button";
 import * as actions from "../../../Store/actions/productsList";
 import Styles from "./AddProductModal.module.css";
 
@@ -86,7 +87,6 @@ const addProductModal = (props) => {
 
     const addName = (event) => {
         addedProduct.name = event.target.value
-        console.log(addedProduct)
     }
 
     const addNutrients = (event) => {
@@ -96,7 +96,6 @@ const addProductModal = (props) => {
     const onSubmit = (event) => {
         event.preventDefault();
         props.onAddProduct(addedProduct)
-        console.log(addedProduct)
     }
     return(
         <form onSubmit={onSubmit}>
@@ -104,7 +103,7 @@ const addProductModal = (props) => {
             <div className={Styles.Name}>Add New Product</div>
             <AddProductNutritionLabel addName={addName} addNutrients={addNutrients}/>
             <div>
-                <button type="submit">Add Product</button>
+                <Button type="submit" classname="Success">Add Product</Button>
             </div>   
         </form> 
 )}

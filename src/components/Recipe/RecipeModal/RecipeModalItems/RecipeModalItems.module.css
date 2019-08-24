@@ -1,0 +1,19 @@
+.ItemContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size:30px;
+}
+
+.ItemContainer p{
+    padding-left:1rem;
+}
+
+.Line {
+    margin-top: 1rem;
+    margin-bottom: 1em;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,.1);
+    margin: auto;
+    display:block;
+}

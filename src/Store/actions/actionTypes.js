@@ -4,3 +4,4 @@ export const CLICKED_PRODUCT = "CLICKED_PRODUCT";
 export const ADD_PRODUCT = "ADD_PRODUCT"
 export const CHANGE_AMOUNT = "CHANGE_AMOUNT";
 export const CLOSE_MODAL = "CLOSE_MODAL";
+export const ADD_RECIPE_NAME = "ADD_RECIPE_NAME";

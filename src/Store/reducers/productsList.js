@@ -235,7 +235,7 @@ const initialState = {
     selectedProducts:[],
     clickedProduct: "",
     showModal:false,
-    reciepieNutrients : {   
+    recipeNutrients : {   
             name : "",
             quantity : 0,
             units : "g",
@@ -260,30 +260,30 @@ const initialState = {
 
 
 
-const addToRecipieNutrients = (state, productNutrients, amountOfProduct) => {
-    let totalRecipies = state.reciepieNutrients.totalNutrients
-    Object.keys(totalRecipies).map((key) => {
-        const newNutrient = totalRecipies[key].quantity += (productNutrients[key].quantity/100)*amountOfProduct
-        return {...totalRecipies[key], newNutrient}
+const addToRecipeNutrients = (state, productNutrients, amountOfProduct) => {
+    let totalRecipes = state.recipeNutrients.totalNutrients
+    Object.keys(totalRecipes).map((key) => {
+        const newNutrient = totalRecipes[key].quantity += (productNutrients[key].quantity/100)*amountOfProduct
+        return {...totalRecipes[key], newNutrient}
     })
-    return totalRecipies
+    return totalRecipes
 }
 
-const addToRecipieAmount = (state,amount) => {
-    return state.reciepieNutrients.quantity + Number(amount)
+const addToRecipeAmount = (state,amount) => {
+    return state.recipeNutrients.quantity + Number(amount)
 }
 
-const deleteFromRecipieNutrients = (state, productNutrients, amountOfProduct) => {
-    let totalRecipies = {...state.reciepieNutrients.totalNutrients}
-    Object.keys(totalRecipies).map((key) => {
-        const newNutrient = totalRecipies[key].quantity -= (productNutrients[key].quantity/100)*amountOfProduct
-        return {...totalRecipies[key], newNutrient}
+const deleteFromRecipeNutrients = (state, productNutrients, amountOfProduct) => {
+    let totalRecipes = {...state.recipeNutrients.totalNutrients}
+    Object.keys(totalRecipes).map((key) => {
+        const newNutrient = totalRecipes[key].quantity -= (productNutrients[key].quantity/100)*amountOfProduct
+        return {...totalRecipes[key], newNutrient}
     })
-    return totalRecipies
+    return totalRecipes
 }
 
-const deleteFromRecipieAmount = (state, amount) => (
-    state.reciepieNutrients.quantity - Number(amount)
+const deleteFromRecipeAmount = (state, amount) => (
+    state.recipeNutrients.quantity - Number(amount)
 )
 
 const changeProductAmount = (state, product, amount) => {
@@ -304,7 +304,7 @@ const changeProductAmount = (state, product, amount) => {
  }
 
 const changeTotalNutreants = (state, product, amountOfProduct) => {
-    let totalRecipies = {...state.reciepieNutrients.totalNutrients}
+    let totalRecipes = {...state.recipeNutrients.totalNutrients}
     let oldAmount = 0
     state.selectedProducts.map(item =>{
         if(item.name === product.name){
@@ -312,13 +312,13 @@ const changeTotalNutreants = (state, product, amountOfProduct) => {
         }
         return oldAmount
     })
-    Object.keys(totalRecipies).map((key) => {
+    Object.keys(totalRecipes).map((key) => {
         let newNutrient = 0
-        newNutrient = totalRecipies[key].quantity -= (product.totalNutrients[key].quantity/100)*oldAmount
-        newNutrient = totalRecipies[key].quantity += (product.totalNutrients[key].quantity/100)*amountOfProduct
-        return {...totalRecipies[key], newNutrient}
+        newNutrient = totalRecipes[key].quantity -= (product.totalNutrients[key].quantity/100)*oldAmount
+        newNutrient = totalRecipes[key].quantity += (product.totalNutrients[key].quantity/100)*amountOfProduct
+        return {...totalRecipes[key], newNutrient}
     })
-    return totalRecipies
+    return totalRecipes
     }
 
 const reducer = (state = initialState, action) => {
@@ -330,20 +330,20 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 selectedProducts: state.selectedProducts.concat(action.product),
                 showModal:false,
-                reciepieNutrients : {
-                    ...state.reciepieNutrients,
-                    totalNutrients : addToRecipieNutrients(state, action.product.totalNutrients, action.product.quantity),
-                    quantity : addToRecipieAmount(state, action.product.quantity)
+                recipeNutrients : {
+                    ...state.recipeNutrients,
+                    totalNutrients : addToRecipeNutrients(state, action.product.totalNutrients, action.product.quantity),
+                    quantity : addToRecipeAmount(state, action.product.quantity)
                 }
             }
         case actionTypes.DELETE_PRODUCT:
             return {
                 ...state,
                 selectedProducts: state.selectedProducts.filter(product => action.productName !== product.name),
-                reciepieNutrients : {
-                    ...state.reciepieNutrients,
-                    totalNutrients : deleteFromRecipieNutrients(state, action.product.totalNutrients, action.product.quantity),
-                    quantity : deleteFromRecipieAmount(state, action.product.quantity)
+                recipeNutrients : {
+                    ...state.recipeNutrients,
+                    totalNutrients : deleteFromRecipeNutrients(state, action.product.totalNutrients, action.product.quantity),
+                    quantity : deleteFromRecipeAmount(state, action.product.quantity)
                 }
             }
         case actionTypes.CLICKED_PRODUCT:
@@ -359,8 +359,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedProducts,
-                reciepieNutrients: {
-                    ...state.reciepieNutrients,
+                recipeNutrients: {
+                    ...state.recipeNutrients,
                     totalNutrients,
                     quantity
                 }
@@ -377,6 +377,14 @@ const reducer = (state = initialState, action) => {
                 showModal:false, 
                 clickedProduct: ""
             }
+        case actionTypes.ADD_RECIPE_NAME:
+          return {
+            ...state,
+            recipeNutrients: {
+              ...state.recipeNutrients,
+              name: action.recipeName
+            }
+          }
         default: return state
     }
 }

@@ -9,3 +9,4 @@
 9) If IemsList.length === 0 reset whole table
 10) totalNutrients and change amount copied mutably.
 11) create unique ID for every single product (then access it in reducer simply by ID)
+12) add product leftovers
