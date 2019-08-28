@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import AddProductNutritionLabel from "../../NutritionLabel/AddProductNutritionLabel/AddProductNutritionLabel";
 import Button from "../../UI/Button/Button";
-import * as actions from "../../../Store/actions/productsList";
+import * as actions from "../../../Store/actions";
 import Styles from "./AddProductModal.module.css";
 
 const addProductModal = (props) => {

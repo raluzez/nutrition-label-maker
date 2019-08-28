@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Styles from "./Items.module.css";
 import get from "lodash.get";
-import * as actions from "../../../Store/actions/productsList";
+import * as actions from "../../../Store/actions";
 
 const items = (props) => {
     const items = get(props,'items').map(item => (
@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return {
-        items : state.selectedProducts
+        items : state.productList.selectedProducts
     }
 }
     

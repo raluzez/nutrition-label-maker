@@ -5,7 +5,7 @@ import AddProduct from "../../components/Product/AddProduct/AddProduct";
 import Modal from "../../components/UI/Modal/Modal";
 import ProductModal from "../../components/Product/ProductModal/ProductModal";
 import AddProductModal from "../../components/Product/AddProductModal/AddProductModal";
-import * as actions from "../../Store/actions/productsList";
+import * as actions from "../../Store/actions";
 import Styles from "./ProductsList.module.css";
 
 
@@ -55,10 +55,10 @@ class ProductsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    showModal: state.showModal,
-    clickedProduct: state.clickedProduct,
-    selectedProducts: state.selectedProducts,
-    products: state.products
+    showModal: state.productList.showModal,
+    clickedProduct: state.productList.clickedProduct,
+    selectedProducts: state.productList.selectedProducts,
+    products: state.productList.products
   }
 }
 

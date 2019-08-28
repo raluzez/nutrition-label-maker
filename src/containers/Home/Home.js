@@ -4,26 +4,21 @@ import Modal from "../../components/UI/Modal/Modal";
 import RecipeModal from "../../components/Recipe/RecipeModal/RecipeModal"
 import ItemsList from "../../components/ItemsList/ItemsList";
 import NutritionLabel from "../../components/NutritionLabel/NutritionLabel";
-import * as actions from "../../Store/actions/productsList";
+import * as actions from "../../Store/actions";
 
 const home = (props) =>{
     
-    // const addName = (event) => 
-    //     { console.log(props.recipeAsProduct.name )
-    //         return(
-    //         [...props.recipeAsProduct],
-    //         props.recipeAsProduct.name = event.target.value
-    //         )}
-    
-
     return(
             <>
                 <Modal show={props.showModal}>
                     <RecipeModal
                         recipe={props.recipeAsProduct}
-                        closeIconClicked={props.onCloseModal}
+                        closeModal={props.onCloseModal}
                         addName={event => props.onAddRecipeName(event.target.value)}
-                        recipeItems={props.selectedProducts}/>
+                        recipeItems={props.selectedProducts}
+                        saveRecipe={() => {
+                            props.onSaveRecipe(props.recipeAsProduct); 
+                            props.onCloseModal()}}/>
                 </Modal>
                 <ItemsList 
                     addProductClicked={() =>props.history.push("/productlist")} 
@@ -34,9 +29,9 @@ const home = (props) =>{
 )}
 const mapStateToProps = state => {
     return {
-        recipeAsProduct : state.recipeNutrients,
-        selectedProducts : state.selectedProducts,
-        showModal : state.showModal
+        recipeAsProduct : state.productList.recipeNutrients,
+        selectedProducts : state.productList.selectedProducts,
+        showModal : state.productList.showModal
     }
 }
 
@@ -44,7 +39,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onSaveRecipeClicked :(product) => dispatch(actions.productClicked(product)),
         onCloseModal:() => dispatch(actions.closeModal()),
-        onAddRecipeName: (recipeName) => dispatch(actions.addRecipeName(recipeName)) 
+        onAddRecipeName: (recipeName) => dispatch(actions.addRecipeName(recipeName)),
+        onSaveRecipe: (recipe) => dispatch(actions.saveRecipe(recipe))
     }
 }
 
