@@ -1,9 +1,9 @@
 import React from "react";
-import Styles from "./RecipeModalItems.module.css";
+import Styles from "./AddRecipeModalItems.module.css";
 
 
-const recipeModalItems = (props) => {
-    const items = props.recipeItems.map(item => (
+const addRecipeModalItems = (props) => {
+    const items = (props.recipeItems || []).map(item => (
         <>
             <div key={item.name} className={Styles.ItemContainer}>
                 <p style={{maxWidth: "320px"}}>{item.name}</p>
@@ -18,4 +18,4 @@ const recipeModalItems = (props) => {
     return items
 }
 
-export default recipeModalItems;
+export default addRecipeModalItems;

@@ -12,6 +12,10 @@ import Styles from "./ProductsList.module.css";
 class ProductsList extends Component {
     state = { amountInput:""}
 
+    componentDidMount () {
+      this.props.onFetchProducts()
+    }
+
     productSelectedHandler = () => {
       this.props.onSelectProduct(this.props.clickedProduct, this.state.amountInput);
       this.props.history.push("/")
@@ -36,7 +40,7 @@ class ProductsList extends Component {
                   closeIconClicked={()=>this.props.onCloseModal()}/>}
             </Modal>
             <div className={Styles.ProductList}>
-              <AddProduct clicked={()=>this.props.onClickedProduct(null)}/>
+              <AddProduct clicked={()=>this.props.onClickedProduct(null)} name="Add New Product"/>
               {(this.props.products || []).map(product =>(
                   <Product
                       key={product.name}
@@ -66,7 +70,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onSelectProduct: (product, amount) => dispatch(actions.productSelected(product, amount)),
     onClickedProduct: (product) => dispatch(actions.productClicked(product)),
-    onCloseModal:() => dispatch(actions.closeModal())
+    onCloseModal:() => dispatch(actions.closeModal()),
+    onFetchProducts: () => dispatch(actions.fetchProducts())
   }
 }
 

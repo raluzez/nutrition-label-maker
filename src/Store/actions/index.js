@@ -5,9 +5,12 @@ export {
     changeItemAmount,
     addProduct,
     addRecipeName,
-    closeModal
+    closeModal,
+    openModal,
+    fetchProducts
 } from "./productsList";
 
 export {
-    saveRecipe
+    saveRecipe,
+    recipeClicked
 } from "./recipe";
