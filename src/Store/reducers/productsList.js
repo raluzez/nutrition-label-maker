@@ -166,7 +166,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_PRODUCTS_SUCCESS:
             return {
               ...state,
-              products: action.products
+              products: action.products,
+              loading: false
             }
         case actionTypes.CLOSE_MODAL:
             return {

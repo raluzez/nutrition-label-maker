@@ -19,7 +19,7 @@ const home = (props) =>{
                         saveRecipe={() => {
                             props.onSaveRecipe(props.recipeAsProduct, props.selectedProducts); 
                             props.onCloseModal();
-                            props.history.push("/recipes")}}/>{console.log(props.selectedProducts)}
+                            props.history.push("/recipes")}}/>
                 </Modal>
                 <ItemsList 
                     addProductClicked={() =>props.history.push("/productlist")} 

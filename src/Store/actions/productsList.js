@@ -58,7 +58,6 @@ export const addProduct = (product) => {
         axios.post("/products.json", product)
             .then((res) => {
                 dispatch(addProductSuccess(product));
-                console.log(res)
             })
             .catch(error => dispatch(addProductFail(error)))
     }
