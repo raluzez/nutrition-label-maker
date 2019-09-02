@@ -42,7 +42,7 @@ class Recepies extends Component {
                     <RecipeModal
                         product={this.props.clickedRecipe}
                         recipeItems={this.props.clickedRecipe.items}
-                        closeIconClicked={()=>this.props.onCloseModal()}/>{console.log(this.props.clickedRecipe)}
+                        closeIconClicked={()=>this.props.onCloseModal()}/>
                 </Modal>
                 <div className={Styles.Recipe}>
                     {recipesList}  

@@ -15,3 +15,9 @@ export {
     recipeClicked,
     fetchRecipes
 } from "./recipe";
+
+export {
+    closeSignUp,
+    openSignUp,
+    auth
+} from "./auth";
