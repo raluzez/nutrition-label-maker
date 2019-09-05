@@ -13,7 +13,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.CLOSE_SIGN_UP:
             return {
                 ...state,
-                showAuthModal:false
+                showAuthModal:false,
+                error: null
             }
         case actionTypes.OPEN_SIGN_UP:
             return{
@@ -38,7 +39,8 @@ const reducer = (state = initialState, action) => {
                 token: action.idToken,
                 userId: action.userId,
                 error: null,
-                loading: false
+                loading: false,
+                showAuthModal: false
             }
         default : return state
     }

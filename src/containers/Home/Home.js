@@ -15,8 +15,7 @@ const home = (props) =>{
                     <Auth 
                     switchForm={() => {
                             props.onCloseSignUp();
-                            setTimeout(()=>{props.onOpenSignUp()},450)}}
-                    closeSignUp={props.closeSignUp}/>
+                            setTimeout(()=>{props.onOpenSignUp()},450)}}/>
                 </Modal>
                 <Modal show={props.showModal}>
                     <AddRecipeModal
