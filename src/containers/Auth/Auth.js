@@ -23,6 +23,10 @@ class Auth extends Component {
     }
 
     passwordHandler = (event) => {
+        this.setState({password: event.target.value})
+    }
+
+    signUpPasswordHandler = (event) => {
         if (event.target.placeholder === "Password"){
             this.setState({password : event.target.value});
             this.checkPassword(event.target.value, event.target.placeholder)
@@ -44,6 +48,14 @@ class Auth extends Component {
         }
     }
 
+    resetPasswordError = () => {
+        this.setState({passwordMatch: true})
+    }
+
+    resetInputsValues = () => {
+        this.setState({password:"", email:"", repeatedPassword: ""})
+    }
+
 
 
     render(){
@@ -63,12 +75,12 @@ class Auth extends Component {
             <div className={Styles.Name}>Login</div>
             {errorMessage}
             <form className={Styles.Form}>
-                <input type="text" placeholder="E-mail" onChange={this.emailHandler}/>
-                <input type="password" placeholder="Password" onChange={this.passwordHandler}/>
+                <input type="text" placeholder="E-mail" onChange={this.emailHandler} value={this.state.email} />
+                <input type="password" placeholder="Password" onChange={this.passwordHandler} value={this.state.password}/>
             </form>
             <div className={Styles.ButtonsDiv}>
                 <Button classname="Success" onclick={() => this.props.onAuth(this.state.email, this.state.password, this.state.existingUser)}>Submit</Button>
-                <Button classname="Neutral" onclick={() => {this.existingUserHandler(); this.props.switchForm()}}>Sign Up</Button>
+                <Button classname="Neutral" onclick={() => {this.existingUserHandler(); this.props.switchForm(); this.resetInputsValues()}}>Sign Up</Button>
             </div>   
         </>
         
@@ -78,13 +90,13 @@ class Auth extends Component {
                 <div className={Styles.Name}>Sign Up</div>
                 {errorMessage}
                 <form className={Styles.Form}>
-                    <input type="text" placeholder="E-mail" onChange={this.emailHandler}/>
-                    <input type="password" placeholder="Password" onChange={this.passwordHandler}/>
-                    <input type="password" placeholder="Repeat Password" onChange={this.passwordHandler}/>
+                    <input type="text" placeholder="E-mail" onChange={this.emailHandler} value={this.state.email}/>
+                    <input type="password" placeholder="Password" onChange={this.signUpPasswordHandler} value={this.state.password}/>
+                    <input type="password" placeholder="Repeat Password" onChange={this.signUpPasswordHandler} value={this.state.repeatedPassword}/>
                 </form>
                 <div className={Styles.ButtonsDiv}>
                     <Button classname="Success" onclick={() => this.props.onAuth(this.state.email, this.state.password, this.state.existingUser)}>Submit</Button>
-                    <Button classname="Neutral" onclick={() => {this.existingUserHandler(); this.props.switchForm()}}>Login</Button>
+                    <Button classname="Neutral" onclick={() => {this.existingUserHandler(); this.props.switchForm(); this.resetPasswordError()}}>Login</Button>
                 </div>   
             </>
         }

@@ -8,7 +8,7 @@ const navigationBar = () => {
             <NavigationItem link="/" exact>Home</NavigationItem>
             <NavigationItem link="/productlist">My List</NavigationItem>
             <NavigationItem link="/recipes">Recipies</NavigationItem>
-            <NavigationItem link="/auth">Login</NavigationItem>
+            <NavigationItem link="/logout">Logout</NavigationItem>
         </ul>    
     )
 }

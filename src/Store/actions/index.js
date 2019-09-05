@@ -19,5 +19,7 @@ export {
 export {
     closeSignUp,
     openSignUp,
-    auth
+    auth,
+    logout,
+    authCheckLogin
 } from "./auth";
