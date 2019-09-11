@@ -147,6 +147,7 @@ const reducer = (state = initialState, action) => {
               loading: false
             }
         case actionTypes.ADD_PRODUCT_SUCCESS:
+            console.log(action.product)
             return {
                 ...state,
                 products: state.products.concat(action.product),

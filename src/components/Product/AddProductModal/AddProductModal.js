@@ -95,7 +95,7 @@ const addProductModal = (props) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        props.onAddProduct(addedProduct)
+        props.onAddProduct(addedProduct, props.token, props.userId)
     }
     return(
         <form onSubmit={onSubmit}>
@@ -108,10 +108,17 @@ const addProductModal = (props) => {
         </form> 
 )}
 
+const mapStateToProps = state => {
+  return {
+    userId : state.auth.userId,
+    token: state.auth.token
+  }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
-      onAddProduct:(product) => dispatch(actions.addProduct(product))
+      onAddProduct:(product, token, userId) => dispatch(actions.addProduct(product, token, userId))
     }
   }
 
-export default connect(null,mapDispatchToProps)(addProductModal);
+export default connect(mapStateToProps,mapDispatchToProps)(addProductModal);

@@ -14,7 +14,7 @@ class ProductsList extends Component {
     state = { amountInput:""}
 
     componentDidMount () {
-      this.props.onFetchProducts()
+      this.props.onFetchProducts(this.props.token, this.props.userId)
     }
 
     productSelectedHandler = () => {
@@ -72,7 +72,9 @@ const mapStateToProps = state => {
     clickedProduct: state.productList.clickedProduct,
     selectedProducts: state.productList.selectedProducts,
     products: state.productList.products,
-    loading: state.productList.loading
+    loading: state.productList.loading,
+    token: state.auth.token,
+    userId: state.auth.userId
   }
 }
 
@@ -81,7 +83,7 @@ const mapDispatchToProps = dispatch => {
     onSelectProduct: (product, amount) => dispatch(actions.productSelected(product, amount)),
     onClickedProduct: (product) => dispatch(actions.productClicked(product)),
     onCloseModal:() => dispatch(actions.closeModal()),
-    onFetchProducts: () => dispatch(actions.fetchProducts())
+    onFetchProducts: (token, userId) => dispatch(actions.fetchProducts(token, userId))
   }
 }
 
