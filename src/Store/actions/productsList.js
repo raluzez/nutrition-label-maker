@@ -54,13 +54,13 @@ export const addProductSuccess = (product) => {
 }
 
 export const addProduct = (product, token, userId) => {
-    let productWithId = product
-    productWithId.userId = userId
+    product.userId = userId
     return dispatch => {
         dispatch(addProductStart())
-        axios.post(`/products.json?auth=${token}`, productWithId)
+        axios.post(`/products.json?auth=${token}`, product)
             .then((res) => {
-                dispatch(addProductSuccess(productWithId));
+                product.key = res.data.name
+                dispatch(addProductSuccess(product));
             })
             .catch(error => dispatch(addProductFail(error)))
     }
@@ -95,7 +95,7 @@ export const fetchProducts = (token, userId) => {
                 for (const key in response.data) {
                     fetchedProducts.push({
                         ...response.data[key],
-                        id: key
+                        key: key
                     })
                 }
                 dispatch(fecthProductsSuccess(fetchedProducts))
@@ -103,6 +103,35 @@ export const fetchProducts = (token, userId) => {
             .catch(error => {
                 dispatch(fetchProductsFail(error))
             })
+    }
+}
+
+export const deleteProductStart = () => {
+    return {
+        type: actionTypes.DELETE_PRODUCT_START
+    }
+}
+
+export const deleteProductFail = (error) => {
+    return {
+        type: actionTypes.DELETE_PRODUCT_FAIL,
+        error
+    }
+}
+
+export const deleteProductSuccess = (productKey) => {
+    return {
+        type: actionTypes.DELETE_PRODUCT_SUCCESS,
+        productKey
+    }
+}
+
+export const deleteProduct = (productKey, token) => {
+    return dispatch => {
+        dispatch(deleteProductStart())
+        axios.delete(`/products/${productKey}.json?auth=${token}`)
+            .then( res =>  dispatch (deleteProductSuccess(productKey) ))
+            .catch(error => dispatch (deleteProductFail(error)))
     }
 }
 

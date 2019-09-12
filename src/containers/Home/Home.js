@@ -24,7 +24,7 @@ const home = (props) =>{
                         addName={event => props.onAddRecipeName(event.target.value)}
                         recipeItems={props.selectedProducts}
                         saveRecipe={() => {
-                            props.onSaveRecipe(props.recipeAsProduct, props.selectedProducts); 
+                            props.onSaveRecipe(props.recipeAsProduct, props.selectedProducts, props.token, props.userId); 
                             props.onCloseModal();
                             props.history.push("/recipes")}}/>
                 </Modal>
@@ -37,10 +37,12 @@ const home = (props) =>{
 )}
 const mapStateToProps = state => {
     return {
-        recipeAsProduct : state.productList.recipeNutrients,
-        selectedProducts : state.productList.selectedProducts,
-        showModal : state.productList.showModal,
-        showAuthModal: state.auth.showAuthModal
+        recipeAsProduct: state.productList.recipeNutrients,
+        selectedProducts: state.productList.selectedProducts,
+        showModal: state.productList.showModal,
+        showAuthModal: state.auth.showAuthModal,
+        token: state.auth.token,
+        userId: state.auth.userId
     }
 }
 
@@ -49,7 +51,7 @@ const mapDispatchToProps = dispatch => {
         onSaveRecipeClicked :(product) => dispatch(actions.productClicked(product)),
         onCloseModal:() => dispatch(actions.closeModal()),
         onAddRecipeName: (recipeName) => dispatch(actions.addRecipeName(recipeName)),
-        onSaveRecipe: (recipe, items) => dispatch(actions.saveRecipe(recipe, items)),
+        onSaveRecipe: (recipe, items, token, userId) => dispatch(actions.saveRecipe(recipe, items, token, userId)),
         onCloseSignUp: () => dispatch(actions.closeSignUp()),
         onOpenSignUp: () => dispatch(actions.openSignUp())
     }

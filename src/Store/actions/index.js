@@ -7,7 +7,8 @@ export {
     addRecipeName,
     closeModal,
     openModal,
-    fetchProducts
+    fetchProducts,
+    deleteProduct
 } from "./productsList";
 
 export {

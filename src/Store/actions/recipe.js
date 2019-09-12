@@ -21,15 +21,14 @@ export const saveRecipeSuccess = (recipe) => {
     }
 }
 
-export const saveRecipe = (recipe,items) => {
+export const saveRecipe = (recipe, items, token, userId) => {
     recipe.items = items
-    console.log(recipe)
+    recipe.userId = userId
     return dispatch => {
         dispatch(saveRecipeStart())
-        axios.post("/recipes.json", recipe)
+        axios.post(`/recipes.json?auth=${token}`, recipe)
             .then((res) => {
                 dispatch(saveRecipeSuccess(recipe));
-                console.log(res)
             })
             .catch(error => dispatch(saveRecipeFail(error)))
     }
@@ -55,15 +54,16 @@ export const fecthRecipesSuccess = (recipes) => {
     }
 }
 
-export const fetchRecipes = () => {
+export const fetchRecipes = (token, userId) => {
     return dispatch => {
         dispatch(fetchRecipesStart())
-        axios.get("/recipes.json")
+        axios.get(`/recipes.json?auth=${token}&orderBy="userId"&equalTo="${userId}"`)
             .then(response => {
                 const fetchedRecipes = []
                 for (const key in response.data) {
                     fetchedRecipes.push({
-                        ...response.data[key]
+                        ...response.data[key],
+                        key: key
                     })
                 }
                 dispatch(fecthRecipesSuccess(fetchedRecipes))

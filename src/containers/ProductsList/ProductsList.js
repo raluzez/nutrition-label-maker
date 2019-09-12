@@ -52,6 +52,10 @@ class ProductsList extends Component {
               ? <ProductModal
                   product={this.props.clickedProduct}
                   buttonClickced={this.productSelectedHandler}
+                  deleteProduct={() => {
+                      this.props.onDeleteProduct(this.props.clickedProduct.key, this.props.token)
+                      this.props.onCloseModal()
+                      }}
                   inputValue={this.state.amountInput}
                   inputChanged={event =>this.amountInputHandler(event)}
                   closeIconClicked={()=>this.props.onCloseModal()}/> 
@@ -83,7 +87,8 @@ const mapDispatchToProps = dispatch => {
     onSelectProduct: (product, amount) => dispatch(actions.productSelected(product, amount)),
     onClickedProduct: (product) => dispatch(actions.productClicked(product)),
     onCloseModal:() => dispatch(actions.closeModal()),
-    onFetchProducts: (token, userId) => dispatch(actions.fetchProducts(token, userId))
+    onFetchProducts: (token, userId) => dispatch(actions.fetchProducts(token, userId)),
+    onDeleteProduct: (productKey, token) => dispatch(actions.deleteProduct(productKey, token))
   }
 }
 

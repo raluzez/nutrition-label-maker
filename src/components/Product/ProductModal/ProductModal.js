@@ -11,6 +11,7 @@ const productModal = (props) => (
         <div>
             <Button onclick={props.buttonClickced} classname="Success">Select Product</Button>
             <input type="text" placeholder="0" className={Styles.Input} value={props.inputValue} onChange={props.inputChanged}/> g
+            <Button onclick={props.deleteProduct} classname="Danger">Delete Product</Button>
         </div>
         
     </> 

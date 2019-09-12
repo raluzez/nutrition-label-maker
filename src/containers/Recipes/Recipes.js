@@ -12,7 +12,7 @@ import Styles from "./Recipes.module.css";
 class Recepies extends Component {
 
     componentDidMount () {
-        this.props.onFetchRecipes()
+        this.props.onFetchRecipes(this.props.token, this.props.userId)
       }
 
     render(){
@@ -57,7 +57,9 @@ const mapStateToProps = state => {
         recipes: state.recipe.savedRecipes,
         showModal: state.productList.showModal,
         clickedRecipe: state.recipe.clickedRecipe,
-        loading: state.recipe.loading
+        loading: state.recipe.loading,
+        token: state.auth.token,
+        userId: state.auth.userId
     }
 }
 
@@ -66,7 +68,7 @@ const mapDispatchToProps = dispatch => {
       onClickedRecipe: (recipe) => dispatch(actions.recipeClicked(recipe)),
       onOpenModal:() => dispatch(actions.openModal()),
       onCloseModal:() => dispatch(actions.closeModal()),
-      onFetchRecipes:() => dispatch(actions.fetchRecipes())
+      onFetchRecipes:(token, userId) => dispatch(actions.fetchRecipes(token, userId))
     }
   }
   

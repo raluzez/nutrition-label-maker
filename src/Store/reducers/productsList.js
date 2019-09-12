@@ -147,7 +147,6 @@ const reducer = (state = initialState, action) => {
               loading: false
             }
         case actionTypes.ADD_PRODUCT_SUCCESS:
-            console.log(action.product)
             return {
                 ...state,
                 products: state.products.concat(action.product),
@@ -169,6 +168,22 @@ const reducer = (state = initialState, action) => {
               ...state,
               products: action.products,
               loading: false
+            }
+        case actionTypes.DELETE_PRODUCT_START:
+            return {
+                ...state,
+                loading: true
+            }
+        case actionTypes.DELETE_PRODUCT_FAIL:
+            return {
+                ...state,
+                loading: false
+            }
+        case actionTypes.DELETE_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                products: state.products.filter(product => action.productKey !== product.key),
+                loading: false 
             }
         case actionTypes.CLOSE_MODAL:
             return {
