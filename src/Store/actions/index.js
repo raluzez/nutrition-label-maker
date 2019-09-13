@@ -14,7 +14,8 @@ export {
 export {
     saveRecipe,
     recipeClicked,
-    fetchRecipes
+    fetchRecipes,
+    deleteRecipe
 } from "./recipe";
 
 export {

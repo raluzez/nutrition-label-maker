@@ -130,7 +130,7 @@ export const deleteProduct = (productKey, token) => {
     return dispatch => {
         dispatch(deleteProductStart())
         axios.delete(`/products/${productKey}.json?auth=${token}`)
-            .then( res =>  dispatch (deleteProductSuccess(productKey) ))
+            .then( () =>  dispatch (deleteProductSuccess(productKey) ))
             .catch(error => dispatch (deleteProductFail(error)))
     }
 }

@@ -40,6 +40,24 @@ const reducer = (state = initialState, action) => {
                 savedRecipes: action.recipes,
                 loading:false
             }
+        case actionTypes.DELETE_RECIPE_START:
+            return {
+                ...state,
+                loading: true
+            }
+        case actionTypes.DELETE_RECIPE_FAIL:
+            return {
+                ...state,
+                loading: false
+            }
+        case actionTypes.DELETE_RECIPE_SUCCESS:
+            console.log(action.recipeKey)
+            console.log(state.savedRecipes)
+            return {
+                ...state,
+                savedRecipes: state.savedRecipes.filter(recipe => action.recipeKey !== recipe.key),
+                loading: false
+            }
         case actionTypes.RECIPE_CLICKED:
             return {
                 ...state,

@@ -28,6 +28,7 @@ export const saveRecipe = (recipe, items, token, userId) => {
         dispatch(saveRecipeStart())
         axios.post(`/recipes.json?auth=${token}`, recipe)
             .then((res) => {
+                recipe.key = res.data.name
                 dispatch(saveRecipeSuccess(recipe));
             })
             .catch(error => dispatch(saveRecipeFail(error)))
@@ -71,6 +72,35 @@ export const fetchRecipes = (token, userId) => {
             .catch(error => {
                 dispatch(fetchRecipesFail(error))
             })
+    }
+}
+
+export const deleteReciptStart = () => {
+    return {
+        type: actionTypes.DELETE_RECIPE_START
+    }
+}
+
+export const deleteRecipeFail = (error) => {
+    return {
+        type: actionTypes.DELETE_RECIPE_FAIL,
+        error
+    }
+}
+
+export const deleteRecipeSuccess = (recipeKey) => {
+    return {
+        type: actionTypes.DELETE_RECIPE_SUCCESS,
+        recipeKey
+    }
+}
+
+export const deleteRecipe = (recipeKey, token) => {
+    return dispatch => {
+        dispatch(deleteReciptStart())
+        axios.delete(`/recipes/${recipeKey}.json?auth=${token}`)
+            .then( () => dispatch (deleteRecipeSuccess(recipeKey)))
+            .catch( error => dispatch (deleteRecipeFail(error)))
     }
 }
 

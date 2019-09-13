@@ -24,16 +24,16 @@ class Recepies extends Component {
                     <AddProduct name="Add New Recipe" clicked={() => this.props.history.push("/")}/>
                     {(this.props.recipes || []).map(recipe =>(
                         <Product
-                        key={recipe.name}
-                        name={recipe.name}
-                        fatCalories={recipe.totalNutrients.FAT.quantity*9}
-                        carbohydratesCalories={recipe.totalNutrients.CHOCDF.quantity*4}
-                        proteinCalories={recipe.totalNutrients.PROCNT.quantity*4}
-                        clicked={()=>{
-                            this.props.onClickedRecipe(recipe);
-                            this.props.onOpenModal()
-                        }}
-                    />))}
+                            key={recipe.name}
+                            name={recipe.name}
+                            fatCalories={recipe.totalNutrients.FAT.quantity*9}
+                            carbohydratesCalories={recipe.totalNutrients.CHOCDF.quantity*4}
+                            proteinCalories={recipe.totalNutrients.PROCNT.quantity*4}
+                            clicked={()=>{
+                                this.props.onClickedRecipe(recipe);
+                                this.props.onOpenModal()
+                            }}
+                        />))}
                 </>
         }
         return(
@@ -42,7 +42,12 @@ class Recepies extends Component {
                     <RecipeModal
                         product={this.props.clickedRecipe}
                         recipeItems={this.props.clickedRecipe.items}
-                        closeIconClicked={()=>this.props.onCloseModal()}/>
+                        closeIconClicked={()=>this.props.onCloseModal()}
+                        deleteRecipe={() =>{
+                            this.props.onDeleteRecipe(this.props.clickedRecipe.key, this.props.token)
+                            console.log(this.props.clickedRecipe)
+                            this.props.onCloseModal()
+                        }}/>
                 </Modal>
                 <div className={Styles.Recipe}>
                     {recipesList}  
@@ -66,9 +71,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
       onClickedRecipe: (recipe) => dispatch(actions.recipeClicked(recipe)),
-      onOpenModal:() => dispatch(actions.openModal()),
-      onCloseModal:() => dispatch(actions.closeModal()),
-      onFetchRecipes:(token, userId) => dispatch(actions.fetchRecipes(token, userId))
+      onOpenModal: () => dispatch(actions.openModal()),
+      onCloseModal: () => dispatch(actions.closeModal()),
+      onFetchRecipes: (token, userId) => dispatch(actions.fetchRecipes(token, userId)),
+      onDeleteRecipe: (recipeKey, token) => dispatch(actions.deleteRecipe(recipeKey, token))
     }
   }
   
