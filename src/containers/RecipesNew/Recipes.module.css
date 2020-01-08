@@ -1,0 +1,7 @@
+.Recipe {
+    height:  100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+

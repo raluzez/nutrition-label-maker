@@ -4,7 +4,7 @@ import Layout from "./hoc/Layout/Layout";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import Logout from "./containers/Auth/Logout/Logout";
-import Recipes from "./containers/Recipes/Recipes";
+import Recipes from "./containers/RecipesNew/Recipes";
 import ProductList from "./containers/ProductsList/ProductsList";
 import * as actions from "./Store/actions";
 import "./App.css";
