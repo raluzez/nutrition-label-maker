@@ -49,6 +49,9 @@ const Recipes = props => {
                         props.onCloseModal()
                     }}/>
             </Modal>
+            <div className={Styles.AddRecipeButtonContainer}>
+                <button onClick={() => props.history.push("/")}>Add Recipe</button>
+            </div>
             <div className={Styles.Recipe}>
                 {recipesList}  
             </div>

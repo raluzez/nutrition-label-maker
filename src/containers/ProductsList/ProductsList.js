@@ -32,14 +32,14 @@ class ProductsList extends Component {
       if (!this.props.loading) {
         productsList = 
         <>
-          <AddProduct clicked={()=>this.props.onClickedProduct(null)} name="Add New Product"/>
+          {/* <AddProduct clicked={()=>this.props.onClickedProduct(null)} name="Add New Product"/> */}
           {(this.props.products || []).map(product =>(
             <Product
               key={product.name}
               name={product.name}
-              fatCalories={product.totalNutrients.FAT.quantity*9}
-              carbohydratesCalories={product.totalNutrients.CHOCDF.quantity*4}
-              proteinCalories={product.totalNutrients.PROCNT.quantity*4}
+              fat={product.totalNutrients.FAT.quantity}
+              carbs={product.totalNutrients.CHOCDF.quantity}
+              protein={product.totalNutrients.PROCNT.quantity}
               clicked={()=>this.props.onClickedProduct(product)}
           />
         ))}
@@ -62,6 +62,9 @@ class ProductsList extends Component {
               : <AddProductModal
                   closeIconClicked={()=>this.props.onCloseModal()}/>}
             </Modal>
+            <div className={Styles.AddProductButtonContainer}>
+                <button onClick={()=>this.props.onClickedProduct()}>Add Recipe</button>
+            </div>
             <div className={Styles.ProductList}>
               {productsList}
             </div>

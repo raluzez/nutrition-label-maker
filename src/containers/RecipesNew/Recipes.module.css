@@ -1,7 +1,38 @@
 .Recipe {
-    height:  100vh;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
+.AddRecipeButtonContainer {
+    display: flex;
+}
+
+.AddRecipeButtonContainer button {
+    margin: 2% auto;
+    display: block;
+    width:200px;
+    height:40px;
+    background: #4DE7B1;  
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+    color:white;
+    border:none;
+    letter-spacing: 0.1em;
+    font-size: 1.35em;
+    font-weight: 900;
+}
+
+.AddRecipeButtonContainer button:hover {
+    background-color: rgb(60, 211, 158);
+}
+
+.AddRecipeButtonContainer button:focus {
+    outline: none;
+}
+
+.AddRecipeButtonContainer button:active {
+    position: relative;
+    left:2px;
+    top:2px;
+}
