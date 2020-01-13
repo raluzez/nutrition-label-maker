@@ -22,7 +22,7 @@
     width: 125px;
 }
 
-input {
+/* input {
     border:none;
     background-image:none;
     background-color:transparent;
@@ -42,4 +42,4 @@ input:focus {
 
 input::placeholder {
     color:#e6727b
-}
+} */

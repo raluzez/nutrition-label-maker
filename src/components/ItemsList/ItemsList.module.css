@@ -1,47 +1,113 @@
-.ItemsList {
-    width:500px;
+.ProductsListContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.ProductContainer {
+    width: 30%;
+    min-width: 400px;
+    height: 60px;
+    color: white;
+    border-radius: 15px;
+    background-color: #6200ee;
+    margin-top: 1%;
+    display:flex;
+    flex-direction: row;
+}
+
+.ProductsContainer {
+    width:90%;
     margin:auto;
-    margin-top: 72px;
-    margin-bottom: 72px;
-    font-size: 1.5rem;
+    margin-top: 30px;
 }
 
-.ItemsList input{
+.ProductsTitleLine {
+    border-bottom: 2px solid rgba(129, 129, 129, 0.5);
+    display: flex;
+}
+
+.ProductsTitleLine div{
+    margin-left: 5%;
+    font-size: 2rem;
+}
+
+.ProductInformation {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 80px);
+}
+
+.ProductInformation div {
+    font-size:1.5rem;
+    margin: auto 0.5rem;
+}
+
+.ProductIcons {
+    width: 80px;
+    margin: auto 0.25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.ProductIcons i {
+    font-size: 1.75rem;
+    margin: auto;
+    cursor: pointer;
+}
+.ProductIcons i:last-child {
+    color:#F57899;
+    font-size: 2.25rem;
+}
+
+.AddButton{
+    margin: 1% auto;
+    display: flex;
+    width:200px;
+    height:40px;
+    background: #4DE7B1;  
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
     border:none;
-    background-image:none;
-    background-color:transparent;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    letter-spacing: 0.1rem;
+    font-size: 1.35rem;
+    font-weight: 900;
 }
 
-.Plus{
-    color:#79d693;
+.AddButton:hover{
+    background-color: rgb(60, 211, 158);
 }
 
-.Plus:hover {
-    color:green;
-}
-
-.ItemsList input:focus {
+.AddButton:focus {
     outline: none;
 }
 
-.ItemsList input::placeholder {
-    color:black
+.AddButton:active {
+    position: relative;
+    left:2px;
+    top:2px;
 }
 
-.Line {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    border-top: 1px solid rgba(0,0,0,.1);
-    margin: auto;
-    display:block;
+.ChangeAmountInput {
+    border:none;
+    background-color:transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    color:white;
+    font-size: 1.5rem;
+    text-align: right;
 }
 
-@media (max-width:550px){
-    .ItemsList {
-        width: 80%;
-    }
+.ChangeAmountInput:focus {
+    outline: none;
+}
+
+.ChangeAmountInput::placeholder {
+    color:white;
 }

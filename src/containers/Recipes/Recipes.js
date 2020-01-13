@@ -1,82 +1,82 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Modal from "../../components/UI/Modal/Modal";
-import AddProduct from "../../components/Product/AddProduct/AddProduct";
 import Product from "../../components/Product/Product";
 import RecipeModal from "../../components/Recipe/RecipeModal/RecipeModal";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import * as actions from "../../Store/actions";
 import Styles from "./Recipes.module.css";
 
+const Recipes = props => {
+  const { onFetchRecipes, token, userId } = props;
 
-class Recepies extends Component {
+  useEffect(() => {
+    onFetchRecipes(token, userId);
+  }, [onFetchRecipes, token, userId]);
 
-    componentDidMount () {
-        this.props.onFetchRecipes(this.props.token, this.props.userId)
-      }
+  let recipesList = <Spinner />;
+  if (!props.loading) {
+    recipesList = (
+      <>
+        {(props.recipes || []).map(recipe => (
+          <Product
+            key={recipe.name}
+            name={recipe.name}
+            fat={recipe.totalNutrients.FAT.quantity}
+            carbs={recipe.totalNutrients.CHOCDF.quantity}
+            protein={recipe.totalNutrients.PROCNT.quantity}
+            clicked={() => {
+              props.onClickedRecipe(recipe);
+              props.onOpenModal();
+            }}
+          />
+        ))}
+      </>
+    );
+  }
 
-    render(){
-
-        let recipesList = <Spinner/>
-        if (!this.props.loading){
-            recipesList = 
-                <>
-                    <AddProduct name="Add New Recipe" clicked={() => this.props.history.push("/")}/>
-                    {(this.props.recipes || []).map(recipe =>(
-                        <Product
-                            key={recipe.name}
-                            name={recipe.name}
-                            fatCalories={recipe.totalNutrients.FAT.quantity*9}
-                            carbohydratesCalories={recipe.totalNutrients.CHOCDF.quantity*4}
-                            proteinCalories={recipe.totalNutrients.PROCNT.quantity*4}
-                            clicked={()=>{
-                                this.props.onClickedRecipe(recipe);
-                                this.props.onOpenModal()
-                            }}
-                        />))}
-                </>
-        }
-        return(
-            <>
-                <Modal show={this.props.showModal}>
-                    <RecipeModal
-                        product={this.props.clickedRecipe}
-                        recipeItems={this.props.clickedRecipe.items}
-                        closeIconClicked={()=>this.props.onCloseModal()}
-                        deleteRecipe={() =>{
-                            this.props.onDeleteRecipe(this.props.clickedRecipe.key, this.props.token)
-                            console.log(this.props.clickedRecipe)
-                            this.props.onCloseModal()
-                        }}/>
-                </Modal>
-                <div className={Styles.Recipe}>
-                    {recipesList}  
-                </div>
-            </>
-        )
-    }
-}
+  return (
+    <>
+      <Modal show={props.showModal}>
+        <RecipeModal
+          product={props.clickedRecipe}
+          recipeItems={props.clickedRecipe.items}
+          closeIconClicked={() => props.onCloseModal()}
+          deleteRecipe={() => {
+            props.onDeleteRecipe(props.clickedRecipe.key, props.token);
+            props.onCloseModal();
+          }}
+        />
+      </Modal>
+      <div className={Styles.AddRecipeButtonContainer}>
+        <button onClick={() => props.history.push("/")}>Add Recipe</button>
+      </div>
+      <div className={Styles.Recipe}>{recipesList}</div>
+    </>
+  );
+};
 
 const mapStateToProps = state => {
-    return {
-        recipes: state.recipe.savedRecipes,
-        showModal: state.productList.showModal,
-        clickedRecipe: state.recipe.clickedRecipe,
-        loading: state.recipe.loading,
-        token: state.auth.token,
-        userId: state.auth.userId
-    }
-}
+  return {
+    recipes: state.recipe.savedRecipes,
+    showModal: state.productList.showModal,
+    clickedRecipe: state.recipe.clickedRecipe,
+    loading: state.recipe.loading,
+    token: state.auth.token,
+    userId: state.auth.userId
+  };
+};
 
 const mapDispatchToProps = dispatch => {
-    return {
-      onClickedRecipe: (recipe) => dispatch(actions.recipeClicked(recipe)),
-      onOpenModal: () => dispatch(actions.openModal()),
-      onCloseModal: () => dispatch(actions.closeModal()),
-      onFetchRecipes: (token, userId) => dispatch(actions.fetchRecipes(token, userId)),
-      onDeleteRecipe: (recipeKey, token) => dispatch(actions.deleteRecipe(recipeKey, token))
-    }
-  }
-  
+  return {
+    onClickedRecipe: recipe => dispatch(actions.recipeClicked(recipe)),
+    onOpenModal: () => dispatch(actions.openModal()),
+    onCloseModal: () => dispatch(actions.closeModal()),
+    onFetchRecipes: (token, userId) =>
+      dispatch(actions.fetchRecipes(token, userId)),
+    onDeleteRecipe: (recipeKey, token) =>
+      dispatch(actions.deleteRecipe(recipeKey, token))
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recepies);
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

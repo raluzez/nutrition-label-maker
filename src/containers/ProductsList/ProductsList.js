@@ -59,7 +59,7 @@ const ProductsList = props => {
         )}
       </Modal>
       <div className={Styles.AddProductButtonContainer}>
-        <button onClick={() => props.onClickedProduct()}>Add Recipe</button>
+        <button onClick={() => props.onClickedProduct()}>Add Product</button>
       </div>
       <div className={Styles.ProductList}>{productsList}</div>
     </>

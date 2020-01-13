@@ -6,8 +6,9 @@ import ItemsList from "../../components/ItemsList/ItemsList";
 import NutritionLabel from "../../components/NutritionLabel/NutritionLabel";
 import Auth from "../Auth/Auth";
 import * as actions from "../../Store/actions";
+import Styles from "./Home.module.css";
 
-const home = (props) =>{
+const Home = (props) =>{
     
     return(
             <>  
@@ -17,7 +18,19 @@ const home = (props) =>{
                             props.onCloseSignUp();
                             setTimeout(()=>{props.onOpenSignUp()},450)}}/>
                 </Modal>
-                <Modal show={props.showModal}>
+                <ItemsList  
+                    saveRecipeClicked={() => props.onSaveRecipeClicked(props.recipeAsProduct)}/>
+                <div>
+                    <div>
+                        <div>Nutrition per 100 g</div>
+                    </div> 
+                    <div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                {/* <Modal show={props.showModal}>
                     <AddRecipeModal
                         recipe={props.recipeAsProduct}
                         closeModal={props.onCloseModal}
@@ -32,7 +45,7 @@ const home = (props) =>{
                     addProductClicked={() =>props.history.push("/productlist")} 
                     selectedProducts={props.selectedProducts}
                     saveRecipeClicked={() => props.onSaveRecipeClicked(props.recipeAsProduct)}/>
-                <NutritionLabel product={props.recipeAsProduct}/>
+                <NutritionLabel product={props.recipeAsProduct}/> */}
             </>
 )}
 const mapStateToProps = state => {
@@ -57,4 +70,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
