@@ -10,14 +10,35 @@ const Product = props => {
   return (
     <div
       className={Styles.Container}
-      title="Click to edit"
-      onClick={props.clicked}
+      // title="Click to edit"
+      // onClick={props.clicked}
     >
       <div className={Styles.ProductAvatar}>
         <i className="fas fa-birthday-cake"></i>
       </div>
       <div className={Styles.ProductBody}>
-        <div className={Styles.ProductName}>{props.name}</div>
+        <div className={Styles.ProductName}>
+          {props.name}
+          <div className={Styles.MoreIcon}>
+            <i className="material-icons" style={{ fontSize: "32px" }}>
+              more_vert
+            </i>
+            <div className={Styles.MoreDropdown}>
+              <div>
+                <i class="material-icons">edit</i>
+                <span>Edit</span>
+              </div>
+              <div>
+                <i class="material-icons">print</i>
+                <span>Print</span>
+              </div>
+              <div>
+                <i class="material-icons">clear</i>
+                <span>Delete</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className={Styles.StatusBar}>
           <div
             className={Styles.StatusCarbsBar}
@@ -29,7 +50,7 @@ const Product = props => {
           ></div>
           <div
             className={Styles.StatusFatBar}
-            style={{ width: `${(fat)}%`, left: `${carbs + protein}%` }}
+            style={{ width: `${fat}%`, left: `${carbs + protein}%` }}
           ></div>
           {/* a lot of edge cases:
                     1) no carbs
@@ -48,9 +69,6 @@ const Product = props => {
             fat
           )}% FAT`}</div>
         </div>
-        <button className={Styles.DeleteButton} title="Delete recipe" onClick={()=>console.log("click")}>
-          Delete
-        </button>
       </div>
     </div>
   );

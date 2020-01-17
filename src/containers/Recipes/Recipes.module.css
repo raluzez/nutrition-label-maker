@@ -1,7 +1,8 @@
 .Recipe {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    width: 1890px;
+    margin: auto;
 }
 
 .AddRecipeButtonContainer {
@@ -9,7 +10,7 @@
 }
 
 .AddRecipeButtonContainer button {
-    margin: 2% auto;
+    margin: 30px auto;
     display: block;
     width:200px;
     height:40px;
@@ -19,7 +20,7 @@
     color:white;
     border:none;
     letter-spacing: 0.1em;
-    font-size: 1.35em;
+    font-size: 18px;
     font-weight: 900;
 }
 
@@ -35,4 +36,29 @@
     position: relative;
     left:2px;
     top:2px;
+}
+
+@media (min-width: 2560px ) {
+    .Recipe {
+        width: 2520px;
+    }
+}
+
+@media (max-width: 1900px) {
+    .Recipe {
+        width: 1260px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .Recipe {
+        width: 630px;
+    }
+}
+
+@media (max-width: 660px) {
+    .Recipe {
+        width: auto;
+        justify-content: space-around;
+    }
 }

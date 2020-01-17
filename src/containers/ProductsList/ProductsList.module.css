@@ -1,7 +1,8 @@
 .ProductList {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    width: 1890px;
+    margin: auto;
 }
 
 .AddProductButtonContainer {
@@ -9,7 +10,7 @@
 }
 
 .AddProductButtonContainer button {
-    margin: 2% auto;
+    margin: 30px auto;
     display: block;
     width:200px;
     height:40px;
@@ -19,7 +20,7 @@
     color:white;
     border:none;
     letter-spacing: 0.1em;
-    font-size: 1.35em;
+    font-size: 18px;
     font-weight: 900;
 }
 
@@ -37,3 +38,27 @@
     top:2px;
 }
 
+@media (min-width: 2560px ) {
+    .ProductList {
+        width: 2520px;
+    }
+}
+
+@media (max-width: 1900px) {
+    .ProductList {
+        width: 1260px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .ProductList {
+        width: 630px;
+    }
+}
+
+@media (max-width: 660px) {
+    .ProductList {
+        width: auto;
+        justify-content: space-around;
+    }
+}
