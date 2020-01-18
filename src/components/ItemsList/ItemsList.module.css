@@ -1,68 +1,71 @@
+.ProductsContainer {
+    width:1890px;
+    margin:auto;
+    margin-top: 30px;
+    /* overflow: scroll; */
+}
+
+.ProductsTitleLine {
+    margin: 0 15px;
+    border-bottom: 2px solid rgba(129, 129, 129, 0.5);
+}
+
+.ProductsTitleLine div{
+    margin-left: 50px;
+    font-size: 36px;
+}
+
 .ProductsListContainer {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    /* overflow-y: auto;
+    max-height: 240px; */
 }
 
 .ProductContainer {
-    width: 30%;
-    min-width: 400px;
+    width: 600px;
     height: 60px;
     color: white;
     border-radius: 15px;
     background-color: #6200ee;
-    margin-top: 1%;
+    margin: 0 15px;
+    margin-top: 15px;
     display:flex;
-    flex-direction: row;
-}
-
-.ProductsContainer {
-    width:90%;
-    margin:auto;
-    margin-top: 30px;
-}
-
-.ProductsTitleLine {
-    border-bottom: 2px solid rgba(129, 129, 129, 0.5);
-    display: flex;
-}
-
-.ProductsTitleLine div{
-    margin-left: 5%;
-    font-size: 2rem;
+    position: relative;
 }
 
 .ProductInformation {
     display: flex;
     justify-content: space-between;
-    width: calc(100% - 80px);
+    width:100%;
+    margin-right: 80px;
 }
 
 .ProductInformation div {
-    font-size:1.5rem;
-    margin: auto 0.5rem;
+    font-size: 24px;
+    margin: auto 10px;
 }
 
 .ProductIcons {
     width: 80px;
-    margin: auto 0.25rem;
+    position: absolute;
+    right: 0;
+    top: 12px;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
 }
 
 .ProductIcons i {
-    font-size: 1.75rem;
+    font-size: 28px;
     margin: auto;
     cursor: pointer;
 }
 .ProductIcons i:last-child {
     color:#F57899;
-    font-size: 2.25rem;
+    font-size: 36px;
 }
 
 .AddButton{
-    margin: 1% auto;
+    margin: 15px auto;
     display: flex;
     width:200px;
     height:40px;
@@ -74,8 +77,8 @@
     align-items: center;
     justify-content: center;
     color: white;
-    letter-spacing: 0.1rem;
-    font-size: 1.35rem;
+    letter-spacing: 1.5px;
+    font-size: 24px;
     font-weight: 900;
 }
 
@@ -94,20 +97,59 @@
 }
 
 .ChangeAmountInput {
+    display:none;
+}
+
+.ChangeAmountInput input {
     border:none;
     background-color:transparent;
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     color:white;
-    font-size: 1.5rem;
+    font-size: 24px;
     text-align: right;
 }
 
-.ChangeAmountInput:focus {
+.ChangeAmountInput input:focus {
     outline: none;
 }
 
-.ChangeAmountInput::placeholder {
+.ChangeAmountInput input::placeholder {
     color:white;
+}
+
+/* ::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent;
+} */
+
+@media (min-width: 2560px ) {
+    .ProductsContainer {
+        width: 2520px;
+    }
+    .ProductContainer {
+        width: 800px;
+    }
+}
+
+@media (max-width: 1900px) {
+    .ProductsContainer {
+        width: 1260px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .ProductsContainer {
+        width: 630px;
+    }
+}
+
+@media (max-width: 660px) {
+    .ProductsContainer {
+        width: 430px;
+    }
+    .ProductContainer {
+        width: 400px;
+    }
 }

@@ -11,7 +11,7 @@ const Product = props => {
     <div
       className={Styles.Container}
       // title="Click to edit"
-      // onClick={props.clicked}
+      onClick={props.clicked}
     >
       <div className={Styles.ProductAvatar}>
         <i className="fas fa-birthday-cake"></i>
@@ -25,15 +25,15 @@ const Product = props => {
             </i>
             <div className={Styles.MoreDropdown}>
               <div>
-                <i class="material-icons">edit</i>
+                <i className="material-icons">edit</i>
                 <span>Edit</span>
               </div>
               <div>
-                <i class="material-icons">print</i>
+                <i className="material-icons">print</i>
                 <span>Print</span>
               </div>
               <div>
-                <i class="material-icons">clear</i>
+                <i className="material-icons">clear</i>
                 <span>Delete</span>
               </div>
             </div>
