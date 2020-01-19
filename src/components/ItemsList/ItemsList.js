@@ -14,7 +14,6 @@ const Items = props => {
     inputRefs.current = inputRefs.current.slice(0, props.items.length);
   }, [props.items]);
 
-  console.log(props);
   const items = (
     <div className={Styles.ProductsListContainer}>
       {get(props, "items").map((item, itemIndex) => (
@@ -79,14 +78,6 @@ const Items = props => {
             </i>
           </div>
         </div>
-
-        // <div key={item.name} className={Styles.ItemContainer}>
-        //     <i className={`fas fa-minus ${Styles.Minus}`} onClick={()=>props.onDeleteItem(item.name, item)}></i>
-        //     <p>{item.name}</p>
-        //     <input className={Styles.Input} type="text" placeholder={item.quantity}
-        //          onChange={event => props.onChangeAmount(event.target.value, item)}/>
-        //     <p className={Styles.Units}> g </p>
-        // </div>
       ))}
     </div>
   );
@@ -97,7 +88,7 @@ const Items = props => {
         <div>Random Recipe</div>
       </div>
       {items}
-      <Link to={"/productlist"} className={Styles.AddButton}>
+      <Link to={"/productlist"} className={Styles.AddButton}> 
         Add
       </Link>
     </div>
@@ -120,29 +111,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Items);
-
-// import React from "react";
-// import Styles from "./ItemsList.module.css";
-// import Button from "../UI/Button/Button";
-// import Items from "./Items/Items";
-
-// const ItemsList = (props) => (
-//     <Items items={props.selectedItems}/>
-//             // <div className={Styles.ItemsList}>
-//             //     <div style={{display:"flex", alignItems:"center", flexDirection: "row"}}>
-//             //         <i className={`fas fa-plus ${Styles.Plus}`} onClick={props.addProductClicked}></i>
-//             //         {props.selectedProducts.length > 0 ?
-//             //             <Button
-//             //                 style={{marginBottom: "3px", marginLeft:"1rem"}}
-//             //                 classname="Success"
-//             //                 onclick={props.saveRecipeClicked}>
-//             //                     Save Recipe
-//             //             </Button> :
-//             //             null}
-//             //     </div>
-//             //     <span className={Styles.Line}/>
-//             //     <Items items={props.selectedItems}/>
-//             // </div>
-//         )
-
-// export default ItemsList;

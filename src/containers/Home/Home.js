@@ -3,13 +3,14 @@ import { connect } from "react-redux";
 import Modal from "../../components/UI/Modal/Modal";
 import AddRecipeModal from "../../components/Recipe/AddRecipeModal/AddRecipeModal"
 import ItemsList from "../../components/ItemsList/ItemsList";
+import Nutrients from '../../components/Nutrients/Nutrients';
 import NutritionLabel from "../../components/NutritionLabel/NutritionLabel";
 import Auth from "../Auth/Auth";
 import * as actions from "../../Store/actions";
 import Styles from "./Home.module.css";
 
 const Home = (props) =>{
-    
+
     return(
             <>  
                 <Modal show={props.showAuthModal}>
@@ -20,16 +21,7 @@ const Home = (props) =>{
                 </Modal>
                 <ItemsList  
                     saveRecipeClicked={() => props.onSaveRecipeClicked(props.recipeAsProduct)}/>
-                <div>
-                    <div>
-                        <div>Nutrition per 100 g</div>
-                    </div> 
-                    <div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
+                <Nutrients product={props.recipeAsProduct}/>
                 {/* <Modal show={props.showModal}>
                     <AddRecipeModal
                         recipe={props.recipeAsProduct}

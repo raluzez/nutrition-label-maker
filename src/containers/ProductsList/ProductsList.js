@@ -9,6 +9,7 @@ import * as actions from "../../Store/actions";
 import Styles from "./ProductsList.module.css";
 
 const ProductsList = props => {
+
   const [amountInput, setAmountInput] = useState("");
 
   const { onFetchProducts, token, userId } = props;
