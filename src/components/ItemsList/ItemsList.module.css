@@ -59,6 +59,7 @@
     margin: auto;
     cursor: pointer;
 }
+
 .ProductIcons i:last-child {
     color:#F57899;
     font-size: 36px;
@@ -151,5 +152,42 @@
     }
     .ProductContainer {
         width: 400px;
+    }
+    .ProductsTitleLine div{
+        margin-left: 20px;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 460px) {
+    .ProductsContainer {
+        width: auto;
+    }
+    .ProductContainer {
+        width: 100%;
+    }
+    .ProductsTitleLine div{
+        margin-left: 20px;
+        font-size: 24px;
+    }
+    .ProductInformation {
+        margin-right: 60px;
+    }
+    .ProductInformation div {
+        font-size: 18px;
+        margin-right: 2px;
+    }
+    .ProductIcons {
+        width:60px;
+        top:16px;
+    }
+    .ProductIcons i {
+        font-size: 24px;
+    }
+    .ProductIcons i:last-child {
+        font-size: 28px;
+    }
+    .ChangeAmountInput input {
+        font-size: 18px;
     }
 }

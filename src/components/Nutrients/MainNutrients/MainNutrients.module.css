@@ -1,6 +1,7 @@
 .Nutrients {
     width: 600px;
     margin: 30px 15px;
+    margin-bottom: 0;
 }
 
 .StatusBarInfo {
@@ -75,5 +76,7 @@
 }
 
 @media (max-width: 460px) {
-    
+    .StatusBarInfo {
+        font-size: 16px;
+    }
 }

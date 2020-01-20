@@ -43,8 +43,19 @@
     .NutrientsElementContainer {
         width: 430px;
     }
+    .NutrientsTitleLine div{
+        margin-left: 20px;
+        font-size: 28px;
+    }
 }
 
 @media (max-width: 460px) {
-    
+    .NutrientsTitleLine div{
+        margin-left: 10px;
+        font-size: 24px;
+    }
+
+    .NutrientsElementContainer {
+        width: auto;
+    }
 }

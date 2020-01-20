@@ -38,6 +38,7 @@ const nutritionLabel = (props) => {
                 return Math.round(get(obj, path, def)*100)/100 
             }
         }
+        
 
         return(
             <div className={Styles.Container}>

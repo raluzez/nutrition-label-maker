@@ -6,11 +6,13 @@ import Styles from "./Toolbar.module.css";
 
 const toolbar = () => (
     <header className={Styles.Toolbar}>
-        <Drawer/>
+        <div className={Styles.ToolbarVizuals}>
+            <Logo/>
+            <div className={Styles.ToolbarLine}/>
+        </div>
         <nav>
             <NavigationBar/>
         </nav>
-        <Logo/>
     </header>
 );
 

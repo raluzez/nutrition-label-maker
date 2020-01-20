@@ -1,18 +1,50 @@
 .Toolbar {
-    height: 56px;
-    background-color:#a5a6ad;
+    height: 80px;
+    background-color:white;
     display:flex;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 0;
     padding-right: 20px;
 }
 
 .Toolbar nav {
-    height: 100%;
+    position: absolute;
+    right: 15px;
+    top: 30px;
+    z-index: 1000;
 }
 
-@media(max-width : 550px){
+.ToolbarVizuals {
+    display: flex;
+    flex-direction: row;
+}
+
+.ToolbarLine {
+    border-bottom: 3px solid black;
+    width:100%;
+    height:30px;
+}
+
+@media (min-width: 2560px ) {
+    .Toolbar {
+        height: 150px;
+    }
     .Toolbar nav {
-        display:none;
+        font-size: 24px;
+    }
+}
+
+@media(max-width : 460px){
+    .Toolbar {
+        height: 60px;
+        padding-right: 0;
+    }
+    .Toolbar nav {
+        font-size: 14px;
+        top: 20px;
+        right: 0;
+    }
+    .ToolbarLine {
+        height:20px;
     }
 }
