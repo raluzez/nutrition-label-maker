@@ -1,11 +1,16 @@
 import React from "react";
+import AddProductItem from './AddProductItem/AddProductItem';
 import Styles from "./AddProduct.module.css";
 
-const addProduct = (props) => (
-        <div className={Styles.AddProduct}>
-            <div>{props.name}</div>
-            <div><i className={`fas fa-plus ${Styles.Plus}`}  onClick={props.clicked}></i></div>
+const AddProduct = (props) => (
+    <div>
+        <div className={Styles.ProductsTitleLine}>
+            <div>Products</div>
         </div>
+        {props.products.map( product => (
+            <AddProductItem product={product}/>
+        ))}
+    </div>
 )
 
-export default addProduct;
+export default AddProduct;

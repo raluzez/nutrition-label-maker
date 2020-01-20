@@ -4,7 +4,7 @@ import Styles from "./Modal.module.css";
 
 const modal = (props) => (
     <>
-        <Backdrop show={props.show}/>
+        <Backdrop show={props.show} closeModal={props.closeModal}/>
         <div 
             className={Styles.Modal}
             style={{

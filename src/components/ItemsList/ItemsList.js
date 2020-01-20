@@ -16,69 +16,78 @@ const Items = props => {
 
   const items = (
     <div className={Styles.ProductsListContainer}>
-      {get(props, "items").map((item, itemIndex) => (
-        <div className={Styles.ProductContainer} key={item.key}>
-          <div className={Styles.ProductInformation}>
-            <div>{item.name}</div>
-            <div
-              style={{
-                display: isChangeAmount === item.key ? "none" : "block"
-              }}
-            >
-              {item.quantity} {item.units}
+      {!props.items.length ? (
+        <div className={Styles.NoProductsMessage}>No products yet! Add some</div>
+      ) : (
+        props.items.map((item, itemIndex) => (
+          <div className={Styles.ProductContainer} key={item.key}>
+            <div className={Styles.ProductInformation}>
+              <div>{item.name}</div>
+              <div
+                style={{
+                  display: isChangeAmount === item.key ? "none" : "block"
+                }}
+              >
+                {item.quantity} {item.units}
+              </div>
+              <div
+                style={{
+                  display: isChangeAmount === item.key ? "block" : "none"
+                }}
+                className={Styles.ChangeAmountInput}
+              >
+                <input
+                  type="text"
+                  placeholder={item.quantity}
+                  size="2"
+                  ref={input => (inputRefs.current[itemIndex] = input)}
+                />
+                {` ${item.units}`}
+              </div>
             </div>
-            <div
-              style={{
-                display: isChangeAmount === item.key ? "block" : "none"
-              }}
-              className={Styles.ChangeAmountInput}
-            >
-              <input
-                type="text"
-                placeholder={item.quantity}
-                size="2"
-                ref={input => (inputRefs.current[itemIndex] = input)}
-              />
-              {` ${item.units}`}
+            <div className={Styles.ProductIcons}>
+              <i
+                className="material-icons"
+                title="Save"
+                onClick={() => {
+                  setIsChangeAmount(false);
+                  props.onChangeAmount(
+                    inputRefs.current[itemIndex].value,
+                    item
+                  );
+                }}
+                style={{
+                  display: isChangeAmount === item.key ? "block" : "none"
+                }}
+              >
+                save
+              </i>
+              <i
+                className="material-icons"
+                title="Edit"
+                onClick={() => {
+                  setIsChangeAmount(item.key);
+                  setTimeout(() => {
+                    inputRefs.current[itemIndex].focus();
+                  }, 0);
+                }}
+                style={{
+                  display: isChangeAmount === item.key ? "none" : "block"
+                }}
+              >
+                edit
+              </i>
+              <i
+                className="material-icons"
+                title="Delete"
+                onClick={() => props.onDeleteItem(item.name, item)}
+              >
+                clear
+              </i>
             </div>
           </div>
-          <div className={Styles.ProductIcons}>
-            <i
-              className="material-icons"
-              title="Save"
-              onClick={() => {
-                setIsChangeAmount(false);
-                props.onChangeAmount(inputRefs.current[itemIndex].value, item)
-              }}
-              style={{
-                display: isChangeAmount === item.key ? "block" : "none"
-              }}
-            >
-              save
-            </i>
-            <i
-              className="material-icons"
-              title="Edit"
-              onClick={() => {
-                setIsChangeAmount(item.key);
-                setTimeout(() => {inputRefs.current[itemIndex].focus()},0)
-              }}
-              style={{
-                display: isChangeAmount === item.key ? "none" : "block"
-              }}
-            >
-              edit
-            </i>
-            <i
-              className="material-icons"
-              title="Delete"
-              onClick={() => props.onDeleteItem(item.name, item)}
-            >
-              clear
-            </i>
-          </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 
@@ -88,9 +97,9 @@ const Items = props => {
         <div>Random Recipe</div>
       </div>
       {items}
-      <Link to={"/productlist"} className={Styles.AddButton}> 
+      <div className={Styles.AddButton} onClick={props.openAddProductModal}>
         Add
-      </Link>
+      </div>
     </div>
   );
 };

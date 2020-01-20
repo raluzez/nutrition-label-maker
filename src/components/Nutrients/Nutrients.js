@@ -50,8 +50,6 @@ const Nutritions = (props) => {
     const nutrientsQuantityOnLabel = arrayToObj(calculateLabelAmount())
     const nutrientsDailyPart = arrayToObj(calculateDaylyPart())
 
-    console.log(props)
-
     return (
         <div className={Styles.NutrientsElementContainer}>
             <div className={Styles.NutrientsTitleLine}>

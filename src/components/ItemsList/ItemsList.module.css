@@ -22,6 +22,11 @@
     max-height: 240px; */
 }
 
+.NoProductsMessage {
+    margin:50px auto;
+    font-size:28px;
+}
+
 .ProductContainer {
     width: 600px;
     height: 60px;

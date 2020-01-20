@@ -1,27 +1,11 @@
-.AddProduct {
-    border: 2px solid #e8e8e8;
-    border-radius: 8px;
-    margin: auto;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-    text-align: center;
+.ProductsTitleLine {
+    margin: 0 15px;
+    border-bottom: 2px solid black;
+    margin-bottom: 30px;
 }
 
-.AddProduct:hover{
-    background-color: #e8e8e8;
+.ProductsTitleLine div{
+    margin-left: 18px;
+    font-size: 26px;
 }
 
-.AddProduct div:first-of-type{
-    background-color: #e8e8e8;
-}
-
-.Plus{
-    color:#79d693;
-    width:300px;
-    height: 150px;
-    font-size:7.5em;
-}
-
-.Plus:hover {
-    color:green;
-}
