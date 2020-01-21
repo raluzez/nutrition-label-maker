@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from "react-redux";
-import Layout from "./hoc/Layout/Layout";
+import Layout from "./components/Layout/Layout";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import Logout from "./containers/Auth/Logout/Logout";

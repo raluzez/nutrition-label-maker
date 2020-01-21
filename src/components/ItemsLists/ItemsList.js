@@ -1,9 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import Styles from "./ItemsList.module.css";
-import get from "lodash.get";
-import * as actions from "../../Store/actions";
 
 const Items = props => {
   const [isChangeAmount, setIsChangeAmount] = useState(false);
@@ -17,7 +13,9 @@ const Items = props => {
   const items = (
     <div className={Styles.ProductsListContainer}>
       {!props.items.length ? (
-        <div className={Styles.NoProductsMessage}>No products yet! Add some</div>
+        <div className={Styles.NoProductsMessage}>
+          No products yet! Add some
+        </div>
       ) : (
         props.items.map((item, itemIndex) => (
           <div className={Styles.ProductContainer} key={item.key}>

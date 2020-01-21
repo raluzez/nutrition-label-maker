@@ -5,7 +5,6 @@ import AddProductModal from '../../components/UI/AddProductModal/Modal';
 import AddProduct from '../../components/Product/AddProduct/AddProduct';
 import Product from "../../components/Product/Product";
 import Nutrients from '../../components/Nutrients/Nutrients';
-import RecipeModal from "../../components/Recipe/RecipeModal/RecipeModal";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import ItemsList from '../../components/ItemsLists/ItemsList';
 import * as actions from "../../Store/actions";
@@ -44,17 +43,6 @@ const Recipes = props => {
 
   return (
     <>
-      {/* <Modal show={props.showModal}>
-        <RecipeModal
-          product={props.clickedRecipe}
-          recipeItems={props.clickedRecipe.items}
-          closeIconClicked={() => props.onCloseModal()}
-          deleteRecipe={() => {
-            props.onDeleteRecipe(props.clickedRecipe.key, props.token);
-            props.onCloseModal();
-          }}
-        />
-      </Modal> */}
       <AddProductModal
         show={addProductModal}
         closeModal={() => setAddProductModal(false)}
@@ -86,7 +74,6 @@ const mapStateToProps = state => {
   return {
     recipes: state.recipe.savedRecipes,
     products: state.productList.products,
-    showModal: state.productList.showModal,
     clickedRecipe: state.recipe.clickedRecipe,
     loading: state.recipe.loading,
     token: state.auth.token,
@@ -97,8 +84,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onClickedRecipe: recipe => dispatch(actions.recipeClicked(recipe)),
-    onOpenModal: () => dispatch(actions.openModal()),
-    onCloseModal: () => dispatch(actions.closeModal()),
     onFetchRecipes: (token, userId) =>
       dispatch(actions.fetchRecipes(token, userId)),
     onDeleteRecipe: (recipeKey, token) =>
