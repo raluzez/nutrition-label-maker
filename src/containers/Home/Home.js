@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import Modal from "../../components/UI/Modal/Modal";
+import Modal from "../../components/UI/AddProductModal/Modal";
 import AddRecipeModal from "../../components/Recipe/AddRecipeModal/AddRecipeModal";
 import AddProduct from "../../components/Product/AddProduct/AddProduct";
-import ItemsList from "../../components/ItemsList/ItemsList";
+import ItemsList from "../../components/ItemsLists/ItemsList";
 import Nutrients from "../../components/Nutrients/Nutrients";
 import NutritionLabel from "../../components/NutritionLabel/NutritionLabel";
 import Auth from "../Auth/Auth";
@@ -34,6 +34,7 @@ const Home = props => {
       <Modal
         show={addProductModal}
         closeModal={() => setAddProductModal(false)}
+        backdropZIndex='110'
       >
         <AddProduct
           products={props.products}
@@ -46,6 +47,9 @@ const Home = props => {
           props.onSaveRecipeClicked(props.recipeAsProduct)
         }
         openAddProductModal={() => setAddProductModal(true)}
+        items={props.selectedProducts}
+        onChangeAmount={(amount, product) => props.onChangeAmount(amount, product)}
+        onDeleteItem={(productId, product) => props.onDeleteItem(productId, product)}
       />
       <Nutrients product={props.recipeAsProduct} />
       {/* <Modal show={props.showModal}>
@@ -89,7 +93,11 @@ const mapDispatchToProps = dispatch => {
     onCloseSignUp: () => dispatch(actions.closeSignUp()),
     onOpenSignUp: () => dispatch(actions.openSignUp()),
     onFetchProducts: (token, userId) =>
-      dispatch(actions.fetchProducts(token, userId))
+      dispatch(actions.fetchProducts(token, userId)),
+    onChangeAmount: (amount, product) =>
+      dispatch(actions.changeItemAmount(amount, product)),
+    onDeleteItem: (productId, product) =>
+      dispatch(actions.productDeleted(productId, product))
   };
 };
 

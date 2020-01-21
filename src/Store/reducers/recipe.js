@@ -2,7 +2,27 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
     savedRecipes: [],
-    clickedRecipe: "",
+    clickedRecipe: {   
+        name : "",
+        quantity : 0,
+        units : "g",
+        totalNutrients : {
+            ENERC_KCAL : {quantity : 0},
+            FAT : {quantity : 0},
+            FASAT : {quantity : 0},
+            FATRN : {quantity : 0},
+            CHOCDF : {quantity : 0},
+            FIBTG : {quantity : 0},
+            SUGAR : {quantity : 0},
+            PROCNT : {quantity : 0},
+            CHOLE : {quantity : 0},
+            NA : {quantity : 0},
+            CA : {quantity: 0},
+            FE : {quantity: 0},
+            VITA_RAE : {quantity : 0},
+            VITC : {quantity : 0}
+        }
+    },
     loading: false
 }
 
@@ -51,8 +71,6 @@ const reducer = (state = initialState, action) => {
                 loading: false
             }
         case actionTypes.DELETE_RECIPE_SUCCESS:
-            console.log(action.recipeKey)
-            console.log(state.savedRecipes)
             return {
                 ...state,
                 savedRecipes: state.savedRecipes.filter(recipe => action.recipeKey !== recipe.key),
@@ -62,6 +80,21 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 clickedRecipe: action.recipe
+            }
+        case actionTypes.EDIT_RECIPE_ITEM:
+            const newRecipes = state.savedRecipes.map(recipe => {
+                if(recipe.key === action.recipeId) {
+                    recipe.items.map( product => {
+                        if(product.key === action.id) {
+                            product.quantity = action.amount
+                        }
+                    })
+                }
+                return recipe
+            })
+            return {
+                ...state,
+                savedRecipes: newRecipes
             }
         default: return state
     }

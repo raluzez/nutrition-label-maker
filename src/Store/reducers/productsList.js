@@ -108,9 +108,10 @@ const reducer = (state = initialState, action) => {
                 }
             }
         case actionTypes.DELETE_PRODUCT:
+            console.log(action.productId)
             return {
                 ...state,
-                selectedProducts: state.selectedProducts.filter(product => action.productName !== product.name),
+                selectedProducts: state.selectedProducts.filter(product => action.productId !== product.key),
                 recipeNutrients : {
                     ...state.recipeNutrients,
                     totalNutrients : deleteFromRecipeNutrients(state, action.product.totalNutrients, action.product.quantity),

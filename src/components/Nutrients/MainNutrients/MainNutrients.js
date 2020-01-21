@@ -2,55 +2,66 @@ import React from 'react';
 import Styles from './MainNutrients.module.css'
 
 const MainNutrients = (props) => {
+
+    const checkIfOverH = amount => {
+        if (amount < 100) {
+            return amount
+        } else {
+            return amount = 100
+        }
+    } 
+
+    const nutients = props.nutrientsDailyPart
+
     return (
         <div className={Styles.Nutrients}>
             <div  className={Styles.StatusBarInfo}>
                 <span>Total Fat</span>
-                <span>{`${props.nutrientsDailyPart.FAT} %`}</span>
+                <span>{`${nutients.FAT} %`}</span>
             </div>
             <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${props.nutrientsDailyPart.FAT}%`}}/>
+            <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${checkIfOverH(nutients.FAT)}%`}}/>
             
             <div className={Styles.StatusBarInfo}>
                 <span>Saturated Fat</span>
-                <span>{`${props.nutrientsDailyPart.FASAT} %`}</span>
+                <span>{`${nutients.FASAT} %`}</span>
             </div>
             <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${props.nutrientsDailyPart.FASAT}%`}}/>
+            <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${checkIfOverH(nutients.FASAT)}%`}}/>
             <div className={Styles.StatusBarInfo}>
                 <span>Trans Fat</span>
-                <span>{`${props.nutrientsDailyPart.FATRN} %`}</span>
+                <span>{`${nutients.FATRN} %`}</span>
             </div>
             <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${props.nutrientsDailyPart.FATRN}%`}}/>
+            <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${checkIfOverH(nutients.FATRN)}%`}}/>
             
             <div className={Styles.StatusBarInfo}>
                 <span>Total Carbs</span>
-                <span>{`${props.nutrientsDailyPart.CHOCDF} %`}</span>
+                <span>{`${nutients.CHOCDF} %`}</span>
             </div>
             <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${props.nutrientsDailyPart.CHOCDF}%`}}/>
+            <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${checkIfOverH(nutients.CHOCDF)}%`}}/>
             
             <div className={Styles.StatusBarInfo}>
                 <span>Dietry Fiber</span>
-                <span>{`${props.nutrientsDailyPart.FIBTG} %`}</span>
+                <span>{`${nutients.FIBTG} %`}</span>
             </div>
             <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${props.nutrientsDailyPart.FIBTG}%`}}/>
+            <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${checkIfOverH(nutients.FIBTG)}%`}}/>
             
             <div className={Styles.StatusBarInfo}>
                 <span>Sugars</span>
-                <span>{`${props.nutrientsDailyPart.SUGAR} %`}</span>
+                <span>{`${nutients.SUGAR} %`}</span>
             </div>
             <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${props.nutrientsDailyPart.SUGAR}%`}}/>
+            <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${checkIfOverH(nutients.SUGAR)}%`}}/>
             
             <div className={Styles.StatusBarInfo}>
                 <span>Protein</span>
-                <span>{`${props.nutrientsDailyPart.PROCNT} %`}</span>
+                <span>{`${nutients.PROCNT} %`}</span>
             </div>
             <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Protein].join(' ')} style={{width: `${props.nutrientsDailyPart.PROCNT}%`}}/>
+            <div className={[Styles.StatusBar, Styles.Protein].join(' ')} style={{width: `${checkIfOverH(nutients.PROCNT)}%`}}/>
         </div>
     );
 }

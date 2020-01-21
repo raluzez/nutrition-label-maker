@@ -110,3 +110,13 @@ export const recipeClicked = (recipe) => {
         recipe
     }
 }
+
+export const editRecipeItem = (amount, product, id, recipeId) => {
+    return {
+        type: actionTypes.EDIT_RECIPE_ITEM,
+        amount,
+        product,
+        id,
+        recipeId
+    }
+}

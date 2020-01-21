@@ -6,9 +6,8 @@ const backdrop = (props) => (
         className={Styles.Backdrop} 
         onClick={props.closeModal}
         style={{
-        zIndex:props.show ? '100':'-100',
+        zIndex:props.show ? `${props.zIndex}`:'-100',
         display:props.show ? 'block':'none'}}>
-            <i className="material-icons" onClick={props.closeModal}>clear</i>
     </div>
 )
 

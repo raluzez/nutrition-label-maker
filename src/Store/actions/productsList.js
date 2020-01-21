@@ -9,11 +9,11 @@ export const productSelected = (product, amount) => {
     }
 }
 
-export const productDeleted = (productName, product) => {
+export const productDeleted = (productId, product) => {
     return {
         type : actionTypes.DELETE_PRODUCT,
-        productName : productName,
-        product : product
+        productId,
+        product
     }
 }
 

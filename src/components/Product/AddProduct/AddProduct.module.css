@@ -9,3 +9,8 @@
     font-size: 26px;
 }
 
+@media (min-width: 2560px ) {
+    .ProductsTitleLine div{
+        font-size: 34px;
+    }
+}

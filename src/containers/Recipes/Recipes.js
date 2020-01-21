@@ -1,14 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import Modal from "../../components/UI/Modal/Modal";
+import InformationModal from "../../components/UI/InformationModal/Modal";
+import AddProductModal from '../../components/UI/AddProductModal/Modal';
+import AddProduct from '../../components/Product/AddProduct/AddProduct';
 import Product from "../../components/Product/Product";
+import Nutrients from '../../components/Nutrients/Nutrients';
 import RecipeModal from "../../components/Recipe/RecipeModal/RecipeModal";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import ItemsList from '../../components/ItemsLists/ItemsList';
 import * as actions from "../../Store/actions";
 import Styles from "./Recipes.module.css";
 
 const Recipes = props => {
   const { onFetchRecipes, token, userId } = props;
+
+  const [recipeInformationModal, setRecipeInformationModal] = useState(false);
+  const [addProductModal, setAddProductModal] = useState(false);
 
   useEffect(() => {
     onFetchRecipes(token, userId);
@@ -27,7 +34,7 @@ const Recipes = props => {
             protein={recipe.totalNutrients.PROCNT.quantity}
             clicked={() => {
               props.onClickedRecipe(recipe);
-              props.onOpenModal();
+              setRecipeInformationModal(true);
             }}
           />
         ))}
@@ -37,7 +44,7 @@ const Recipes = props => {
 
   return (
     <>
-      <Modal show={props.showModal}>
+      {/* <Modal show={props.showModal}>
         <RecipeModal
           product={props.clickedRecipe}
           recipeItems={props.clickedRecipe.items}
@@ -47,7 +54,26 @@ const Recipes = props => {
             props.onCloseModal();
           }}
         />
-      </Modal>
+      </Modal> */}
+      <AddProductModal
+        show={addProductModal}
+        closeModal={() => setAddProductModal(false)}
+        backdropZIndex='510'
+      >
+        <AddProduct
+          products={props.products}
+          selectedProducts={props.clickedRecipe.items || []}
+          closeModal={() => setAddProductModal(false)}
+        />
+      </AddProductModal>
+      <InformationModal show={recipeInformationModal} closeModal={() => setRecipeInformationModal(false)} backdropZIndex='110'>
+        <ItemsList
+          items={props.clickedRecipe.items || []}
+          openAddProductModal={() => setAddProductModal(true)}
+          onChangeAmount={(amount, product, id) => props.onEditRecipeItem(amount, product, id, props.clickedRecipe.key)}
+        />
+        <Nutrients product={props.clickedRecipe} />
+      </InformationModal>
       <div className={Styles.AddRecipeButtonContainer}>
         <button onClick={() => props.history.push("/")}>Add Recipe</button>
       </div>
@@ -59,6 +85,7 @@ const Recipes = props => {
 const mapStateToProps = state => {
   return {
     recipes: state.recipe.savedRecipes,
+    products: state.productList.products,
     showModal: state.productList.showModal,
     clickedRecipe: state.recipe.clickedRecipe,
     loading: state.recipe.loading,
@@ -75,7 +102,8 @@ const mapDispatchToProps = dispatch => {
     onFetchRecipes: (token, userId) =>
       dispatch(actions.fetchRecipes(token, userId)),
     onDeleteRecipe: (recipeKey, token) =>
-      dispatch(actions.deleteRecipe(recipeKey, token))
+      dispatch(actions.deleteRecipe(recipeKey, token)),
+    onEditRecipeItem: (amount, product, id, recipeId) => dispatch(actions.editRecipeItem(amount, product, id, recipeId))
   };
 };
 

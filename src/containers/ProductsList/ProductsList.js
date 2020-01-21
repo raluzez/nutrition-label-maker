@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
-import Modal from "../../components/UI/Modal/Modal";
 import ProductModal from "../../components/Product/ProductModal/ProductModal";
 import AddProductModal from "../../components/Product/AddProductModal/AddProductModal";
 import Spinner from "../../components/UI/Spinner/Spinner";
@@ -42,7 +41,7 @@ const ProductsList = props => {
   }
   return (
     <>
-      <Modal show={props.showModal}>
+      {/* <Modal show={props.showModal}>
         {props.clickedProduct ? (
           <ProductModal
             product={props.clickedProduct}
@@ -58,7 +57,7 @@ const ProductsList = props => {
         ) : (
           <AddProductModal closeIconClicked={() => props.onCloseModal()} />
         )}
-      </Modal>
+      </Modal> */}
       <div className={Styles.AddProductButtonContainer}>
         <button onClick={() => props.onClickedProduct()}>Add Product</button>
       </div>

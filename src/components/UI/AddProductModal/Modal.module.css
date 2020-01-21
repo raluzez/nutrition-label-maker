@@ -1,19 +1,36 @@
 .Modal {
     position: absolute;
-    z-index: 500;
+    z-index: 600;
     transition: all 0.5s ease-out;
-    top:10%;
+    top:10vh;
     left: calc(50% - 345px);
     background-color: #eee;
     border-radius: 8px;
     padding:30px;
-    max-height: 600px;
+    max-height: 80vh;
     overflow: scroll;
+}
+
+.Modal>i:first-child {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 30px;
+    color: black;
+    z-index: 700;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {
     display: none;
 }
+
+@media (min-width: 2560px ) {
+    .Backdrop i {
+        font-size: 68px
+    }
+}
+
 @media (max-width: 700px) {
     .Modal {
         padding:15px 0;

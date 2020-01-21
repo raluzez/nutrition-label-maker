@@ -15,7 +15,8 @@ export {
     saveRecipe,
     recipeClicked,
     fetchRecipes,
-    deleteRecipe
+    deleteRecipe,
+    editRecipeItem
 } from "./recipe";
 
 export {

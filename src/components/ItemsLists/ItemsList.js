@@ -53,7 +53,8 @@ const Items = props => {
                   setIsChangeAmount(false);
                   props.onChangeAmount(
                     inputRefs.current[itemIndex].value,
-                    item
+                    item,
+                    item.key
                   );
                 }}
                 style={{
@@ -80,7 +81,7 @@ const Items = props => {
               <i
                 className="material-icons"
                 title="Delete"
-                onClick={() => props.onDeleteItem(item.name, item)}
+                onClick={() => props.onDeleteItem(item.key, item)}
               >
                 clear
               </i>
@@ -104,19 +105,4 @@ const Items = props => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onDeleteItem: (productName, product) =>
-      dispatch(actions.productDeleted(productName, product)),
-    onChangeAmount: (amount, product) =>
-      dispatch(actions.changeItemAmount(amount, product))
-  };
-};
-
-const mapStateToProps = state => {
-  return {
-    items: state.productList.selectedProducts
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Items);
+export default Items;

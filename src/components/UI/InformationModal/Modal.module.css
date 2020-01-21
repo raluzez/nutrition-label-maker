@@ -1,0 +1,43 @@
+.Modal {
+    position: absolute;
+    z-index: 500;
+    transition: all 0.5s ease-out;
+    top:3vh;
+    left: 10px;
+    right:10px;
+    background-color: white;
+    border-radius: 8px;
+    padding:20px 10px;
+    max-height: 92vh;
+    overflow: scroll;
+    box-sizing: border-box;
+    margin:auto;
+}
+
+.Modal>i:first-child {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 50px;
+    color: black;
+    z-index: 110;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 2560px ) {
+    .Backdrop i {
+        font-size: 68px
+    }
+}
+
+
+@media (max-width: 700px) {
+    .Modal {
+        padding:15px 0;
+        
+    }
+}

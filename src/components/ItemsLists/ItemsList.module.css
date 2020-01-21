@@ -20,6 +20,8 @@
     flex-wrap: wrap;
     /* overflow-y: auto;
     max-height: 240px; */
+    min-height:225px;
+    align-content: flex-start;
 }
 
 .NoProductsMessage {
@@ -132,7 +134,7 @@
 
 @media (min-width: 2560px ) {
     .ProductsContainer {
-        width: 2520px;
+        width: 2490px;
     }
     .ProductContainer {
         width: 800px;
@@ -148,6 +150,9 @@
 @media (max-width: 1300px) {
     .ProductsContainer {
         width: 630px;
+    }
+    .ProductsListContainer {
+        min-height: none;
     }
 }
 

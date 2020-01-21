@@ -11,7 +11,6 @@ const Product = props => {
     <div
       className={Styles.Container}
       // title="Click to edit"
-      onClick={props.clicked}
     >
       <div className={Styles.ProductAvatar}>
         <i className="fas fa-birthday-cake"></i>
@@ -24,7 +23,7 @@ const Product = props => {
               more_vert
             </i>
             <div className={Styles.MoreDropdown}>
-              <div>
+              <div onClick={props.clicked}>
                 <i className="material-icons">edit</i>
                 <span>Edit</span>
               </div>
