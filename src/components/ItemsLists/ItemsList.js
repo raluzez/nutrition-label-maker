@@ -1,15 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
+import Item from "./Item/Item";
 import Styles from "./ItemsList.module.css";
 
-const Items = props => {
-  const [isChangeAmount, setIsChangeAmount] = useState(false);
-
-  const inputRefs = useRef([]);
-
-  useEffect(() => {
-    inputRefs.current = inputRefs.current.slice(0, props.items.length);
-  }, [props.items]);
-
+const ItemsList = props => {
   const items = (
     <div className={Styles.ProductsListContainer}>
       {!props.items.length ? (
@@ -17,75 +10,7 @@ const Items = props => {
           No products yet! Add some
         </div>
       ) : (
-        props.items.map((item, itemIndex) => (
-          <div className={Styles.ProductContainer} key={item.key}>
-            <div className={Styles.ProductInformation}>
-              <div>{item.name}</div>
-              <div
-                style={{
-                  display: isChangeAmount === item.key ? "none" : "block"
-                }}
-              >
-                {item.quantity} {item.units}
-              </div>
-              <div
-                style={{
-                  display: isChangeAmount === item.key ? "block" : "none"
-                }}
-                className={Styles.ChangeAmountInput}
-              >
-                <input
-                  type="text"
-                  placeholder={item.quantity}
-                  size="2"
-                  ref={input => (inputRefs.current[itemIndex] = input)}
-                />
-                {` ${item.units}`}
-              </div>
-            </div>
-            <div className={Styles.ProductIcons}>
-              <i
-                className="material-icons"
-                title="Save"
-                onClick={() => {
-                  setIsChangeAmount(false);
-                  props.onChangeAmount(
-                    inputRefs.current[itemIndex].value,
-                    item,
-                    item.key
-                  );
-                }}
-                style={{
-                  display: isChangeAmount === item.key ? "block" : "none"
-                }}
-              >
-                save
-              </i>
-              <i
-                className="material-icons"
-                title="Edit"
-                onClick={() => {
-                  setIsChangeAmount(item.key);
-                  setTimeout(() => {
-                    inputRefs.current[itemIndex].focus();
-                  }, 0);
-                }}
-                style={{
-                  display: isChangeAmount === item.key ? "none" : "block"
-                }}
-              >
-                edit
-              </i>
-              <i
-                className="material-icons"
-                title="Delete"
-                onClick={() => props.onDeleteItem(item.key, item)}
-              >
-                clear
-              </i>
-            </div>
-          </div>
-        ))
+        props.items.map(item => <Item item={item} key={item.key} />)
       )}
     </div>
   );
@@ -103,4 +28,4 @@ const Items = props => {
   );
 };
 
-export default Items;
+export default ItemsList;

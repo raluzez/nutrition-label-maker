@@ -19,11 +19,9 @@ const ProductsList = props => {
       <>
         {(props.products || []).map(product => (
           <Product
-            key={product.name}
+            productList={[product]}
+            key={product.key}
             name={product.name}
-            fat={product.totalNutrients.FAT.quantity}
-            carbs={product.totalNutrients.CHOCDF.quantity}
-            protein={product.totalNutrients.PROCNT.quantity}
             clicked={() => props.onClickedProduct(product)}
           />
         ))}

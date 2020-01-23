@@ -1,16 +1,18 @@
 import React from "react";
+import { productListToNutrientsHelper } from '../../Utility/Helpers';
 import Styles from "./Product.module.css";
 
 const Product = props => {
-  const total = props.fat + props.carbs + props.protein;
-  const carbs = (props.carbs / total) * 100;
-  const protein = (props.protein / total) * 100;
-  const fat = (props.fat / total) * 100;
+  const currentProduct = productListToNutrientsHelper(props.productList)
+  const totalProductNutrients = currentProduct.totalNutrients
+  const total = totalProductNutrients.FAT.quantity + totalProductNutrients.CHOCDF.quantity + totalProductNutrients.PROCNT.quantity;
+  const carbs = (totalProductNutrients.CHOCDF.quantity / total) * 100;
+  const protein = (totalProductNutrients.PROCNT.quantity / total) * 100;
+  const fat = (totalProductNutrients.FAT.quantity / total) * 100;
 
   return (
     <div
       className={Styles.Container}
-      // title="Click to edit"
     >
       <div className={Styles.ProductAvatar}>
         <i className="fas fa-birthday-cake"></i>
@@ -51,11 +53,6 @@ const Product = props => {
             className={Styles.StatusFatBar}
             style={{ width: `${fat}%`, left: `${carbs + protein}%` }}
           ></div>
-          {/* a lot of edge cases:
-                    1) no carbs
-                    2) no fat
-                    3) less than 4% carbs
-                    4) less than 4% fat */}
         </div>
         <div className={Styles.StatusBarLegend}>
           <div style={{ color: "#FDB170" }}>{`${Math.round(

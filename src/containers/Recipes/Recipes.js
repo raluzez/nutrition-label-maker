@@ -26,11 +26,9 @@ const Recipes = props => {
       <>
         {(props.recipes || []).map(recipe => (
           <Product
-            key={recipe.name}
+            productList={recipe.items}
+            key={recipe.key}
             name={recipe.name}
-            fat={recipe.totalNutrients.FAT.quantity}
-            carbs={recipe.totalNutrients.CHOCDF.quantity}
-            protein={recipe.totalNutrients.PROCNT.quantity}
             clicked={() => {
               props.onClickedRecipe(recipe);
               setRecipeInformationModal(true);

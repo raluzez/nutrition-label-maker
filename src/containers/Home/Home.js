@@ -5,6 +5,8 @@ import AddProduct from "../../components/Product/AddProduct/AddProduct";
 import ItemsList from "../../components/ItemsLists/ItemsList";
 import Nutrients from "../../components/Nutrients/Nutrients";
 import Auth from "../Auth/Auth";
+import { productListToNutrientsHelper } from '../../Utility/Helpers';
+import { newNutrientsObject } from '../../Utility/Consts';
 import * as actions from "../../Store/actions";
 
 const Home = props => {
@@ -15,6 +17,10 @@ const Home = props => {
   useEffect(() => {
     onFetchProducts(token, userId);
   }, [onFetchProducts, token, userId]);
+
+  const currentRecipe = productListToNutrientsHelper(props.selectedProducts, newNutrientsObject)
+
+  console.log(currentRecipe)
 
   return (
     <>
@@ -40,25 +46,15 @@ const Home = props => {
         />
       </Modal>
       <ItemsList
-        saveRecipeClicked={() =>
-          props.onSaveRecipeClicked(props.recipeAsProduct)
-        }
         openAddProductModal={() => setAddProductModal(true)}
         items={props.selectedProducts}
-        onChangeAmount={(amount, product) =>
-          props.onChangeAmount(amount, product)
-        }
-        onDeleteItem={(productId, product) =>
-          props.onDeleteItem(productId, product)
-        }
       />
-      <Nutrients product={props.recipeAsProduct} />
+      <Nutrients product={currentRecipe} />
     </>
   );
 };
 const mapStateToProps = state => {
   return {
-    recipeAsProduct: state.productList.recipeNutrients,
     selectedProducts: state.productList.selectedProducts,
     showAuthModal: state.auth.showAuthModal,
     token: state.auth.token,
@@ -77,11 +73,7 @@ const mapDispatchToProps = dispatch => {
     onCloseSignUp: () => dispatch(actions.closeSignUp()),
     onOpenSignUp: () => dispatch(actions.openSignUp()),
     onFetchProducts: (token, userId) =>
-      dispatch(actions.fetchProducts(token, userId)),
-    onChangeAmount: (amount, product) =>
-      dispatch(actions.changeItemAmount(amount, product)),
-    onDeleteItem: (productId, product) =>
-      dispatch(actions.productDeleted(productId, product))
+      dispatch(actions.fetchProducts(token, userId))
   };
 };
 
