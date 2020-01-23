@@ -55,6 +55,7 @@ const Recipes = props => {
       <InformationModal show={recipeInformationModal} closeModal={() => setRecipeInformationModal(false)} backdropZIndex='110'>
         <ItemsList
           items={props.clickedRecipe.items || []}
+          name={props.clickedRecipe.name}
           openAddProductModal={() => setAddProductModal(true)}
           onChangeAmount={(amount, product, id) => props.onEditRecipeItem(amount, product, id, props.clickedRecipe.key)}
         />

@@ -7,10 +7,12 @@ import Nutrients from "../../components/Nutrients/Nutrients";
 import Auth from "../Auth/Auth";
 import { productListToNutrientsHelper } from '../../Utility/Helpers';
 import { newNutrientsObject } from '../../Utility/Consts';
+import { Portal } from '../../Utility/Portal';
 import * as actions from "../../Store/actions";
 
 const Home = props => {
   const [addProductModal, setAddProductModal] = useState(false);
+  const [recipieName, setRecipieName] = useState('')
 
   const { onFetchProducts, token, userId } = props;
 
@@ -20,7 +22,7 @@ const Home = props => {
 
   const currentRecipe = productListToNutrientsHelper(props.selectedProducts, newNutrientsObject)
 
-  console.log(currentRecipe)
+  currentRecipe.name = recipieName
 
   return (
     <>
@@ -34,22 +36,26 @@ const Home = props => {
           }}
         />
       </Modal>
-      <Modal
-        show={addProductModal}
-        closeModal={() => setAddProductModal(false)}
-        backdropZIndex="110"
-      >
-        <AddProduct
-          products={props.products}
-          selectedProducts={props.selectedProducts}
-          closeModal={() => setAddProductModal(false)}
-        />
-      </Modal>
+      
       <ItemsList
         openAddProductModal={() => setAddProductModal(true)}
         items={props.selectedProducts}
+        isCreateRecipe={true}
       />
       <Nutrients product={currentRecipe} />
+      <Portal>
+        <Modal
+          show={addProductModal}
+          closeModal={() => setAddProductModal(false)}
+          backdropZIndex="110"
+        >
+          <AddProduct
+            products={props.products}
+            selectedProducts={props.selectedProducts}
+            closeModal={() => setAddProductModal(false)}
+          />
+        </Modal>
+      </Portal>
     </>
   );
 };
