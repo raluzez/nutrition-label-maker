@@ -7,7 +7,7 @@ import Styles from "./Auth.module.css";
 
 class Auth extends Component {
     state = {
-        existingUser:false,
+        existingUser:true,
         password:"",
         email:"",
         repeatedPassword: "",

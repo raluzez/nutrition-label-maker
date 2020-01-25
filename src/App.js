@@ -6,6 +6,7 @@ import Home from "./containers/Home/Home";
 import Logout from "./containers/Auth/Logout/Logout";
 import Recipes from "./containers/Recipes/Recipes";
 import ProductList from "./containers/ProductsList/ProductsList";
+import EditRecipe from './containers/EditRecipe/EditRecipe';
 import * as actions from "./Store/actions";
 import "./App.css";
 
@@ -29,6 +30,7 @@ class App extends Component {
             <Route path="/productlist" component={ProductList}/>
             <Route path="/recipes" component={Recipes}/>
             <Route path="/logout" component={Logout}/>
+            <Route path='/editRecipe' component={EditRecipe}/>
             <Route path="/" exact component={Home}/>
             <Redirect to="/"/>
           </Switch>

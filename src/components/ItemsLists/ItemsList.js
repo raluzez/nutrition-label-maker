@@ -12,16 +12,14 @@ const ItemsList = props => {
           No products yet! Add some
         </div>
       ) : (
-        props.items.map(item => <Item item={item} key={item.key} />)
+        props.items.map(item => <Item item={item} key={item.key} isCreateRecipe={props.isCreateRecipe}/>)
       )}
     </div>
   );
 
-  console.log(props.setName)
-
   return (
     <div className={Styles.ProductsContainer}>
-      <button style={{display: saveButton ? 'block' : 'none'}} className={Styles.AddButton} onClick={props.openAddProductModal}>
+      <button style={{display: saveButton ? 'block' : 'none'}} className={Styles.AddButton} onClick={props.openSaveRecipeModal}>
             Save
       </button>
       <div className={Styles.ProductsTitleLine}>

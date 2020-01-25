@@ -21,19 +21,16 @@ export const saveRecipeSuccess = (recipe) => {
     }
 }
 
-export const saveRecipe = (recipe, items, token, userId) => {
-    recipe.items = items
-    recipe.userId = userId
-    return dispatch => {
+export const saveRecipe = recipe => dispatch => {
+        recipe.userId = localStorage.getItem('userId')
         dispatch(saveRecipeStart())
-        axios.post(`/recipes.json?auth=${token}`, recipe)
+        axios.post(`/recipes.json?auth=${localStorage.getItem('token')}`, recipe)
             .then((res) => {
                 recipe.key = res.data.name
                 dispatch(saveRecipeSuccess(recipe));
             })
             .catch(error => dispatch(saveRecipeFail(error)))
     }
-}
 
 export const fetchRecipesStart = () => {
     return {
@@ -120,3 +117,45 @@ export const editRecipeItem = (amount, product, id, recipeId) => {
         recipeId
     }
 }
+
+export const addProductToRecipeSuccess = newRecipe => (
+    {
+        type: actionTypes.ADD_PRODUCT_TO_RECIPE_SUCCESS,
+        newRecipe
+    }
+) 
+
+export const addProductToRecipeFail = err => (
+    {
+        type: actionTypes.ADD_PRODUCT_TO_RECIPE_FAIL,
+        err
+    }
+) 
+
+export const editRecipeItemAmountSuccess = newRecipe => (
+    {
+        type: actionTypes.EDIT_RECIPE_ITEM_AMOUNT_SUCCESS,
+        newRecipe
+    }
+)
+
+export const editRecipeItemAmountFail = err => (
+    {
+        type: actionTypes.EDIT_RECIPE_ITEM_AMOUNT_FAIL,
+        err
+    }
+) 
+
+export const removeRecipeItemSuccess = newRecipe => (
+    {
+        type: actionTypes.REMOVE_RECIPE_ITEM_SUCCESS,
+        newRecipe
+    }
+)
+
+export const removeRecipeItemFail = err => (
+    {
+        type: actionTypes.REMOVE_RECIPE_ITEM_FAIL,
+        err
+    }
+)

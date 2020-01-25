@@ -14,3 +14,20 @@ export const newNutrientsObject = {
     FE:{quantity:0},
     CA:{quantity:0}
 }
+
+export const dailyIntake = {
+    ENERC_KCAL:2000,
+    FAT:78,
+    FASAT:20,
+    FATRN:2, 
+    CHOLE:300,
+    NA:2300,
+    CHOCDF:275,
+    FIBTG:28,
+    SUGAR:50,
+    PROCNT:50,
+    VITA_RAE:0.9,
+    VITC:90,
+    FE:18,
+    CA:1300
+}

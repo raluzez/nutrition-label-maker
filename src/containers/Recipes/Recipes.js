@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import InformationModal from "../../components/UI/InformationModal/Modal";
 import AddProductModal from '../../components/UI/AddProductModal/Modal';
@@ -7,6 +8,7 @@ import Product from "../../components/Product/Product";
 import Nutrients from '../../components/Nutrients/Nutrients';
 import Spinner from "../../components/UI/Spinner/Spinner";
 import ItemsList from '../../components/ItemsLists/ItemsList';
+import { Portal } from '../../Utility/Portal';
 import * as actions from "../../Store/actions";
 import Styles from "./Recipes.module.css";
 
@@ -15,6 +17,8 @@ const Recipes = props => {
 
   const [recipeInformationModal, setRecipeInformationModal] = useState(false);
   const [addProductModal, setAddProductModal] = useState(false);
+
+  let history = useHistory();
 
   useEffect(() => {
     onFetchRecipes(token, userId);
@@ -31,7 +35,7 @@ const Recipes = props => {
             name={recipe.name}
             clicked={() => {
               props.onClickedRecipe(recipe);
-              setRecipeInformationModal(true);
+              history.push('/editRecipe');
             }}
           />
         ))}
@@ -41,26 +45,28 @@ const Recipes = props => {
 
   return (
     <>
-      <AddProductModal
-        show={addProductModal}
-        closeModal={() => setAddProductModal(false)}
-        backdropZIndex='510'
-      >
-        <AddProduct
-          products={props.products}
-          selectedProducts={props.clickedRecipe.items || []}
-          closeModal={() => setAddProductModal(false)}
-        />
-      </AddProductModal>
-      <InformationModal show={recipeInformationModal} closeModal={() => setRecipeInformationModal(false)} backdropZIndex='110'>
-        <ItemsList
-          items={props.clickedRecipe.items || []}
-          name={props.clickedRecipe.name}
-          openAddProductModal={() => setAddProductModal(true)}
-          onChangeAmount={(amount, product, id) => props.onEditRecipeItem(amount, product, id, props.clickedRecipe.key)}
-        />
-        <Nutrients product={props.clickedRecipe} />
-      </InformationModal>
+      <Portal>
+        {addProductModal &&
+          <AddProductModal
+            closeModal={() => setAddProductModal(false)}
+          >
+            <AddProduct
+              products={props.products}
+              selectedProducts={props.clickedRecipe.items || []}
+              closeModal={() => setAddProductModal(false)}
+            />
+          </AddProductModal>}
+      </Portal>
+      {recipeInformationModal &&
+        <InformationModal closeModal={() => setRecipeInformationModal(false)}>
+          <ItemsList
+            items={props.clickedRecipe.items || []}
+            name={props.clickedRecipe.name}
+            openAddProductModal={() => setAddProductModal(true)}
+            onChangeAmount={(amount, product, id) => props.onEditRecipeItem(amount, product, id, props.clickedRecipe.key)}
+          />
+          <Nutrients productList={props.clickedRecipe.items}/>
+        </InformationModal>}
       <div className={Styles.AddRecipeButtonContainer}>
         <button onClick={() => props.history.push("/")}>Add Recipe</button>
       </div>

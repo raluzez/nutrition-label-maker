@@ -93,6 +93,36 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 savedRecipes: newRecipes
             }
+        case actionTypes.ADD_PRODUCT_TO_RECIPE_SUCCESS:
+            return {
+                ...state,
+                clickedRecipe: action.newRecipe
+            }
+        case actionTypes.ADD_PRODUCT_TO_RECIPE_FAIL:
+            return {
+                ...state,
+                error: action.err
+            }
+        case actionTypes.EDIT_RECIPE_ITEM_AMOUNT_SUCCESS:
+            return {
+                ...state,
+                clickedRecipe: action.newRecipe
+            }
+        case actionTypes.EDIT_RECIPE_ITEM_AMOUNT_FAIL:
+            return {
+                ...state,
+                error: action.err
+            }
+        case actionTypes.REMOVE_RECIPE_ITEM_SUCCESS:
+            return {
+                ...state,
+                clickedRecipe: action.newRecipe
+            }
+        case actionTypes.REMOVE_RECIPE_ITEM_FAIL:
+            return {
+                ...state,
+                error: action.err
+            }
         default: return state
     }
 }

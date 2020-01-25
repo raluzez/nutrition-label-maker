@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { productSelected } from "../../../../Store/actions/index";
+import { addProductToRecipe } from '../../../../Store/requests/recipe';
 import Styles from "./AddProductItem.module.css";
 
 const AddProductItem = props => {
@@ -9,6 +10,14 @@ const AddProductItem = props => {
   const inputChangeHandler = e => {
     setProductAmount(e.target.value);
   };
+
+  props.product.quantity = productAmount
+
+  let onAddProduct = () => props.onSelectProduct(props.product, productAmount)
+
+  if(props.isEdit){
+    onAddProduct = () => props.onAddProductToRecipe(props.product)
+  }
 
   return (
     <div className={Styles.Container}>
@@ -28,8 +37,8 @@ const AddProductItem = props => {
             <button
               className={Styles.AddProductButton}
               onClick={() => {
-                props.onSelectProduct(props.product, productAmount);
                 props.closeModal();
+                onAddProduct();
               }}
             >
               Add
@@ -43,8 +52,8 @@ const AddProductItem = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelectProduct: (product, amount) =>
-      dispatch(productSelected(product, amount))
+    onSelectProduct: (product, amount) => dispatch(productSelected(product, amount)),
+    onAddProductToRecipe: (product) => dispatch(addProductToRecipe(product))
   };
 };
 

@@ -15,9 +15,9 @@ export const productListToNutrientsHelper = productsList => {
       FE:{quantity:0},
       CA:{quantity:0}
     }
-    let overalQuantity = 0 
-    productsList.map( product => {
-      overalQuantity += product.quantity
+    let overalQuantity = 0;
+    (productsList || []).map( product => {
+      overalQuantity += Number(product.quantity)
       Object.keys(product.totalNutrients).map( key => {
         newNutrientsObject[key].quantity += (product.totalNutrients[key].quantity*product.quantity/100)
       })

@@ -19,49 +19,57 @@ const MainNutrients = (props) => {
                 <span>Total Fat</span>
                 <span>{`${nutients.FAT} %`}</span>
             </div>
-            <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${checkIfOverH(nutients.FAT)}%`}}/>
+            <div className={Styles.StatusBarBase}>
+                <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${checkIfOverH(nutients.FAT)}%`}}/>
+            </div>
+            
             
             <div className={Styles.StatusBarInfo}>
                 <span>Saturated Fat</span>
                 <span>{`${nutients.FASAT} %`}</span>
             </div>
-            <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${checkIfOverH(nutients.FASAT)}%`}}/>
+            <div className={Styles.StatusBarBase}>
+                <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${checkIfOverH(nutients.FASAT)}%`}}/>
+            </div>
             <div className={Styles.StatusBarInfo}>
                 <span>Trans Fat</span>
                 <span>{`${nutients.FATRN} %`}</span>
             </div>
-            <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${checkIfOverH(nutients.FATRN)}%`}}/>
+            <div className={Styles.StatusBarBase}>
+                <div className={[Styles.StatusBar, Styles.Fat].join(' ')} style={{width: `${checkIfOverH(nutients.FATRN)}%`}}/>
+            </div>
             
             <div className={Styles.StatusBarInfo}>
                 <span>Total Carbs</span>
                 <span>{`${nutients.CHOCDF} %`}</span>
             </div>
-            <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${checkIfOverH(nutients.CHOCDF)}%`}}/>
+            <div className={Styles.StatusBarBase}>
+                <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${checkIfOverH(nutients.CHOCDF)}%`}}/>
+            </div>
             
             <div className={Styles.StatusBarInfo}>
                 <span>Dietry Fiber</span>
                 <span>{`${nutients.FIBTG} %`}</span>
             </div>
-            <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${checkIfOverH(nutients.FIBTG)}%`}}/>
+            <div className={Styles.StatusBarBase}>
+                <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${checkIfOverH(nutients.FIBTG)}%`}}/>
+            </div>
             
             <div className={Styles.StatusBarInfo}>
                 <span>Sugars</span>
                 <span>{`${nutients.SUGAR} %`}</span>
             </div>
-            <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${checkIfOverH(nutients.SUGAR)}%`}}/>
+            <div className={Styles.StatusBarBase}>
+                <div className={[Styles.StatusBar, Styles.Carbs].join(' ')} style={{width: `${checkIfOverH(nutients.SUGAR)}%`}}/>
+            </div>
             
             <div className={Styles.StatusBarInfo}>
                 <span>Protein</span>
                 <span>{`${nutients.PROCNT} %`}</span>
             </div>
-            <div className={Styles.StatusBarBase}/>
-            <div className={[Styles.StatusBar, Styles.Protein].join(' ')} style={{width: `${checkIfOverH(nutients.PROCNT)}%`}}/>
+            <div className={Styles.StatusBarBase}>
+                <div className={[Styles.StatusBar, Styles.Protein].join(' ')} style={{width: `${checkIfOverH(nutients.PROCNT)}%`}}/>
+            </div>
         </div>
     );
 }

@@ -14,13 +14,12 @@
     height:20px;
     background-color: #eee;
     border-radius: 50px;
+    margin-bottom: 15px;
+    overflow: hidden;
 }
 
 .StatusBar {
     height:20px;
-    position: relative;
-    bottom: 20px;
-    border-radius: 50px;
 }
 
 .Fat {

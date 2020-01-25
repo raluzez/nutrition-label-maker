@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { connect } from "react-redux";
+import { editRecipeItemAmount, removeRecipeItem } from '../../../Store/requests/recipe';
 import * as actions from "../../../Store/actions";
 import Styles from './Item.module.css';
 
@@ -10,6 +11,14 @@ const Item = (props) => {
 
     const item = props.item
 
+    let onSaveAmount = () => props.onEditRecipeItemAmount(props.item, inputRef.current.value)
+    let onRemoveProduct = () => props.onRemoveRecipeItem(item.key)
+
+    if(props.isCreateRecipe){
+      onSaveAmount = () => props.onChangeAmount(inputRef.current.value, item)
+      onRemoveProduct = () => props.onDeleteItem(item.key, item)
+    }
+
     return (
         <div className={Styles.ProductContainer} key={item.key}>
             <div className={Styles.ProductInformation}>
@@ -18,8 +27,8 @@ const Item = (props) => {
                 style={{
                   display: isChangeAmount ? "none" : "block"
                 }}
-              >
-                {item.quantity} {item.units}
+              > 
+                {item.quantity} {item.units}  
               </div>
               <div
                 style={{
@@ -42,10 +51,7 @@ const Item = (props) => {
                 title="Save"
                 onClick={() => {
                   setIsChangeAmount(false);
-                  props.onChangeAmount(
-                    inputRef.current.value,
-                    item
-                  );
+                  onSaveAmount();
                 }}
                 style={{
                   display: isChangeAmount ? "block" : "none"
@@ -69,7 +75,7 @@ const Item = (props) => {
               <i
                 className="material-icons"
                 title="Delete"
-                onClick={() => props.onDeleteItem(item.key, item)}
+                onClick={() => onRemoveProduct()}
               >
                 clear
               </i>
@@ -83,7 +89,9 @@ const mapDispatchToProps = dispatch => {
       onChangeAmount: (amount, product) =>
         dispatch(actions.changeItemAmount(amount, product)),
       onDeleteItem: (productId, product) =>
-        dispatch(actions.productDeleted(productId, product))
+        dispatch(actions.productDeleted(productId, product)),
+      onEditRecipeItemAmount: (item, amount) => dispatch(editRecipeItemAmount(item, amount)),
+      onRemoveRecipeItem: (itemKey) => dispatch(removeRecipeItem(itemKey))
     };
   };
 

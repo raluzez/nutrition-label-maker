@@ -108,7 +108,6 @@ const reducer = (state = initialState, action) => {
                 }
             }
         case actionTypes.DELETE_PRODUCT:
-            console.log(action.productId)
             return {
                 ...state,
                 selectedProducts: state.selectedProducts.filter(product => action.productId !== product.key),

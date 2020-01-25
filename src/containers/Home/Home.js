@@ -4,15 +4,15 @@ import Modal from "../../components/UI/AddProductModal/Modal";
 import AddProduct from "../../components/Product/AddProduct/AddProduct";
 import ItemsList from "../../components/ItemsLists/ItemsList";
 import Nutrients from "../../components/Nutrients/Nutrients";
+import SaveRecipe from '../../components/SaveRecipe/SaveRecipe';
 import Auth from "../Auth/Auth";
 import { productListToNutrientsHelper } from '../../Utility/Helpers';
-import { newNutrientsObject } from '../../Utility/Consts';
 import { Portal } from '../../Utility/Portal';
 import * as actions from "../../Store/actions";
 
 const Home = props => {
   const [addProductModal, setAddProductModal] = useState(false);
-  const [recipieName, setRecipieName] = useState('')
+  const [saveRecipeModal, setSaveRecipeModal] = useState(false);
 
   const { onFetchProducts, token, userId } = props;
 
@@ -20,42 +20,47 @@ const Home = props => {
     onFetchProducts(token, userId);
   }, [onFetchProducts, token, userId]);
 
-  const currentRecipe = productListToNutrientsHelper(props.selectedProducts, newNutrientsObject)
+  const currentRecipe = productListToNutrientsHelper(props.selectedProducts)
 
-  currentRecipe.name = recipieName
+  // currentRecipe.name = recipeName
 
   return (
     <>
-      <Modal show={props.showAuthModal}>
-        <Auth
-          switchForm={() => {
-            props.onCloseSignUp();
-            setTimeout(() => {
-              props.onOpenSignUp();
-            }, 450);
-          }}
-        />
-      </Modal>
-      
-      <ItemsList
-        openAddProductModal={() => setAddProductModal(true)}
-        items={props.selectedProducts}
-        isCreateRecipe={true}
-      />
-      <Nutrients product={currentRecipe} />
       <Portal>
-        <Modal
-          show={addProductModal}
-          closeModal={() => setAddProductModal(false)}
-          backdropZIndex="110"
-        >
+        {props.showAuthModal &&
+          <Modal >
+          <Auth
+            switchForm={() => {
+              props.onCloseSignUp();
+              setTimeout(() => {
+                props.onOpenSignUp();
+              }, 450);
+            }}
+          />
+        </Modal>}
+      </Portal> 
+      <Portal>
+        {addProductModal &&
+        <Modal closeModal={() => setAddProductModal(false)}>
           <AddProduct
-            products={props.products}
             selectedProducts={props.selectedProducts}
             closeModal={() => setAddProductModal(false)}
           />
-        </Modal>
+        </Modal>}
       </Portal>
+      <Portal>
+        {saveRecipeModal &&
+          <Modal closeModal={() => setSaveRecipeModal(false)}>
+            <SaveRecipe selectedProducts={props.selectedProducts}/>
+          </Modal>}
+      </Portal>
+      <ItemsList
+        openAddProductModal={() => setAddProductModal(true)}
+        openSaveRecipeModal={() => setSaveRecipeModal(true)}
+        items={props.selectedProducts}
+        isCreateRecipe={true}
+      />
+      <Nutrients productList={props.selectedProducts} />
     </>
   );
 };
