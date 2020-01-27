@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { productSelected } from "../../../../Store/actions/index";
-import { addProductToRecipe } from '../../../../Store/requests/recipe';
+import { addItemToRecipe } from '../../../../Store/requests/recipe';
 import Styles from "./AddProductItem.module.css";
 
 const AddProductItem = props => {
@@ -16,13 +16,13 @@ const AddProductItem = props => {
   let onAddProduct = () => props.onSelectProduct(props.product, productAmount)
 
   if(props.isEdit){
-    onAddProduct = () => props.onAddProductToRecipe(props.product)
+    onAddProduct = () => props.onAddItemToRecipe(props.product)
   }
 
   return (
     <div className={Styles.Container}>
-      <div className={Styles.ProductAvatar}>
-        <i className="fas fa-birthday-cake"></i>
+      <div className={Styles.ProductAvatar} style={{background: props.product.color}}>
+        <i className={props.product.icon}></i>
       </div>
       <div className={Styles.ProductBody}>
         <div className={Styles.ProductName}>{props.product.name}</div>
@@ -53,7 +53,7 @@ const AddProductItem = props => {
 const mapDispatchToProps = dispatch => {
   return {
     onSelectProduct: (product, amount) => dispatch(productSelected(product, amount)),
-    onAddProductToRecipe: (product) => dispatch(addProductToRecipe(product))
+    onAddItemToRecipe: (product) => dispatch(addItemToRecipe(product))
   };
 };
 

@@ -28,7 +28,7 @@ const Home = props => {
     <>
       <Portal>
         {props.showAuthModal &&
-          <Modal >
+          <Modal>
           <Auth
             switchForm={() => {
               props.onCloseSignUp();
@@ -51,14 +51,13 @@ const Home = props => {
       <Portal>
         {saveRecipeModal &&
           <Modal closeModal={() => setSaveRecipeModal(false)}>
-            <SaveRecipe selectedProducts={props.selectedProducts}/>
+            <SaveRecipe selectedProducts={props.selectedProducts} closeModal={() => setSaveRecipeModal(false)}/>
           </Modal>}
       </Portal>
       <ItemsList
         openAddProductModal={() => setAddProductModal(true)}
         openSaveRecipeModal={() => setSaveRecipeModal(true)}
         items={props.selectedProducts}
-        isCreateRecipe={true}
       />
       <Nutrients productList={props.selectedProducts} />
     </>
@@ -77,7 +76,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onSaveRecipeClicked: product => dispatch(actions.productClicked(product)),
-    onCloseModal: () => dispatch(actions.closeModal()),
     onAddRecipeName: recipeName => dispatch(actions.addRecipeName(recipeName)),
     onSaveRecipe: (recipe, items, token, userId) =>
       dispatch(actions.saveRecipe(recipe, items, token, userId)),

@@ -60,22 +60,6 @@ const reducer = (state = initialState, action) => {
                 savedRecipes: action.recipes,
                 loading:false
             }
-        case actionTypes.DELETE_RECIPE_START:
-            return {
-                ...state,
-                loading: true
-            }
-        case actionTypes.DELETE_RECIPE_FAIL:
-            return {
-                ...state,
-                loading: false
-            }
-        case actionTypes.DELETE_RECIPE_SUCCESS:
-            return {
-                ...state,
-                savedRecipes: state.savedRecipes.filter(recipe => action.recipeKey !== recipe.key),
-                loading: false
-            }
         case actionTypes.RECIPE_CLICKED:
             return {
                 ...state,
@@ -93,12 +77,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 savedRecipes: newRecipes
             }
-        case actionTypes.ADD_PRODUCT_TO_RECIPE_SUCCESS:
+        case actionTypes.ADD_ITEM_TO_RECIPE_SUCCESS:
             return {
                 ...state,
                 clickedRecipe: action.newRecipe
             }
-        case actionTypes.ADD_PRODUCT_TO_RECIPE_FAIL:
+        case actionTypes.ADD_ITEM_TO_RECIPE_FAIL:
             return {
                 ...state,
                 error: action.err
@@ -119,6 +103,27 @@ const reducer = (state = initialState, action) => {
                 clickedRecipe: action.newRecipe
             }
         case actionTypes.REMOVE_RECIPE_ITEM_FAIL:
+            return {
+                ...state,
+                error: action.err
+            }
+        case actionTypes.DELETE_RECIPE_SUCCESS:
+            const updatedRecipes = state.savedRecipes.filter( recipe => recipe.key !== action.recipeKey)
+            return {
+                ...state,
+                savedRecipes: updatedRecipes
+            }
+        case actionTypes.DELETE_RECIPE_FAIL:
+            return {
+                ...state,
+                error: action.err
+            }
+        case actionTypes.EDIT_RECIPE_NAME_SUCCESS:
+            return {
+                ...state,
+                clickedRecipe: action.recipe
+            }
+        case actionTypes.EDIT_RECIPE_NAME_FAIL:
             return {
                 ...state,
                 error: action.err

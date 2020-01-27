@@ -169,21 +169,15 @@ const reducer = (state = initialState, action) => {
               products: action.products,
               loading: false
             }
-        case actionTypes.DELETE_PRODUCT_START:
-            return {
-                ...state,
-                loading: true
-            }
         case actionTypes.DELETE_PRODUCT_FAIL:
             return {
                 ...state,
-                loading: false
+                error: action.err
             }
         case actionTypes.DELETE_PRODUCT_SUCCESS:
             return {
                 ...state,
-                products: state.products.filter(product => action.productKey !== product.key),
-                loading: false 
+                products: state.products.filter(product => action.productKey !== product.key)
             }
         case actionTypes.CLOSE_MODAL:
             return {
@@ -204,6 +198,11 @@ const reducer = (state = initialState, action) => {
               name: action.recipeName
             }
           }
+        case actionTypes.EDIT_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                products: state.products.map( product => (product.key === action.product.key ? action.product : product))
+            }
         default: return state
     }
 }

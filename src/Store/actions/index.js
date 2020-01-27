@@ -5,17 +5,13 @@ export {
     changeItemAmount,
     addProduct,
     addRecipeName,
-    closeModal,
-    openModal,
-    fetchProducts,
-    deleteProduct
+    fetchProducts
 } from "./productsList";
 
 export {
     saveRecipe,
     recipeClicked,
     fetchRecipes,
-    deleteRecipe,
     editRecipeItem
 } from "./recipe";
 

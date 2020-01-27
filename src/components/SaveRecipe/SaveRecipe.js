@@ -1,20 +1,40 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import RecipeIcons from '../EditName/RecipeIcons/RecipeIcons';
+import Colors from '../EditName/Colors/Colors';
+import * as consts from '../../Utility/Consts';
 import * as actions from "../../Store/actions";
+import Styles from './SaveRecipe.module.css';
 
 const SaveRecipe = props => {
-  const [recipeName, setRecipeName] = useState(null);
+  const [name, setName] = useState('Recipe Name');
+  const [ iconName, setIconName] = useState(consts.defaultIcon)
+  const [ color, setColor ] = useState(consts.orange)
 
-  const recipe = new Object();
+  const newRecipeObject = () => {
+    const newRecipeObject = new Object()
+    newRecipeObject.color = color
+    newRecipeObject.icon = iconName
+    newRecipeObject.name = name
+    newRecipeObject.items = props.selectedProducts;
+    return newRecipeObject
+}
 
-  recipe.items = props.selectedProducts;
-  recipe.name = recipeName;
-
+console.log(props)
   return (
-    <>
-      <input type="text" onChange={e => setRecipeName(e.target.value)} />
-      <button onClick={() => props.onSaveRecipe(recipe)}>Save Recipe</button>
-    </>
+    <div className={Styles.Container}>
+            <input type="text" placeholder={name} onChange={ e => setName(e.target.value)}/>
+            <div className={Styles.ProductAvatarContainer}>
+                <div className={Styles.ProductAvatar} style={{background: color}}>
+                    <i className={iconName}></i>
+                </div>
+                <div>
+                    <RecipeIcons onclick={iconName => setIconName(iconName)} iconName={iconName}/>
+                    <Colors onclick={color => setColor(color)} color={color}/>
+                </div>
+            </div>
+            <button onClick={()=> {props.onSaveRecipe(newRecipeObject()); props.closeModal()}}>Save</button>
+        </div>
   );
 };
 

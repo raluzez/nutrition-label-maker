@@ -3,17 +3,26 @@ import { connect } from "react-redux";
 import ItemsList from '../../components/ItemsLists/ItemsList';
 import { Portal } from '../../Utility/Portal';
 import Modal from "../../components/UI/AddProductModal/Modal";
+import EditName from '../../components/EditName/EditName';
 import AddProduct from "../../components/Product/AddProduct/AddProduct";
 import Nutrients from '../../components/Nutrients/Nutrients';
 
 const EditRecipe = (props) => {
     const [addProductModal, setAddProductModal] = useState(false);
+    const [editNameModal, setEditNameModal] = useState(false)
     return (
         <>
+            <Portal>
+                {editNameModal &&
+                    <Modal closeModal={() => setEditNameModal(false)}>
+                        <EditName product={props.clickedRecipe} closeModal={() => setEditNameModal(false)} isRecipe={true}/>
+                    </Modal>}
+            </Portal>
             <ItemsList
                 items={props.clickedRecipe.items || []}
-                name={props.clickedRecipe.name}
+                recipe={props.clickedRecipe}
                 openAddProductModal={() => setAddProductModal(true)}
+                openEditNameModal={()=> setEditNameModal(true)}
             />
             <Nutrients productList={props.clickedRecipe.items}/>
             <Portal>

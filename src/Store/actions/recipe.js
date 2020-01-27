@@ -72,35 +72,6 @@ export const fetchRecipes = (token, userId) => {
     }
 }
 
-export const deleteReciptStart = () => {
-    return {
-        type: actionTypes.DELETE_RECIPE_START
-    }
-}
-
-export const deleteRecipeFail = (error) => {
-    return {
-        type: actionTypes.DELETE_RECIPE_FAIL,
-        error
-    }
-}
-
-export const deleteRecipeSuccess = (recipeKey) => {
-    return {
-        type: actionTypes.DELETE_RECIPE_SUCCESS,
-        recipeKey
-    }
-}
-
-export const deleteRecipe = (recipeKey, token) => {
-    return dispatch => {
-        dispatch(deleteReciptStart())
-        axios.delete(`/recipes/${recipeKey}.json?auth=${token}`)
-            .then( () => dispatch (deleteRecipeSuccess(recipeKey)))
-            .catch( error => dispatch (deleteRecipeFail(error)))
-    }
-}
-
 export const recipeClicked = (recipe) => {
     return {
         type: actionTypes.RECIPE_CLICKED,
@@ -118,16 +89,16 @@ export const editRecipeItem = (amount, product, id, recipeId) => {
     }
 }
 
-export const addProductToRecipeSuccess = newRecipe => (
+export const addItemToRecipeSuccess = newRecipe => (
     {
-        type: actionTypes.ADD_PRODUCT_TO_RECIPE_SUCCESS,
+        type: actionTypes.ADD_ITEM_TO_RECIPE_SUCCESS,
         newRecipe
     }
 ) 
 
-export const addProductToRecipeFail = err => (
+export const addItemToRecipeFail = err => (
     {
-        type: actionTypes.ADD_PRODUCT_TO_RECIPE_FAIL,
+        type: actionTypes.ADD_ITEM_TO_RECIPE_FAIL,
         err
     }
 ) 
@@ -156,6 +127,34 @@ export const removeRecipeItemSuccess = newRecipe => (
 export const removeRecipeItemFail = err => (
     {
         type: actionTypes.REMOVE_RECIPE_ITEM_FAIL,
+        err
+    }
+)
+
+export const deleteRecipeSuccess = recipeKey => (
+    {
+        type: actionTypes.DELETE_RECIPE_SUCCESS,
+        recipeKey
+    }
+)
+
+export const deleteRecipeFail = err => (
+    {
+        type: actionTypes.DELETE_RECIPE_FAIL,
+        err
+    }
+)
+
+export const editRecipeNameSuccess = recipe => (
+    {
+        type: actionTypes.EDIT_RECIPE_NAME_SUCCESS,
+        recipe
+    }
+)
+
+export const editRecipeNameFail = err => (
+    {
+        type: actionTypes.EDIT_RECIPE_NAME_FAIL,
         err
     }
 )

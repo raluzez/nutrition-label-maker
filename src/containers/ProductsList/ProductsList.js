@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
+import EditName from '../../components/EditName/EditName';
 import Spinner from "../../components/UI/Spinner/Spinner";
+import Modal from "../../components/UI/AddProductModal/Modal";
+import { Portal } from '../../Utility/Portal';
 import * as actions from "../../Store/actions";
 import Styles from "./ProductsList.module.css";
 
 const ProductsList = props => {
+  const [ editNameModal, setEditNameModal] = useState(false)
 
   const { onFetchProducts, token, userId } = props;
 
@@ -21,8 +25,8 @@ const ProductsList = props => {
           <Product
             productList={[product]}
             key={product.key}
-            name={product.name}
-            clicked={() => props.onClickedProduct(product)}
+            product={product}
+            clicked={() => setEditNameModal(product)}
           />
         ))}
       </>
@@ -30,6 +34,12 @@ const ProductsList = props => {
   }
   return (
     <>
+      <Portal>
+        {editNameModal &&
+          <Modal closeModal={() => setEditNameModal(false)}>
+            <EditName product={editNameModal} closeModal={() => setEditNameModal(false)}/>
+          </Modal>}
+      </Portal>
       <div className={Styles.AddProductButtonContainer}>
         <button onClick={() => props.onClickedProduct()}>Add Product</button>
       </div>
@@ -51,8 +61,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onClickedProduct: product => dispatch(actions.productClicked(product)),
-    onFetchProducts: (token, userId) => dispatch(actions.fetchProducts(token, userId)),
-    onDeleteProduct: (productKey, token) => dispatch(actions.deleteProduct(productKey, token))
+    onFetchProducts: (token, userId) => dispatch(actions.fetchProducts(token, userId))
   };
 };
 

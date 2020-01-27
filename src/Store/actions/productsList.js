@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import * as consts from '../../Utility/Consts';
 import axios from "../../axios";
 
 export const productSelected = (product, amount) => {
@@ -106,44 +107,17 @@ export const fetchProducts = (token, userId) => {
     }
 }
 
-export const deleteProductStart = () => {
-    return {
-        type: actionTypes.DELETE_PRODUCT_START
-    }
-}
-
-export const deleteProductFail = (error) => {
+export const deleteProductFail = err => {
     return {
         type: actionTypes.DELETE_PRODUCT_FAIL,
-        error
+        err
     }
 }
 
-export const deleteProductSuccess = (productKey) => {
+export const deleteProductSuccess = productKey => {
     return {
         type: actionTypes.DELETE_PRODUCT_SUCCESS,
         productKey
-    }
-}
-
-export const deleteProduct = (productKey, token) => {
-    return dispatch => {
-        dispatch(deleteProductStart())
-        axios.delete(`/products/${productKey}.json?auth=${token}`)
-            .then( () =>  dispatch (deleteProductSuccess(productKey) ))
-            .catch(error => dispatch (deleteProductFail(error)))
-    }
-}
-
-export const closeModal = () => {
-    return {
-        type:actionTypes.CLOSE_MODAL
-    }
-}
-
-export const openModal = () => {
-    return {
-        type:actionTypes.OPEN_MODAL
     }
 }
 
@@ -151,5 +125,19 @@ export const addRecipeName = (recipeName) => {
     return {
         type: actionTypes.ADD_RECIPE_NAME,
         recipeName: recipeName
+    }
+}
+
+export const editProductSuccess = product => {
+    return {
+        type: actionTypes.EDIT_PRODUCT_SUCCESS,
+        product
+    }
+}
+
+export const editProductFail = err => {
+    return {
+        type: actionTypes.EDIT_PRODUCT_FAIL,
+        err
     }
 }

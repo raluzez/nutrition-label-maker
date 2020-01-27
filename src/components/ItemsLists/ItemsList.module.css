@@ -7,11 +7,25 @@
 .ProductsTitleLine {
     margin: 0 15px;
     border-bottom: 2px solid rgba(129, 129, 129, 0.5);
+    display: flex;
+    align-items: flex-end;
 }
 
 .ProductsTitleLine div{
     margin-left: 50px;
     font-size: 36px;
+}
+
+.ProductsTitleLine i{
+    margin-left: 30px;
+    font-size: 34px;
+    height:34px;
+    color: #545454
+}
+
+.ProductsTitleLine i:hover{
+    color: black;
+    cursor: pointer;
 }
 
 .ProductsListContainer {
@@ -31,10 +45,10 @@
     display: flex;
     width:200px;
     height:40px;
-    background: #4DE7B1;  
-    border-radius: 10px;
+    background: linear-gradient(315deg, #A3ECD3 0%, rgba(77, 231, 177, 0.5) 50%), #3DD8C1;  
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
     border:none;
+    border-radius: 2px;
     text-decoration: none;
     align-items: center;
     justify-content: center;
@@ -45,7 +59,7 @@
 }
 
 .AddButton:hover{
-    background-color: rgb(60, 211, 158);
+    background: linear-gradient(315deg, #7FE9C4 0%, rgba(59, 230, 170, 0.5) 50%), rgb(38, 184, 162);
 }
 
 .AddButton:focus {

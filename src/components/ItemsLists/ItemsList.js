@@ -3,7 +3,7 @@ import Item from "./Item/Item";
 import Styles from "./ItemsList.module.css";
 
 const ItemsList = props => {
-  const saveButton = props.isCreateRecipe && props.items.length > 0
+  const saveButton = !props.recipe && props.items.length > 0
 
   const items = (
     <div className={Styles.ProductsListContainer}>
@@ -12,7 +12,7 @@ const ItemsList = props => {
           No products yet! Add some
         </div>
       ) : (
-        props.items.map(item => <Item item={item} key={item.key} isCreateRecipe={props.isCreateRecipe}/>)
+        props.items.map(item => <Item item={item} key={item.key} isCreateRecipe={!props.recipe}/>)
       )}
     </div>
   );
@@ -23,10 +23,11 @@ const ItemsList = props => {
             Save
       </button>
       <div className={Styles.ProductsTitleLine}>
-        <div style={{display: props.isCreateRecipe ? 'none' : 'block'}}>{props.name}</div>
-        <div style={{display: props.isCreateRecipe ? 'block' : 'none'}}>
+        <div style={{display: !props.recipe ? 'none' : 'block'}}>{props.recipe && props.recipe.name}</div>
+        <div style={{display: !props.recipe ? 'block' : 'none'}}>
           <span>New Recipe</span>
         </div>
+        <i className="material-icons" style={{display: !props.recipe ? 'none' : 'block'}} onClick={props.openEditNameModal}>edit</i>
       </div>
       {items}
       <button className={Styles.AddButton} onClick={props.openAddProductModal}>
