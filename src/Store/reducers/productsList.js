@@ -117,12 +117,6 @@ const reducer = (state = initialState, action) => {
                     quantity : deleteFromRecipeAmount(state, action.product.quantity)
                 }
             }
-        case actionTypes.CLICKED_PRODUCT:
-            return {
-                ...state,
-                clickedProduct: action.product,
-                showModal:true
-            }
         case actionTypes.CHANGE_AMOUNT:
             const selectedProducts = changeProductAmount(state, action.product, action.amount);
             const totalNutrients = changeTotalNutreants(state, action.product, action.amount);

@@ -75,7 +75,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSaveRecipeClicked: product => dispatch(actions.productClicked(product)),
     onAddRecipeName: recipeName => dispatch(actions.addRecipeName(recipeName)),
     onSaveRecipe: (recipe, items, token, userId) =>
       dispatch(actions.saveRecipe(recipe, items, token, userId)),

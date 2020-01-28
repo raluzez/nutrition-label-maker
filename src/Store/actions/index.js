@@ -1,7 +1,6 @@
 export {
     productSelected,
     productDeleted,
-    productClicked,
     changeItemAmount,
     addProduct,
     addRecipeName,

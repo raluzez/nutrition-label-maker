@@ -7,8 +7,10 @@ import Logout from "./containers/Auth/Logout/Logout";
 import Recipes from "./containers/Recipes/Recipes";
 import ProductList from "./containers/ProductsList/ProductsList";
 import EditRecipe from './containers/EditRecipe/EditRecipe';
+import AddProduct from './containers/AddProduct/AddProduct';
 import * as actions from "./Store/actions";
 import "./App.css";
+
 
 class App extends Component {
 
@@ -31,6 +33,7 @@ class App extends Component {
             <Route path="/recipes" component={Recipes}/>
             <Route path="/logout" component={Logout}/>
             <Route path='/editRecipe' component={EditRecipe}/>
+            <Route path='/addProduct' component={AddProduct}/>
             <Route path="/" exact component={Home}/>
             <Redirect to="/"/>
           </Switch>

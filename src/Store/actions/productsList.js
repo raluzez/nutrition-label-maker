@@ -18,13 +18,6 @@ export const productDeleted = (productId, product) => {
     }
 }
 
-export const productClicked = (product) => {
-    return {
-        type: actionTypes.CLICKED_PRODUCT,
-        product
-    }
-}
-
 export const changeItemAmount = (amount, product) => {
     return {
         type: actionTypes.CHANGE_AMOUNT,

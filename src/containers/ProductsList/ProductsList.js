@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
 import EditName from '../../components/EditName/EditName';
@@ -12,6 +13,8 @@ const ProductsList = props => {
   const [ editNameModal, setEditNameModal] = useState(false)
 
   const { onFetchProducts, token, userId } = props;
+
+  let history = useHistory();
 
   useEffect(() => {
     onFetchProducts(token, userId);
@@ -41,7 +44,7 @@ const ProductsList = props => {
           </Modal>}
       </Portal>
       <div className={Styles.AddProductButtonContainer}>
-        <button onClick={() => props.onClickedProduct()}>Add Product</button>
+        <button onClick={() => history.push('/addProduct')}>Add Product</button>
       </div>
       <div className={Styles.ProductList}>{productsList}</div>
     </>
@@ -50,7 +53,6 @@ const ProductsList = props => {
 
 const mapStateToProps = state => {
   return {
-    clickedProduct: state.productList.clickedProduct,
     products: state.productList.products,
     loading: state.productList.loading,
     token: state.auth.token,
@@ -60,7 +62,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onClickedProduct: product => dispatch(actions.productClicked(product)),
     onFetchProducts: (token, userId) => dispatch(actions.fetchProducts(token, userId))
   };
 };
