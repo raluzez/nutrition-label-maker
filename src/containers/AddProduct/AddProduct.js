@@ -1,65 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AddProductNutrients from './AddProductNutrients/AddProductNutrients';
+import { newNutrientsObject } from '../../Utility/Consts';
 import Styles from './AddProduct.module.css';
 
 const AddProduct = () => {
+    const newNutrients = JSON.parse(JSON.stringify(newNutrientsObject))
+    const [ nutrients, setNutrients ] = useState(newNutrients)
+    const [ isButtonDisabled, setIsButtonDisabled ] = useState(true)
+
+    const disabledButtonHandler = nutrients => {
+        return !!Object.keys(nutrients).find( item => nutrients[item].quantity === '')
+    }
+
     return (
-        <div className={Styles.Nutrients}>
-            <div  className={Styles.StatusBarInfo}>
-                <span>Total Fat</span>
-                <input type="text"/>
-            </div>
-            <div className={Styles.StatusBarBase}>
-                <div className={[Styles.StatusBar, Styles.Fat].join(' ')}/>
-            </div>
-            
-            
-            <div className={Styles.StatusBarInfo}>
-                <span>Saturated Fat</span>
-                <input type="text"/>
-            </div>
-            <div className={Styles.StatusBarBase}>
-                <div className={[Styles.StatusBar, Styles.Fat].join(' ')}/>
-            </div>
-            <div className={Styles.StatusBarInfo}>
-                <span>Trans Fat</span>
-                <input type="text"/>
-            </div>
-            <div className={Styles.StatusBarBase}>
-                <div className={[Styles.StatusBar, Styles.Fat].join(' ')}/>
-            </div>
-            
-            <div className={Styles.StatusBarInfo}>
-                <span>Total Carbs</span>
-                <input type="text"/>
-            </div>
-            <div className={Styles.StatusBarBase}>
-                <div className={[Styles.StatusBar, Styles.Carbs].join(' ')}/>
-            </div>
-            
-            <div className={Styles.StatusBarInfo}>
-                <span>Dietry Fiber</span>
-                <input type="text"/>
-            </div>
-            <div className={Styles.StatusBarBase}>
-                <div className={[Styles.StatusBar, Styles.Carbs].join(' ')}/>
-            </div>
-            
-            <div className={Styles.StatusBarInfo}>
-                <span>Sugars</span>
-                <input type="text"/>
-            </div>
-            <div className={Styles.StatusBarBase}>
-                <div className={[Styles.StatusBar, Styles.Carbs].join(' ')}/>
-            </div>
-            
-            <div className={Styles.StatusBarInfo}>
-                <span>Protein</span>
-                <input type="text"/>
-            </div>
-            <div className={Styles.StatusBarBase}>
-                <div className={[Styles.StatusBar, Styles.Protein].join(' ')}/>
-            </div>
-        </div>
+        <>
+            {isButtonDisabled
+                ? <button className={Styles.AddProductButtonDisabled} disabled title='All fields must be filled'>Save</button>
+                : <button className={Styles.AddProductButton}>Save</button>}
+            <AddProductNutrients onchange={ nutrientsObj => {setNutrients(nutrientsObj); setIsButtonDisabled(disabledButtonHandler(nutrientsObj))}} nutrients={nutrients}/>
+        </>
     );
 }
 
