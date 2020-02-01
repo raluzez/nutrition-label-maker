@@ -79,16 +79,6 @@ export const recipeClicked = (recipe) => {
     }
 }
 
-export const editRecipeItem = (amount, product, id, recipeId) => {
-    return {
-        type: actionTypes.EDIT_RECIPE_ITEM,
-        amount,
-        product,
-        id,
-        recipeId
-    }
-}
-
 export const addItemToRecipeSuccess = newRecipe => (
     {
         type: actionTypes.ADD_ITEM_TO_RECIPE_SUCCESS,

@@ -45,11 +45,5 @@ const mapStateToProps = state => {
       products: state.productList.products
     };
   };
-  
-  const mapDispatchToProps = dispatch => {
-    return {
-    //   onClickedRecipe: recipe => dispatch(actions.recipeClicked(recipe))
-    };
-  };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditRecipe);
+export default connect(mapStateToProps)(EditRecipe);

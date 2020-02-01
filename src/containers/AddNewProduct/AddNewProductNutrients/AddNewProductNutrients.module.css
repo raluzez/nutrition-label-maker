@@ -14,6 +14,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 20px;
+    position: relative;
 }
 
 .StatusBarInfo input {
@@ -38,6 +39,11 @@
     color:#545454;
 }
 
+.StatusBarInfo span:last-child {
+    position: absolute;
+    right: 0;
+}
+
 .StatusBarBase {
     height:20px;
     background-color: #eee;
@@ -53,22 +59,27 @@
 
 .Fat {
     background: linear-gradient(180deg, #F57899 0%, rgba(245, 120, 153, 0.5) 100%);
+    width: 0
 }
 
 .Carbs {
     background: linear-gradient(180deg, #FDB170 0%, rgba(253, 177, 112, 0.5) 100%);
+    width: 0
 }
 
 .Protein {
     background: linear-gradient(180deg, #82C3E4 0%, rgba(130, 195, 228, 0.5) 100%);
+    width: 0
 }
 
 .Calories {
-    background: linear-gradient(180deg, #6200EE 0%, rgba(98, 0, 238, 0.5) 100%); 
+    background: linear-gradient(180deg, #6200EE 0%, rgba(98, 0, 238, 0.5) 100%);
+    width: 0 
 }
 
 .Vitamins {
     background: linear-gradient(180deg, #4DE7B1 0%, rgba(77, 231, 177, 0.5) 100%);
+    width: 0
 }
 
 @media (min-width: 2560px ) {
@@ -84,6 +95,9 @@
     .StatusBar {
         height: 30px;
         bottom: 30px;
+    }
+    .StatusBarInfo input {
+        font-size: 28px;
     }
 }
 
@@ -105,6 +119,10 @@
 
 @media (max-width: 460px) {
     .StatusBarInfo {
+        font-size: 16px;
+    }
+    .StatusBarInfo input{
+        width: 40%;
         font-size: 16px;
     }
 }

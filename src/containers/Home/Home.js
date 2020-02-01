@@ -14,13 +14,13 @@ const Home = props => {
   const [addProductModal, setAddProductModal] = useState(false);
   const [saveRecipeModal, setSaveRecipeModal] = useState(false);
 
-  const { onFetchProducts, token, userId } = props;
+  // const { onFetchProducts, token, userId } = props;
 
-  useEffect(() => {
-    onFetchProducts(token, userId);
-  }, [onFetchProducts, token, userId]);
+  // useEffect(() => {
+  //   onFetchProducts(token, userId);
+  // }, [onFetchProducts, token, userId]);
 
-  const currentRecipe = productListToNutrientsHelper(props.selectedProducts)
+  // const currentRecipe = productListToNutrientsHelper(props.selectedProducts)
 
   // currentRecipe.name = recipeName
 
@@ -75,13 +75,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddRecipeName: recipeName => dispatch(actions.addRecipeName(recipeName)),
     onSaveRecipe: (recipe, items, token, userId) =>
       dispatch(actions.saveRecipe(recipe, items, token, userId)),
     onCloseSignUp: () => dispatch(actions.closeSignUp()),
-    onOpenSignUp: () => dispatch(actions.openSignUp()),
-    onFetchProducts: (token, userId) =>
-      dispatch(actions.fetchProducts(token, userId))
+    onOpenSignUp: () => dispatch(actions.openSignUp())
   };
 };
 

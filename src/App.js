@@ -7,7 +7,8 @@ import Logout from "./containers/Auth/Logout/Logout";
 import Recipes from "./containers/Recipes/Recipes";
 import ProductList from "./containers/ProductsList/ProductsList";
 import EditRecipe from './containers/EditRecipe/EditRecipe';
-import AddProduct from './containers/AddProduct/AddProduct';
+import AddProduct from './containers/AddNewProduct/AddNewProduct';
+import { fetchProducts } from './Store/requests/productList';
 import * as actions from "./Store/actions";
 import "./App.css";
 
@@ -15,7 +16,8 @@ import "./App.css";
 class App extends Component {
 
     componentDidMount() {
-      this.props.onAutoSignin()
+      this.props.onAutoSignin();
+      this.props.onFetchProducts()
     };
     
     render (){
@@ -55,7 +57,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAutoSignin: () => dispatch(actions.authCheckLogin())
+    onAutoSignin: () => dispatch(actions.authCheckLogin()),
+    onFetchProducts: () => dispatch(fetchProducts())
   }
 }
 

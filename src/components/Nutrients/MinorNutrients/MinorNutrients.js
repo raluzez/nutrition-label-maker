@@ -3,14 +3,6 @@ import Styles from './MinorNutrients.module.css'
 
 const MinorNutrients = (props) => {
 
-  const checkIfOverH = amount => {
-    if (amount < 100) {
-        return amount
-    } else {
-        return amount = 100
-    }
-  } 
-
   const nutients = props.nutrientsDailyPart
 
 
@@ -23,7 +15,7 @@ const MinorNutrients = (props) => {
       <div className={Styles.StatusBarBase} >
         <div
           className={[Styles.StatusBar, Styles.Calories].join(" ")}
-          style={{ width: `${checkIfOverH(nutients.ENERC_KCAL)}%` }}
+          style={{ width: `${nutients.ENERC_KCAL}%` }}
         />
       </div>
 
@@ -34,7 +26,7 @@ const MinorNutrients = (props) => {
       <div className={Styles.StatusBarBase} >
         <div
           className={[Styles.StatusBar, Styles.Fat].join(" ")}
-          style={{ width: `${checkIfOverH(nutients.CHOLE)}%` }}
+          style={{ width: `${nutients.CHOLE}%` }}
         />
       </div>
 
@@ -45,7 +37,7 @@ const MinorNutrients = (props) => {
       <div className={Styles.StatusBarBase} >
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
-          style={{ width: `${checkIfOverH(nutients.NA)}%` }}
+          style={{ width: `${nutients.NA}%` }}
         />
       </div>
 
@@ -56,7 +48,7 @@ const MinorNutrients = (props) => {
       <div className={Styles.StatusBarBase} >
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
-          style={{ width: `${checkIfOverH(nutients.FE)}%` }}
+          style={{ width: `${nutients.FE}%` }}
         />
       </div>
 
@@ -67,7 +59,7 @@ const MinorNutrients = (props) => {
       <div className={Styles.StatusBarBase} >
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
-          style={{ width: `${checkIfOverH(nutients.CA)}%` }}
+          style={{ width: `${nutients.CA}%` }}
         />
       </div>
 
@@ -78,7 +70,7 @@ const MinorNutrients = (props) => {
       <div className={Styles.StatusBarBase} >
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
-          style={{ width: `${checkIfOverH(nutients.VITA_RAE)}%` }}
+          style={{ width: `${nutients.VITA_RAE}%` }}
         />
       </div>
 
@@ -89,7 +81,7 @@ const MinorNutrients = (props) => {
       <div className={Styles.StatusBarBase} >
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
-          style={{ width: `${checkIfOverH(nutients.VITC)}%`}}
+          style={{ width: `${nutients.VITC}%`}}
         />
       </div>
     </div>

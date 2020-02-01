@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
@@ -6,19 +6,12 @@ import EditName from '../../components/EditName/EditName';
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Modal from "../../components/UI/AddProductModal/Modal";
 import { Portal } from '../../Utility/Portal';
-import * as actions from "../../Store/actions";
 import Styles from "./ProductsList.module.css";
 
 const ProductsList = props => {
   const [ editNameModal, setEditNameModal] = useState(false)
 
-  const { onFetchProducts, token, userId } = props;
-
-  let history = useHistory();
-
-  useEffect(() => {
-    onFetchProducts(token, userId);
-  }, [onFetchProducts, token, userId]);
+  const history = useHistory();
 
   let productsList = <Spinner />;
   if (!props.loading) {
@@ -60,10 +53,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onFetchProducts: (token, userId) => dispatch(actions.fetchProducts(token, userId))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
+export default connect(mapStateToProps)(ProductsList);

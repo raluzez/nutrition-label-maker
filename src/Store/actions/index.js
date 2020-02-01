@@ -1,17 +1,12 @@
 export {
     productSelected,
-    productDeleted,
-    changeItemAmount,
-    addProduct,
-    addRecipeName,
-    fetchProducts
+    changeItemAmount
 } from "./productsList";
 
 export {
     saveRecipe,
     recipeClicked,
-    fetchRecipes,
-    editRecipeItem
+    fetchRecipes
 } from "./recipe";
 
 export {

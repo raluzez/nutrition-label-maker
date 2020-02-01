@@ -65,18 +65,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 clickedRecipe: action.recipe
             }
-        case actionTypes.EDIT_RECIPE_ITEM:
-            const newRecipes = state.savedRecipes.map(recipe => {
-                if(recipe.key === action.recipeId) {
-                    recipe.items.find( product => 
-                        product.key === action.id).quantity = action.amount   
-                }
-                return recipe
-            })
-            return {
-                ...state,
-                savedRecipes: newRecipes
-            }
         case actionTypes.ADD_ITEM_TO_RECIPE_SUCCESS:
             return {
                 ...state,

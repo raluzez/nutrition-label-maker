@@ -88,8 +88,6 @@ const mapDispatchToProps = dispatch => {
     return {
       onChangeAmount: (amount, product) =>
         dispatch(actions.changeItemAmount(amount, product)),
-      onDeleteItem: (productId, product) =>
-        dispatch(actions.productDeleted(productId, product)),
       onEditRecipeItemAmount: (item, amount) => dispatch(editRecipeItemAmount(item, amount)),
       onRemoveRecipeItem: (itemKey) => dispatch(removeRecipeItem(itemKey))
     };

@@ -31,9 +31,6 @@ const Nutritions = (props) => {
         if ( nutrientsQuantityOnLabel[key] ){
             amount = ((nutrientsQuantityOnLabel[key]/dailyIntake[key])*100).toFixed(1)
         }
-        if( amount > 100) {
-            amount = 100
-        }
         return {[key] : amount}
     })
 

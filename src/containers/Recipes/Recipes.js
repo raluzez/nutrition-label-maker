@@ -58,8 +58,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onClickedRecipe: recipe => dispatch(actions.recipeClicked(recipe)),
     onFetchRecipes: (token, userId) =>
-      dispatch(actions.fetchRecipes(token, userId)),
-    onEditRecipeItem: (amount, product, id, recipeId) => dispatch(actions.editRecipeItem(amount, product, id, recipeId))
+      dispatch(actions.fetchRecipes(token, userId))
   };
 };
 

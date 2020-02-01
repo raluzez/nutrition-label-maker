@@ -42,3 +42,45 @@
     font-weight: 900;
     cursor: not-allowed;
 }
+
+.AddProductTitle {
+    width:1300px;
+    border-bottom: 2px solid rgba(129, 129, 129, 0.5);
+    margin: 50px auto;
+    font-size: 36px;
+}
+
+.AddProductTitle span{
+    margin-left: 50px;
+}
+
+@media (min-width: 2560px ) {
+    .AddProductTitle {
+        width:1700px;
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .AddProductTitle {
+        width:600px;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 660px ) {
+    .AddProductTitle {
+        width:400px;
+    }
+}
+
+@media (max-width: 500px) {
+    .AddProductTitle {
+        margin: 50px;
+        width: auto;
+        font-size: 24px;
+    }
+    .AddProductTitle span {
+        margin-left: 25px;
+    }
+}
