@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { connect } from "react-redux";
 import { editRecipeItemAmount, removeRecipeItem } from '../../../Store/requests/recipe';
+import { removeSelectedItem } from '../../../Store/actions/productsList';
 import * as actions from "../../../Store/actions";
 import Styles from './Item.module.css';
 
@@ -16,8 +17,10 @@ const Item = (props) => {
 
     if(props.isCreateRecipe){
       onSaveAmount = () => props.onChangeAmount(inputRef.current.value, item)
-      onRemoveProduct = () => props.onDeleteItem(item.key, item)
+      onRemoveProduct = () => props.onRemoveSelectedItem(item.key, item)
     }
+
+    console.log(props);
 
     return (
         <div className={Styles.ProductContainer} key={item.key}>
@@ -89,7 +92,8 @@ const mapDispatchToProps = dispatch => {
       onChangeAmount: (amount, product) =>
         dispatch(actions.changeItemAmount(amount, product)),
       onEditRecipeItemAmount: (item, amount) => dispatch(editRecipeItemAmount(item, amount)),
-      onRemoveRecipeItem: (itemKey) => dispatch(removeRecipeItem(itemKey))
+      onRemoveRecipeItem: (itemKey) => dispatch(removeRecipeItem(itemKey)),
+      onRemoveSelectedItem: (itemKey) => dispatch(removeSelectedItem(itemKey))
     };
   };
 

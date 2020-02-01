@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import RecipeIcons from '../EditName/RecipeIcons/RecipeIcons';
 import Colors from '../EditName/Colors/Colors';
+import { saveRecipe } from '../../Store/requests/recipe';
 import * as consts from '../../Utility/Consts';
-import * as actions from "../../Store/actions";
 import Styles from './SaveRecipe.module.css';
 
 const SaveRecipe = props => {
@@ -20,7 +20,6 @@ const SaveRecipe = props => {
     return newRecipeObject
 }
 
-console.log(props)
   return (
     <div className={Styles.Container}>
             <input type="text" placeholder={name} onChange={ e => setName(e.target.value)}/>
@@ -40,7 +39,7 @@ console.log(props)
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSaveRecipe: recipe => dispatch(actions.saveRecipe(recipe))
+    onSaveRecipe: recipe => dispatch(saveRecipe(recipe))
   };
 };
 

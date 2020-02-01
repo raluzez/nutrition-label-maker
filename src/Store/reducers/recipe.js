@@ -2,63 +2,28 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
     savedRecipes: [],
-    clickedRecipe: {   
-        name : "",
-        quantity : 0,
-        units : "g",
-        totalNutrients : {
-            ENERC_KCAL : {quantity : 0},
-            FAT : {quantity : 0},
-            FASAT : {quantity : 0},
-            FATRN : {quantity : 0},
-            CHOCDF : {quantity : 0},
-            FIBTG : {quantity : 0},
-            SUGAR : {quantity : 0},
-            PROCNT : {quantity : 0},
-            CHOLE : {quantity : 0},
-            NA : {quantity : 0},
-            CA : {quantity: 0},
-            FE : {quantity: 0},
-            VITA_RAE : {quantity : 0},
-            VITC : {quantity : 0}
-        }
-    },
-    loading: false
+    clickedRecipe: {}
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.SAVE_RECIPE_START:
-            return {
-                ...state,
-                loading: true
-            }
-        case actionTypes.SAVE_RECIPE_FAIL:
-            return {
-                ...state,
-                loading: false
-            }
         case actionTypes.SAVE_RECIPE_SUCCESS:
             return {
                 ...state,
-                savedRecipes: state.savedRecipes.concat(action.recipe),
-                loading:false
+                savedRecipes: state.savedRecipes.concat(action.recipe)
             }
-        case actionTypes.FETCH_RECIPES_START:
+        case actionTypes.SAVE_RECIPE_FAIL:
             return {
-                ...state,
-                loading: true
-            }
-        case actionTypes.FETCH_RECIPES_FAIL:
-            return {
-                ...state,
-                loading: false
+                ...state
             }
         case actionTypes.FETCH_RECIPES_SUCCESS:
             return {
                 ...state,
-                savedRecipes: action.recipes,
-                loading:false
+                savedRecipes: action.recipes
+            }
+        case actionTypes.FETCH_RECIPES_FAIL:
+            return {
+                ...state
             }
         case actionTypes.RECIPE_CLICKED:
             return {

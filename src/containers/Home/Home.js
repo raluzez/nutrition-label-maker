@@ -6,23 +6,12 @@ import ItemsList from "../../components/ItemsLists/ItemsList";
 import Nutrients from "../../components/Nutrients/Nutrients";
 import SaveRecipe from '../../components/SaveRecipe/SaveRecipe';
 import Auth from "../Auth/Auth";
-import { productListToNutrientsHelper } from '../../Utility/Helpers';
 import { Portal } from '../../Utility/Portal';
 import * as actions from "../../Store/actions";
 
 const Home = props => {
   const [addProductModal, setAddProductModal] = useState(false);
   const [saveRecipeModal, setSaveRecipeModal] = useState(false);
-
-  // const { onFetchProducts, token, userId } = props;
-
-  // useEffect(() => {
-  //   onFetchProducts(token, userId);
-  // }, [onFetchProducts, token, userId]);
-
-  // const currentRecipe = productListToNutrientsHelper(props.selectedProducts)
-
-  // currentRecipe.name = recipeName
 
   return (
     <>
@@ -67,16 +56,12 @@ const mapStateToProps = state => {
   return {
     selectedProducts: state.productList.selectedProducts,
     showAuthModal: state.auth.showAuthModal,
-    token: state.auth.token,
-    userId: state.auth.userId,
     products: state.productList.products
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSaveRecipe: (recipe, items, token, userId) =>
-      dispatch(actions.saveRecipe(recipe, items, token, userId)),
     onCloseSignUp: () => dispatch(actions.closeSignUp()),
     onOpenSignUp: () => dispatch(actions.openSignUp())
   };

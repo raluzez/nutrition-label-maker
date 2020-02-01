@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
 import EditName from '../../components/EditName/EditName';
-import Spinner from "../../components/UI/Spinner/Spinner";
 import Modal from "../../components/UI/AddProductModal/Modal";
 import { Portal } from '../../Utility/Portal';
 import Styles from "./ProductsList.module.css";
@@ -13,9 +12,7 @@ const ProductsList = props => {
 
   const history = useHistory();
 
-  let productsList = <Spinner />;
-  if (!props.loading) {
-    productsList = (
+  let productsList = 
       <>
         {(props.products || []).map(product => (
           <Product
@@ -26,8 +23,7 @@ const ProductsList = props => {
           />
         ))}
       </>
-    );
-  }
+
   return (
     <>
       <Portal>
@@ -46,10 +42,7 @@ const ProductsList = props => {
 
 const mapStateToProps = state => {
   return {
-    products: state.productList.products,
-    loading: state.productList.loading,
-    token: state.auth.token,
-    userId: state.auth.userId
+    products: state.productList.products
   };
 };
 

@@ -4,9 +4,7 @@ export {
 } from "./productsList";
 
 export {
-    saveRecipe,
-    recipeClicked,
-    fetchRecipes
+    recipeClicked
 } from "./recipe";
 
 export {

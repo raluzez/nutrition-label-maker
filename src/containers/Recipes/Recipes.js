@@ -1,23 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
-import Spinner from "../../components/UI/Spinner/Spinner";
 import * as actions from "../../Store/actions";
 import Styles from "./Recipes.module.css";
 
 const Recipes = props => {
-  const { onFetchRecipes, token, userId } = props;
 
   let history = useHistory();
 
-  useEffect(() => {
-    onFetchRecipes(token, userId);
-  }, [onFetchRecipes, token, userId]);
-
-  let recipesList = <Spinner />;
-  if (!props.loading) {
-    recipesList = (
+  let recipesList = 
       <>
         {(props.recipes || []).map(recipe => (
           <Product
@@ -31,8 +23,6 @@ const Recipes = props => {
           />
         ))}
       </>
-    );
-  }
 
   return (
     <>
@@ -47,18 +37,13 @@ const Recipes = props => {
 const mapStateToProps = state => {
   return {
     recipes: state.recipe.savedRecipes,
-    clickedRecipe: state.recipe.clickedRecipe,
-    loading: state.recipe.loading,
-    token: state.auth.token,
-    userId: state.auth.userId
+    clickedRecipe: state.recipe.clickedRecipe
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onClickedRecipe: recipe => dispatch(actions.recipeClicked(recipe)),
-    onFetchRecipes: (token, userId) =>
-      dispatch(actions.fetchRecipes(token, userId))
+    onClickedRecipe: recipe => dispatch(actions.recipeClicked(recipe))
   };
 };
 

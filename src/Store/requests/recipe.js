@@ -66,3 +66,32 @@ export const deleteRecipe = recipeKey => dispatch => {
             dispatch(actions.removeRecipeItemFail(err.data))
         })
 }
+
+export const fetchRecipes = () =>  dispatch => {
+    const token = localStorage.getItem('token')
+    const userId = localStorage.getItem('userId')
+    axios.get(`/recipes.json?auth=${token}&orderBy="userId"&equalTo="${userId}"`)
+        .then( res => {
+            const fetchedRecipes = []
+            for (const key in res.data) {
+                fetchedRecipes.push({
+                    ...res.data[key],
+                    key: key
+                })
+            }
+            dispatch(actions.fecthRecipesSuccess(fetchedRecipes))
+        })
+        .catch(err => {
+            dispatch(actions.fetchRecipesFail(err))
+        })
+}
+
+export const saveRecipe = recipe => dispatch => {
+    recipe.userId = localStorage.getItem("userId");
+    axios.post(`/recipes.json?auth=${localStorage.getItem("token")}`, recipe)
+        .then(res => {
+            recipe.key = res.data.name;
+            dispatch(actions.saveRecipeSuccess(recipe));
+    })
+        .catch(error => dispatch(actions.saveRecipeFail(error)));
+}
