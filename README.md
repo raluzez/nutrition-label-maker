@@ -1,12 +1,14 @@
 ## First look
 
+**Preview Your products**
+
 ![](ReadmeImages/productsPreview.png)
 
-**Preview Your products**
+**Preview Your recipes**
 
 ![](ReadmeImages/recipesPreview.png)
 
-**Preview Your recipes**
+**Create Your own recipes**
 
 ![](ReadmeImages/emptyHomePage.png)
 
@@ -14,19 +16,19 @@
 
 ![](ReadmeImages/creatingRecipeProces.png)
 
-**Create Your own recipes**
+**Create Your own products**
 
 ![](ReadmeImages/createProduct.png)
 
-**Create Your own products**
+**Edit Your recipes**
 
 ![](ReadmeImages/editRecipe.png)
 
-**Edit Your recipes**
+**Edit Your products**
 
 ![](ReadmeImages/editProduct.png)
 
-**Edit Your products**
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
