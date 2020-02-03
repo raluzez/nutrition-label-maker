@@ -1,9 +1,8 @@
 import * as actionTypes from "./actionTypes";
 
-export const productSelected = (product, amount) => ({
+export const productSelected = (product) => ({
   type: actionTypes.SELECT_PRODUCT,
-  product: product,
-  amount: amount
+  product
 });
 
 export const changeItemAmount = (amount, product) => ({
@@ -42,8 +41,9 @@ export const editProductFail = err => ({
   err
 });
 
-export const saveProductSuccess = () => ({
-  type: actionTypes.SAVE_PRODUCT_SUCCESS
+export const saveProductSuccess = product => ({
+  type: actionTypes.SAVE_PRODUCT_SUCCESS,
+  product
 });
 
 export const saveProductFail = err => ({
@@ -54,4 +54,8 @@ export const saveProductFail = err => ({
 export const removeSelectedItem = productKey => ({
   type: actionTypes.REMOVE_SELECTED_ITEM,
   productKey
+})
+
+export const resetCreateRecipe = () => ({
+  type: actionTypes.RESET_CREATE_RECIPE
 })

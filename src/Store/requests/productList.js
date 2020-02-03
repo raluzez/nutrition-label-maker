@@ -20,7 +20,10 @@ export const saveProduct = product => dispatch => {
     product.userId = localStorage.getItem('userId')
     product.units = 'g'
     axios.post(`/products.json?auth=${token}`, product)
-        .then( res => dispatch (actions.saveProductSuccess(res.data)))
+        .then( res => {
+            product.key = res.data.name
+            dispatch (actions.saveProductSuccess(product));
+            })
         .catch( err => dispatch (actions.saveProductFail(err)))
 }
 

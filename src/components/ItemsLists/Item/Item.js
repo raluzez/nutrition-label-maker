@@ -20,8 +20,6 @@ const Item = (props) => {
       onRemoveProduct = () => props.onRemoveSelectedItem(item.key, item)
     }
 
-    console.log(props);
-
     return (
         <div className={Styles.ProductContainer} key={item.key}>
             <div className={Styles.ProductInformation}>

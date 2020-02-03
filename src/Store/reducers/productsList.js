@@ -18,7 +18,6 @@ const changeProductAmount = (state, product, amount) => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SELECT_PRODUCT:
-      action.product.quantity = Number(action.amount);
       return {
         ...state,
         selectedProducts: state.selectedProducts.concat(action.product)
@@ -68,7 +67,8 @@ const reducer = (state = initialState, action) => {
       };
     case actionTypes.SAVE_PRODUCT_SUCCESS:
       return {
-        ...state
+        ...state,
+        products: state.products.concat(action.product)
       };
     case actionTypes.SAVE_PRODUCT_FAIL:
       return {
@@ -79,6 +79,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         selectedProducts: state.selectedProducts.filter( product => product.key !== action.productKey)
+      }
+    case actionTypes.RESET_CREATE_RECIPE:
+      return {
+        ...state,
+        selectedProducts: []
       }
     default:
       return state;

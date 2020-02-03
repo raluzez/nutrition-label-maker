@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AddNewProductNutrients from './AddNewProductNutrients/AddNewProductNutrients';
 import { Portal } from '../../Utility/Portal';
 import Modal from '../../components/UI/AddProductModal/Modal';
-import EditName from '../../components/EditName/EditName'
+import SaveProduct from '../../components/SaveRecipe/SaveRecipe';
 import { newNutrientsObject } from '../../Utility/Consts';
 import Styles from './AddNewProduct.module.css';
 
@@ -16,22 +16,12 @@ const AddProduct = () => {
         return !!Object.keys(nutrients).find( item => nutrients[item].quantity === '')
     }
 
-    console.log(nutrients)
-
-    const newProduct = {
-        name: 'Name',
-        icon: 'fas fa-concierge-bell',
-        color: 'linear-gradient(315deg, rgb(214, 214, 213) 0%, rgba(179, 178, 178, 0) 50%), rgb(116, 115, 115)',
-        quantity: 100,
-        totalNutrients: nutrients
-    }
-
     return (
         <>
             <Portal>
                 {editNameModal &&
                     <Modal closeModal={() => setEditNameModal(false)}>
-                        <EditName newProduct={true} product={newProduct} closeModal={() => {setEditNameModal(false); setNutrients(newNutrients)}}/>
+                        <SaveProduct isNewProduct={true} nutrients={nutrients} closeModal={() => {setEditNameModal(false); setNutrients(newNutrients)}}/>
                     </Modal>}
             </Portal>
             {isButtonDisabled

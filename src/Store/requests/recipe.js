@@ -1,4 +1,5 @@
 import * as actions from "../actions/recipe";
+import { resetCreateRecipe } from '../actions/productsList';
 import axios from "../../axios";
 
 export const addItemToRecipe =  product => (dispatch, getState) =>{
@@ -38,6 +39,7 @@ export const removeRecipeItem = itemKey => (dispatch, getState) => {
     newRecipe.items = newItems
     axios.put(`/recipes/${newRecipe.key}.json?auth=${token}`,newRecipe)
         .then( res => {
+            console.log(res);
             dispatch(actions.removeRecipeItemSuccess(res.data))
         })
         .catch( err => {
@@ -92,6 +94,7 @@ export const saveRecipe = recipe => dispatch => {
         .then(res => {
             recipe.key = res.data.name;
             dispatch(actions.saveRecipeSuccess(recipe));
+            dispatch(resetCreateRecipe())
     })
         .catch(error => dispatch(actions.saveRecipeFail(error)));
 }

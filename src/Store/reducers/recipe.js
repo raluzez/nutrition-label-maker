@@ -5,6 +5,13 @@ const initialState = {
     clickedRecipe: {}
 }
 
+const updateSaverRecipes = (newRecipe, state) => (
+    state.savedRecipes.map( recipe => 
+        recipe.key === newRecipe.key 
+            ? newRecipe
+            : recipe)
+)
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SAVE_RECIPE_SUCCESS:
@@ -33,7 +40,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD_ITEM_TO_RECIPE_SUCCESS:
             return {
                 ...state,
-                clickedRecipe: action.newRecipe
+                clickedRecipe: action.newRecipe,
+                savedRecipes: updateSaverRecipes(action.newRecipe, state)
             }
         case actionTypes.ADD_ITEM_TO_RECIPE_FAIL:
             return {
@@ -43,7 +51,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.EDIT_RECIPE_ITEM_AMOUNT_SUCCESS:
             return {
                 ...state,
-                clickedRecipe: action.newRecipe
+                clickedRecipe: action.newRecipe,
+                savedRecipes: updateSaverRecipes(action.newRecipe, state)
             }
         case actionTypes.EDIT_RECIPE_ITEM_AMOUNT_FAIL:
             return {
@@ -53,7 +62,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.REMOVE_RECIPE_ITEM_SUCCESS:
             return {
                 ...state,
-                clickedRecipe: action.newRecipe
+                clickedRecipe: action.newRecipe,
+                savedRecipes: updateSaverRecipes(action.newRecipe, state)
             }
         case actionTypes.REMOVE_RECIPE_ITEM_FAIL:
             return {
@@ -74,7 +84,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.EDIT_RECIPE_NAME_SUCCESS:
             return {
                 ...state,
-                clickedRecipe: action.recipe
+                clickedRecipe: action.recipe,
+                savedRecipes: updateSaverRecipes(action.recipe, state)
             }
         case actionTypes.EDIT_RECIPE_NAME_FAIL:
             return {

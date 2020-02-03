@@ -7,13 +7,15 @@ import Styles from "./AddProductItem.module.css";
 const AddProductItem = props => {
   const [productAmount, setProductAmount] = useState(null);
 
+  const product = JSON.parse(JSON.stringify(props.product))
+
   const inputChangeHandler = e => {
     setProductAmount(e.target.value);
   };
 
-  props.product.quantity = productAmount
+  product.quantity = productAmount
 
-  let onAddProduct = () => props.onSelectProduct(props.product, productAmount)
+  let onAddProduct = () => props.onSelectProduct(product)
 
   if(props.isEdit){
     onAddProduct = () => props.onAddItemToRecipe(props.product)
@@ -52,7 +54,7 @@ const AddProductItem = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelectProduct: (product, amount) => dispatch(productSelected(product, amount)),
+    onSelectProduct: product => dispatch(productSelected(product)),
     onAddItemToRecipe: (product) => dispatch(addItemToRecipe(product))
   };
 };
