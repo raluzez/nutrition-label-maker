@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
 import EditName from '../../components/EditName/EditName';
-import Modal from "../../components/UI/AddProductModal/Modal";
+import Modal from "../../components/UI/EditNameModal/Modal";
 import { Portal } from '../../Utility/Portal';
+import { changeBackground } from '../../Utility/Helpers';
 import Styles from "./ProductsList.module.css";
 
 const ProductsList = props => {
@@ -33,7 +34,7 @@ const ProductsList = props => {
           </Modal>}
       </Portal>
       <div className={Styles.AddProductButtonContainer}>
-        <button onClick={() => history.push('/addProduct')}>Add Product</button>
+        <button onClick={() => {history.push('/addProduct'); changeBackground('white')}}>Add Product</button>
       </div>
       <div className={Styles.ProductList}>{productsList}</div>
     </>

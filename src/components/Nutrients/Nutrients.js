@@ -43,8 +43,8 @@ const Nutritions = (props) => {
                 <div>Nutrients per 100 g</div>
             </div>
             <div className={Styles.NutrientsContainer}>
-                <MainNutrients nutrientsDailyPart={nutrientsDailyPart}/>
-                <MinorNutrients nutrientsDailyPart={nutrientsDailyPart}/>
+                <MainNutrients nutrientsDailyPart={nutrientsDailyPart} nutrientsQuantityOnLabel={nutrientsQuantityOnLabel}/>
+                <MinorNutrients nutrientsDailyPart={nutrientsDailyPart} nutrientsQuantityOnLabel={nutrientsQuantityOnLabel}/>
                 <NutritionLablel product={currentRecipe} nutrientsDailyPart={nutrientsDailyPart} nutrientsQuantityOnLabel={nutrientsQuantityOnLabel}/>
             </div>
         </div>

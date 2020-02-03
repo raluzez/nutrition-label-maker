@@ -49,4 +49,4 @@ export const orange = 'linear-gradient(315deg, #F5DEC5 0%, rgba(255, 255, 255, 0
 export const red = 'linear-gradient(315deg, #FABACB 0%, rgba(245, 120, 153, 0.5) 50%), #F696B0';
 export const blue = 'linear-gradient(315deg, #BEEAF2 0%, rgba(130, 195, 228, 0.5) 50%), #82C3E4';
 export const green = 'linear-gradient(315deg, #A3ECD3 0%, rgba(77, 231, 177, 0.5) 50%), #3DD8C1';
-export const purple = 'linear-gradient(135deg, #6200EE 0%, rgba(98, 0, 238, 0.5) 100%)';
+export const purple = "linear-gradient(315deg, rgb(141, 120, 170) 0%, rgba(98, 0, 238, 0.5) 50%), #6200EE";

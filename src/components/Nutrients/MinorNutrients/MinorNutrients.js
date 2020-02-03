@@ -4,7 +4,7 @@ import Styles from './MinorNutrients.module.css'
 const MinorNutrients = (props) => {
 
   const nutients = props.nutrientsDailyPart
-
+  const quantity = props.nutrientsQuantityOnLabel
 
   return (
     <div className={Styles.Nutrients}>
@@ -12,7 +12,7 @@ const MinorNutrients = (props) => {
         <span>Calories</span>
         <span>{`${nutients.ENERC_KCAL} %`}</span>
       </div>
-      <div className={Styles.StatusBarBase} >
+      <div className={Styles.StatusBarBase} title={`${quantity.ENERC_KCAL} kcal in 100g of the product`}>
         <div
           className={[Styles.StatusBar, Styles.Calories].join(" ")}
           style={{ width: `${nutients.ENERC_KCAL}%` }}
@@ -23,7 +23,7 @@ const MinorNutrients = (props) => {
         <span>Cholesterol</span>
         <span>{`${nutients.CHOLE} %`}</span>
       </div>
-      <div className={Styles.StatusBarBase} >
+      <div className={Styles.StatusBarBase} title={`${quantity.CHOLE} mg in 100g of the product`}>
         <div
           className={[Styles.StatusBar, Styles.Fat].join(" ")}
           style={{ width: `${nutients.CHOLE}%` }}
@@ -34,7 +34,7 @@ const MinorNutrients = (props) => {
         <span>Sodium</span>
         <span>{`${nutients.NA} %`}</span>
       </div>
-      <div className={Styles.StatusBarBase} >
+      <div className={Styles.StatusBarBase} title={`${quantity.NA} mg in 100g of the product`}>
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
           style={{ width: `${nutients.NA}%` }}
@@ -45,7 +45,7 @@ const MinorNutrients = (props) => {
         <span>Iron</span>
         <span>{`${nutients.FE} %`}</span>
       </div>
-      <div className={Styles.StatusBarBase} >
+      <div className={Styles.StatusBarBase} title={`${quantity.FE} mg in 100g of the product`}>
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
           style={{ width: `${nutients.FE}%` }}
@@ -56,7 +56,7 @@ const MinorNutrients = (props) => {
         <span>Calcium</span>
         <span>{`${nutients.CA} %`}</span>
       </div>
-      <div className={Styles.StatusBarBase} >
+      <div className={Styles.StatusBarBase} title={`${quantity.CA} mg in 100g of the product`}>
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
           style={{ width: `${nutients.CA}%` }}
@@ -67,7 +67,7 @@ const MinorNutrients = (props) => {
         <span>Vitamin A</span>
         <span>{`${nutients.VITA_RAE} %`}</span>
       </div>
-      <div className={Styles.StatusBarBase} >
+      <div className={Styles.StatusBarBase} title={`${quantity.VITA_RAE} µg in 100g of the product`}>
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
           style={{ width: `${nutients.VITA_RAE}%` }}
@@ -78,7 +78,7 @@ const MinorNutrients = (props) => {
         <span>Vitamin C</span>
         <span>{`${nutients.VITC} %`}</span>
       </div>
-      <div className={Styles.StatusBarBase} >
+      <div className={Styles.StatusBarBase} title={`${quantity.VITC} mg in 100g of the product`}>
         <div
           className={[Styles.StatusBar, Styles.Vitamins].join(" ")}
           style={{ width: `${nutients.VITC}%`}}

@@ -34,7 +34,7 @@ class App extends Component {
       routes = 
           <Switch>
             <Route path="/productlist" component={ProductList}/>
-            <Route path="/recipes" component={Recipes}/>
+            <Route path="/recipes" component={Recipes} style={{backgroundColor:'#eee'}}/>
             <Route path="/logout" component={Logout}/>
             <Route path='/editRecipe' component={EditRecipe}/>
             <Route path='/addProduct' component={AddProduct}/>

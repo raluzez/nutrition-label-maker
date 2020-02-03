@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import Modal from "../../components/UI/AddProductModal/Modal";
+import SaveModal from '../../components/UI/EditNameModal/Modal';
 import AddProduct from "../../components/Product/AddProduct/AddProduct";
 import ItemsList from "../../components/ItemsLists/ItemsList";
 import Nutrients from "../../components/Nutrients/Nutrients";
@@ -39,9 +40,9 @@ const Home = props => {
       </Portal>
       <Portal>
         {saveRecipeModal &&
-          <Modal closeModal={() => setSaveRecipeModal(false)}>
+          <SaveModal closeModal={() => setSaveRecipeModal(false)}>
             <SaveRecipe selectedProducts={props.selectedProducts} closeModal={() => setSaveRecipeModal(false)}/>
-          </Modal>}
+          </SaveModal>}
       </Portal>
       <ItemsList
         openAddProductModal={() => setAddProductModal(true)}

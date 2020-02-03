@@ -37,7 +37,7 @@
 
 .NoProductsMessage {
     margin:50px auto;
-    font-size:28px;
+    font-size:34px;
 }
 
 .AddButton{
@@ -89,7 +89,7 @@
         width: 630px;
     }
     .ProductsListContainer {
-        min-height: none;
+        min-height: 0;
     }
 }
 
@@ -101,6 +101,15 @@
         margin-left: 20px;
         font-size: 28px;
     }
+    .NoProductsMessage {
+        margin:40px auto;
+        font-size:26px;
+    }
+    .AddButton{
+        width:160px;
+        height:30px;
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 460px) {
@@ -110,5 +119,8 @@
     .ProductsTitleLine div{
         margin-left: 20px;
         font-size: 24px;
+    }
+    .NoProductsMessage {
+        font-size:20px;
     }
 }

@@ -28,7 +28,7 @@ const AddProduct = () => {
                 ? <button className={Styles.AddProductButtonDisabled} disabled title='All fields must be filled'>Save</button>
                 : <button className={Styles.AddProductButton} onClick={() => setEditNameModal(true)}>Save</button>}
             <div className={Styles.AddProductTitle}>
-                <span>New Product</span>
+                <span>Nutrients per 100g</span>
             </div>
             <AddNewProductNutrients onchange={ nutrientsObj => {setNutrients(nutrientsObj); setIsButtonDisabled(disabledButtonHandler(nutrientsObj))}} nutrients={nutrients}/>
         </>

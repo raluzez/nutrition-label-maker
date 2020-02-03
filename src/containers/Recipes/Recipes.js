@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Product from "../../components/Product/Product";
+import { changeBackground } from '../../Utility/Helpers';
 import * as actions from "../../Store/actions";
 import Styles from "./Recipes.module.css";
 
@@ -19,6 +20,7 @@ const Recipes = props => {
             clicked={() => {
               props.onClickedRecipe(recipe);
               history.push('/editRecipe');
+              changeBackground('white')
             }}
           />
         ))}
@@ -27,7 +29,7 @@ const Recipes = props => {
   return (
     <>
       <div className={Styles.AddRecipeButtonContainer}>
-        <button onClick={() => props.history.push("/")}>Add Recipe</button>
+        <button onClick={() => {props.history.push("/"); changeBackground('white')}}>Add Recipe</button>
       </div>
       <div className={Styles.Recipe}>{recipesList}</div>
     </>

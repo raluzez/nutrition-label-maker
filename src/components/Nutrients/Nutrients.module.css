@@ -1,6 +1,7 @@
 .NutrientsElementContainer {
     width:1890px;
     margin:auto;
+    margin-bottom: 30px;
     /* overflow: scroll; */
 }
 

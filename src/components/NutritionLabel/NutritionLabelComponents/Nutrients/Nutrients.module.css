@@ -4,7 +4,6 @@
 }
 
 .Headline {
-    font-size: 13pt;
     font-weight: 800;
     border-bottom: 1px solid black;
 }
@@ -14,7 +13,7 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     border-bottom: 3px solid black;
-    font-size: 14pt;
+    font-size: 18px;
     white-space: nowrap;
 }
 
@@ -22,9 +21,13 @@
     margin-top:8px;
 }
 
+
+.CalorieSummary span b {
+    font-weight: 800;
+    justify-content: space-between;
+}
+
 .PeriodIndication {
-    font-size: 11pt;
-    text-align: right;
     margin-top: 3px;
 }
 
@@ -47,7 +50,11 @@
     border-top: 1px solid black;
 }
 
-.Calories {
-    font-weight: 800;
-    justify-content: space-between;
+@media (min-width: 2560px ) {
+    .CalorieSummary {
+        font-size: 24px;
+    }
+    .Nutrients {
+        font-size: 20px;
+    }
 }

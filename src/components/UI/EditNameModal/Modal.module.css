@@ -1,0 +1,54 @@
+.Modal {
+    position: absolute;
+    z-index: 600;
+    transition: all 0.5s ease-out;
+    top:10vh;
+    left: calc(50% - 360px);
+    background-color: #eee;
+    border-radius: 8px;
+    padding:30px;
+    max-height: 80vh;
+    overflow: scroll;
+}
+
+.Modal>i:first-child {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 30px;
+    color: black;
+    z-index: 700;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 2560px ) {
+    .Backdrop i {
+        font-size: 68px
+    }
+}
+
+@media (max-width: 800px) {
+    .Modal {
+        left: calc(50% - 260px);
+    }
+}
+
+@media (max-width: 660px) {
+    .Modal {
+        padding:15px;
+        left: calc(50% - 245px);
+    }
+}
+
+@media (max-width: 490px) {
+    .Modal {
+        box-sizing: border-box;
+        width:90%;
+        left:5%;
+        padding:15px 10px;
+    }
+}

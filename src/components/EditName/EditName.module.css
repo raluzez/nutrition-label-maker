@@ -155,4 +155,9 @@
         margin-bottom: 10px;
         padding: 0;
     }
+    .Container button {
+        width: 160px;
+        height: 30px;
+        font-size: 16px;
+    }
 }

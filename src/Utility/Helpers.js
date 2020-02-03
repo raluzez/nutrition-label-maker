@@ -25,3 +25,8 @@ export const productListToNutrientsHelper = productsList => {
     return { quantity: overalQuantity, totalNutrients: newNutrientsObject}
     
   }
+
+export const changeBackground = color => {
+  window.document.body.style.background = color
+  window.document.getElementsByTagName('header')[0].style.background = color
+}

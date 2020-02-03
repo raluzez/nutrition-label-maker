@@ -6,6 +6,7 @@ import ProductIcons from '../EditName/ProductIcons/ProductIcons';
 import Colors from '../EditName/Colors/Colors';
 import { saveRecipe } from '../../Store/requests/recipe';
 import { saveProduct } from '../../Store/requests/productList';
+import { changeBackground } from '../../Utility/Helpers';
 import * as consts from '../../Utility/Consts';
 import Styles from './SaveRecipe.module.css';
 
@@ -36,11 +37,11 @@ const SaveRecipe = props => {
     return newProductObject
   }
 
-  let onSave = () => {props.onSaveRecipe(newRecipeObject()); history.push('/recipes')}
+  let onSave = () => {props.onSaveRecipe(newRecipeObject()); history.push('/recipes'); changeBackground('#eee')}
   let icons = <RecipeIcons onclick={iconName => setIconName(iconName)} iconName={iconName}/>
 
   if(props.isNewProduct){
-    onSave = () => {props.onSaveProduct(newProductObject()); history.push('/productList')}
+    onSave = () => {props.onSaveProduct(newProductObject()); history.push('/productList'); changeBackground('#eee')}
     icons = <ProductIcons onclick={iconName => setIconName(iconName)} iconName={iconName}/>
 }
 

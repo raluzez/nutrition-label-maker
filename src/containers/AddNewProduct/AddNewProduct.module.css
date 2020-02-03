@@ -72,6 +72,16 @@
     .AddProductTitle {
         width:400px;
     }
+    .AddProductButton {
+        width:160px;
+        height:30px;
+        font-size: 16px;
+    }
+    .AddProductButtonDisabled {
+        width:160px;
+        height:30px;
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -82,5 +92,14 @@
     }
     .AddProductTitle span {
         margin-left: 25px;
+    }
+}
+
+@media (max-width: 400px) {
+    .AddProductTitle {
+        font-size: 22px;
+    }
+    .AddProductTitle span {
+        margin-left: 15px;
     }
 }
