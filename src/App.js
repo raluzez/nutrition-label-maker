@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import Layout from "./components/Layout/Layout";
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -8,29 +8,28 @@ import Recipes from "./containers/Recipes/Recipes";
 import ProductList from "./containers/ProductsList/ProductsList";
 import EditRecipe from './containers/EditRecipe/EditRecipe';
 import AddProduct from './containers/AddNewProduct/AddNewProduct';
-import { fetchProducts } from './Store/requests/productList';
-import { fetchRecipes } from './Store/requests/recipe';
+import Auth from './containers/Auth/Auth';
+import LandingPage from './containers/LandingPage/LandingPage';
 import * as actions from "./Store/actions";
 import "./App.css";
 
 
-class App extends Component {
+const App = (props) => {
 
-    componentDidMount() {
-      this.props.onAutoSignin();
-      this.props.onFetchProducts();
-      this.props.onFetchRecipes()
-    };
-    
-    render (){
+  const { onAutoSignin, token } = props
+
+  useEffect(() => {
+    onAutoSignin();
+  }, [onAutoSignin])
 
     let routes = 
       <Switch>
-        <Route path="/" exact component={Home}/>
+        <Route path='/auth' component={Auth} />
+        <Route path="/" exact component={LandingPage}/>
         <Redirect to="/"/>
       </Switch>
 
-    if(this.props.token) {
+    if(token) {
       routes = 
           <Switch>
             <Route path="/productlist" component={ProductList}/>
@@ -38,8 +37,8 @@ class App extends Component {
             <Route path="/logout" component={Logout}/>
             <Route path='/editRecipe' component={EditRecipe}/>
             <Route path='/addProduct' component={AddProduct}/>
-            <Route path="/" exact component={Home}/>
-            <Redirect to="/"/>
+            <Route path="/createRecipe" exact component={Home}/>
+            <Redirect to="/createRecipe"/>
           </Switch>
     }
 
@@ -48,7 +47,6 @@ class App extends Component {
         {routes}
       </Layout>
     );
-  }
 }  
 
 const mapStateToProps = state => {
@@ -59,9 +57,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAutoSignin: () => dispatch(actions.authCheckLogin()),
-    onFetchProducts: () => dispatch(fetchProducts()),
-    onFetchRecipes: () => dispatch(fetchRecipes())
+    onAutoSignin: () => dispatch(actions.authCheckLogin())
   }
 }
 

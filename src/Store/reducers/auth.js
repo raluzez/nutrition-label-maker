@@ -1,11 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-    showAuthModal: true,
-    token: null,
-    userId: null,
-    error: null,
-    loading: false
+    token: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -45,11 +41,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.LOGOUT:
             return {
                 ...state,
-                showAuthModal: true,
-                token: null,
-                userId: null,
-                error: null,
-                loading: false
+                token: null
             }
         default : return state
     }

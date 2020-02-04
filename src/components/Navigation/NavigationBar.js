@@ -7,10 +7,10 @@ const navigationBar = () => {
 
     return (
         <ul className={Styles.NavigationBar}>
-            <NavigationItem link="/" exact onclick={() => changeBackground('white')}>Home</NavigationItem>
+            <NavigationItem link="/createRecipe" exact onclick={() => changeBackground('white')}>Home</NavigationItem>
             <NavigationItem link="/productlist" onclick={() => changeBackground('#eee')}>My List</NavigationItem>
             <NavigationItem link="/recipes" onclick={() => changeBackground('#eee')}>Recipies</NavigationItem>
-            <NavigationItem link="/logout">Logout</NavigationItem>
+            <NavigationItem link="/logout" onclick={() => changeBackground('white')}>Logout</NavigationItem>
         </ul>    
     )
 }

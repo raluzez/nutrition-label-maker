@@ -79,3 +79,9 @@
         font-size: 16px;
     }
 }
+
+@media print {
+    .Nutrients {
+        display: none;
+    }
+}

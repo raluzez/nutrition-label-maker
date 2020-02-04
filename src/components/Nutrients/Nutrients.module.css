@@ -60,3 +60,9 @@
         width: auto;
     }
 }
+
+@media print {
+    .NutrientsTitleLine {
+        display: none
+    }
+}

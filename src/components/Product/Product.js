@@ -27,6 +27,7 @@ const Product = props => {
     color = props.recipe.color 
   }
 
+
   return (
     <div
       className={Styles.Container}
@@ -46,7 +47,7 @@ const Product = props => {
                 <i className="material-icons">edit</i>
                 <span>Edit</span>
               </div>
-              <div>
+              <div onClick={() => props.print(props.productList)}>
                 <i className="material-icons">print</i>
                 <span>Print</span>
               </div>
