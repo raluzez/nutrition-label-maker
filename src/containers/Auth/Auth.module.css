@@ -1,16 +1,25 @@
-.Name {
-    background-color: #a5a6ad;
-    text-align: center;
+.Container {
+    position: absolute;
+    width:100%;
+    height: 100%;
+    background: linear-gradient(315deg, #BEEAF2 0%, rgba(130, 195, 228, 0.5) 50%), #82C3E4;
+    overflow: scroll
+}
+
+.FormContainer {
+    background: white;
     margin:auto;
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
-    padding: 16px;
-    margin-top: -34px;
-    margin-left: -34px;
-    margin-right: -34px;
-    margin-bottom: 32px;
-    font-size: 2rem;
-    width:500px;
+    width: 400px;
+    margin-top:20vh;
+    margin-bottom: 10vh;
+    border-radius: 6px;
+}
+
+.Name {
+    text-align: center;
+    padding: 48px 0;
+    font-size: 38px;
+    width:400px;
 }
 
 .CloseIcon {
@@ -32,30 +41,33 @@
 }
 
 .Form input {
-    text-align: center;
-    width: 100%;
-    height: 2em;
-    margin:auto;
-    margin-bottom: 1em;
+    border:none;
+    background-color:transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    color:black;
+    font-size: 22px;
+    border-bottom: 2px solid #545454;
+    padding-bottom: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    width:320px;
 }
 
 .Form input:focus {
-    background-color: #a5a6ad;
-    border-radius: 8px;
-    
+    outline: none;
+    border-bottom: 2px solid #F696B0;
 }
 
 .Form input:focus::placeholder {
-    color:black;
+    color:#545454;
 }
 
 .ButtonsDiv{
     display:flex;
     flex-direction: column;
-}
-
-.ButtonsDiv Button {
-    margin-top:1em;
+    position: relative;
 }
 
 .ErrorMessage {
@@ -64,4 +76,106 @@
     border-radius: 8px;
     color: white;
     text-align: center;
+}
+
+.ButtonsDiv button {
+    margin: auto;
+    margin-bottom: 30px;
+    display: block;
+    width:320px;
+    height:60px; 
+    color:white;
+    border:none;
+    border-radius: 2px;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.ButtonsDiv button:focus {
+    outline: none;
+}
+
+.ButtonsDiv button:active {
+    position: relative;
+    left:2px;
+    top:2px;
+}
+
+.ButtonsDiv button:active img{
+    top:12px;
+    left:80px;
+}
+
+.ButtonsDiv button:first-of-type {
+    background: linear-gradient(315deg, #A3ECD3 0%, rgba(77, 231, 177, 0.5) 50%), #3DD8C1;
+    margin-top: 30px;
+}
+
+.ButtonsDiv button:first-of-type:hover {
+    background: linear-gradient(315deg, #7FE9C4 0%, rgba(59, 230, 170, 0.5) 50%), rgb(38, 184, 162);
+}
+
+.ButtonsDiv div {
+    text-align: center;
+    color: #545454;
+}
+
+.ButtonsDiv img {
+    position: absolute;
+    top:160px;
+    left:120px;
+    color:white;
+    width: 34px;
+    height: 34px;
+    z-index: 1;
+}
+
+.ButtonsDiv button:last-of-type {
+    margin-top: 10px;
+    padding-left:34px;
+    background: linear-gradient(315deg, rgb(175, 221, 230) 0%, rgba(130, 195, 228, 0.5) 50%), #82C3E4
+}
+
+.ButtonsDiv button:last-of-type:hover {
+    background: linear-gradient(315deg, rgb(165, 217, 226) 0%, rgba(130, 195, 228, 0.5) 50%), rgb(89, 153, 185)
+}
+
+.ButtonsDiv span {
+    margin:50px auto;
+    margin-bottom: 30px;
+    color: #545454;
+}
+
+.ButtonsDiv span a{
+    text-decoration: underline;
+}
+
+.ButtonsDiv span a:hover{
+    color: rgb(38, 184, 162);
+    cursor: pointer;
+}
+
+@media (max-width:420px) {
+    .FormContainer {
+        margin-top: 10vh;
+    }
+    .FormContainer,
+    .Name {
+        width: 300px;
+    }
+    .Form input {
+        width:240px;
+    }
+    .ButtonsDiv button {
+        width:240px;
+        height: 50px;
+        font-size: 18px;
+    }
+    .ButtonsDiv img {
+        top:150px;
+        left:90px;
+        width: 28px;
+        height: 28px;
+    }
+
 }

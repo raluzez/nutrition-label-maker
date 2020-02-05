@@ -31,22 +31,20 @@ const App = (props) => {
 
     if(token) {
       routes = 
+        <Layout>
           <Switch>
             <Route path="/productlist" component={ProductList}/>
-            <Route path="/recipes" component={Recipes} style={{backgroundColor:'#eee'}}/>
+            <Route path="/recipes" component={Recipes}/>
             <Route path="/logout" component={Logout}/>
             <Route path='/editRecipe' component={EditRecipe}/>
             <Route path='/addProduct' component={AddProduct}/>
             <Route path="/createRecipe" exact component={Home}/>
             <Redirect to="/createRecipe"/>
           </Switch>
+        </Layout>
     }
 
-    return (
-      <Layout>
-        {routes}
-      </Layout>
-    );
+    return routes
 }  
 
 const mapStateToProps = state => {

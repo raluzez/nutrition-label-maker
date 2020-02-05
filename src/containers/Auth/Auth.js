@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import Button from "../../components/UI/Button/Button";
+import googleLogo from '../../Assets/images/Google_icon.png';
 import * as actions from "../../Store/actions";
 import Styles from "./Auth.module.css";
 
@@ -72,34 +72,42 @@ const Auth = (props) => {
         } 
 
         let form = 
-        <>
-            <div className={Styles.Name}>Login</div>
-            {errorMessage}
-            <form className={Styles.Form}>
-                <input type="text" placeholder="E-mail" onChange={e => setEmail(e.target.value)} value={email} />
-                <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password}/>
-            </form>
-            <div className={Styles.ButtonsDiv}>
-                <Button classname="Success" onclick={() => props.onAuth(email, password, isLogin)}>Submit</Button>
-                <Button classname="Neutral" onclick={() => {setIsLogin(!isLogin); resetInputsValues()}}>Sign Up</Button>
-            </div>   
-        </>
-        
-        if(!isLogin) {
-            form = 
-            <>
-                <div className={Styles.Name}>Sign Up</div>
+        <div className={Styles.Container}>
+            <div className={Styles.FormContainer}>
+                <div className={Styles.Name}>Login</div>
                 {errorMessage}
                 <form className={Styles.Form}>
                     <input type="text" placeholder="E-mail" onChange={e => setEmail(e.target.value)} value={email} />
                     <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password}/>
-                    <input type="password" placeholder="Repeat Password" onChange={e => secondPasswordHandler(e.target.value)} value={secondPassword}/>
                 </form>
                 <div className={Styles.ButtonsDiv}>
-                    <Button classname="Success" onclick={() => props.onAuth(email, password, isLogin)}>Submit</Button>
-                    <Button classname="Neutral" onclick={() => {setIsLogin(!isLogin); resetInputsValues()}}>Login</Button>
-                </div>   
-            </>
+                    <button onClick={() => props.onAuth(email, password, isLogin)}>LOGIN</button>
+                    <div>Or login with</div>
+                    <button ><img src={googleLogo}/> Google</button> 
+                    <span>Not a member? <a onClick={() => {setIsLogin(!isLogin); resetInputsValues()}}>Sign up now</a></span>
+                </div> 
+            </div>  
+        </div>
+        
+        if(!isLogin) {
+            form = 
+            <div className={Styles.Container}>
+                <div className={Styles.FormContainer}>
+                    <div className={Styles.Name}>Sign Up</div>
+                    {errorMessage}
+                    <form className={Styles.Form}>
+                        <input type="text" placeholder="E-mail" onChange={e => setEmail(e.target.value)} value={email} />
+                        <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password}/>
+                        <input type="password" placeholder="Repeat Password" onChange={e => secondPasswordHandler(e.target.value)} value={secondPassword}/>
+                    </form>
+                    <div className={Styles.ButtonsDiv}>
+                        <button onClick={() => props.onAuth(email, password, isLogin)}>Sign Up</button>
+                        <div>Or sign up  with</div>
+                        <button><img src={googleLogo}/> Google</button> 
+                        <span>Have an account? <a onClick={() => {setIsLogin(!isLogin); resetInputsValues()}}>Login</a></span>
+                    </div>  
+                </div> 
+            </div>
         }
         return(
             <>{form}</>
