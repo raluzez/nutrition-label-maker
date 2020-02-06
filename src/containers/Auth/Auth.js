@@ -12,6 +12,13 @@ const Auth = (props) => {
     const [email, setEmail] = useState('')
     const [isLogin, setIsLogin] = useState(true)
 
+    // const provider = new firebase.auth.GoogleAuthProvider()
+
+    // const googleLogin = () => {
+    //     firebase.auth().signInWithPopup(provider)
+    //         .then(res => console.log(res))
+    // }
+
     // state = {
     //     existingUser:true,
     //     password:"",
@@ -83,7 +90,7 @@ const Auth = (props) => {
                 <div className={Styles.ButtonsDiv}>
                     <button onClick={() => props.onAuth(email, password, isLogin)}>LOGIN</button>
                     <div>Or login with</div>
-                    <button ><img src={googleLogo}/> Google</button> 
+                    <button><img src={googleLogo} alt=''/> Google</button> 
                     <span>Not a member? <a onClick={() => {setIsLogin(!isLogin); resetInputsValues()}}>Sign up now</a></span>
                 </div> 
             </div>  
@@ -103,7 +110,7 @@ const Auth = (props) => {
                     <div className={Styles.ButtonsDiv}>
                         <button onClick={() => props.onAuth(email, password, isLogin)}>Sign Up</button>
                         <div>Or sign up  with</div>
-                        <button><img src={googleLogo}/> Google</button> 
+                        <button><img src={googleLogo} alt=''/> Google</button> 
                         <span>Have an account? <a onClick={() => {setIsLogin(!isLogin); resetInputsValues()}}>Login</a></span>
                     </div>  
                 </div> 

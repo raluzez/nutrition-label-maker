@@ -1,0 +1,211 @@
+.Background {
+    background-image: url('../../Assets/images/landingPage.jpg');
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.BoxContainer {
+    position: fixed;
+    display: grid;
+    top: 10%;
+    left: 20%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    width: 1225px;
+    height: 1080px;
+    transform:matrix(0.74,-0.67,0.89,0.54,0,0);
+}
+
+.FirstBox {
+    background-image: url('../../Assets/images/NutritionLabel.png');
+    background-size: cover;
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.SecondBox {
+    background-image: url('../../Assets/images/Nutrients.png');
+    background-size: cover;
+    grid-area: 2 / 2 / 3 / 3;
+    height: 200%;
+}
+
+.ThirdBox {
+    position: relative;
+    top: -300px;
+    left: -225px;
+    background: url('../../Assets/images/Recipe.png');
+    grid-area: 1 / 1 / 2 / 2;
+    transform: rotate(90deg);
+    height: 200%;
+    background-size: 100%;
+}
+
+.HeaderText {
+    position: absolute;
+    top: 10vh;
+    left: 20vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.HeaderText span {
+    font-size: 50px;
+}
+
+.HeaderText span:first-of-type {
+    font-size: 60px;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+.Button {
+    position: absolute;
+    top: calc(10vh + 60px);
+    right: 20vw;
+    width:300px;
+    height:60px;
+    background: linear-gradient(315deg, #A3ECD3 0%, rgba(77, 231, 177, 0.5) 50%), #3DD8C1; 
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+    color:white;
+    border:none;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.Button:hover {
+    background: linear-gradient(315deg, #7FE9C4 0%, rgba(59, 230, 170, 0.5) 50%), rgb(38, 184, 162);
+}
+
+.Button:focus {
+    outline: none;
+}
+
+.Button:active {
+    top: calc(10vh+2px);
+    right: calc(20vw+2px);
+}
+
+@media (min-width:2200px) {
+    .BoxContainer {
+        width: 1465px;
+        height: 1296px;
+
+    }
+    .ThirdBox {
+        top: -365px;
+        left: -275px;
+    }
+}
+
+@media (min-width:2700px) {
+    .BoxContainer {
+        width: 2097px;
+        height: 1866px;
+
+    }
+    .ThirdBox {
+        top: -515px;
+        left: -400px;
+    }
+    .HeaderText span {
+        font-size: 60px;
+    }
+    
+    .HeaderText span:first-of-type {
+        font-size: 75px;
+    }
+    .Button {
+        width:300px;
+        height:80px;
+        font-size: 34px;
+    }
+}
+
+@media (max-width:1600px) {
+    .BoxContainer {
+        top: 10%;
+        left: 20%;
+        width: 1025px;
+        height: 925px;
+
+    }
+    .ThirdBox {
+        top: -250px;
+        left: -200px;
+    }
+}
+
+@media (max-width:1366px) {
+    .BoxContainer {
+        top: 10%;
+        left: 20%;
+        width: 925px;
+        height: 825px;
+
+    }
+    .ThirdBox {
+        top: -225px;
+        left: -175px;
+    }
+    .HeaderText span {
+        font-size: 40px;
+    }
+    
+    .HeaderText span:first-of-type {
+        font-size: 50px;
+    }
+    .Button {
+        width:200px;
+        height:40px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width:1000px) {
+    .BoxContainer {
+        display:none
+    }
+    .Button {
+        top: calc(10vh + 150px);
+        left: calc(50vw - 100px)
+    }
+}
+
+@media (max-width:600px) {
+    .HeaderText span {
+        font-size: 28px;
+    }
+    
+    .HeaderText span:first-of-type {
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+    .Button {
+        top: calc(10vh + 150px);
+        left: calc(50vw - 100px)
+    }
+}
+
+@media (max-width:350px) {
+    .HeaderText span {
+        font-size: 24px;
+    }
+    
+    .HeaderText span:first-of-type {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+    .Button {
+        width: 160px;
+        height: 30px;
+        top: calc(10vh + 100px);
+        left: calc(50vw - 80px);
+        font-size:16px;
+    }
+}
