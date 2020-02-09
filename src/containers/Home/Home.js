@@ -6,11 +6,10 @@ import AddProduct from "../../components/Product/AddProduct/AddProduct";
 import ItemsList from "../../components/ItemsLists/ItemsList";
 import Nutrients from "../../components/Nutrients/Nutrients";
 import SaveRecipe from '../../components/SaveRecipe/SaveRecipe';
-import Auth from "../Auth/Auth";
 import { fetchProducts } from '../../Store/requests/productList';
 import { fetchRecipes } from '../../Store/requests/recipe';
 import { Portal } from '../../Utility/Portal';
-import * as actions from "../../Store/actions";
+
 
 const Home = props => {
   const [addProductModal, setAddProductModal] = useState(false);
@@ -58,8 +57,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onCloseSignUp: () => dispatch(actions.closeSignUp()),
-    onOpenSignUp: () => dispatch(actions.openSignUp()),
     onFetchProducts: () => dispatch(fetchProducts()),
     onFetchRecipes: () => dispatch(fetchRecipes())
   };

@@ -37,9 +37,7 @@ export const EDIT_PRODUCT_FAIL = 'EDIT_PRODUCT_FAIL';
 export const SAVE_PRODUCT_SUCCESS = 'SAVE_PRODUCT_SUCCESS';
 export const SAVE_PRODUCT_FAIL = 'SAVE_PRODUCT_FAIL';
 
-export const CLOSE_SIGN_UP = "CLOSE_SIGN_UP";
-export const OPEN_SIGN_UP = "OPEN_SIGN_UP";
-export const AUTH_START = "AUTH_START";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const AUTH_FAIL = "AUTH_FAIL"
+export const RESET_ERROR = 'RESET_ERROR'
 export const LOGOUT = "LOGOUT";

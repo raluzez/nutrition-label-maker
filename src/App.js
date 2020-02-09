@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
-import Layout from "./components/Layout/Layout";
 import { Route, Switch, Redirect } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
 import Home from "./containers/Home/Home";
 import Logout from "./containers/Auth/Logout/Logout";
 import Recipes from "./containers/Recipes/Recipes";
@@ -10,16 +10,16 @@ import EditRecipe from './containers/EditRecipe/EditRecipe';
 import AddProduct from './containers/AddNewProduct/AddNewProduct';
 import Auth from './containers/Auth/Auth';
 import LandingPage from './containers/LandingPage/LandingPage';
-import * as actions from "./Store/actions";
-import "./App.css";
+import { authCheckLogin } from './Store/requests/auth';
 
+import "./App.css";
 
 const App = (props) => {
 
   const { onAutoSignin, token } = props
 
   useEffect(() => {
-    onAutoSignin();
+    onAutoSignin()
   }, [onAutoSignin])
 
     let routes = 
@@ -55,7 +55,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAutoSignin: () => dispatch(actions.authCheckLogin())
+    onAutoSignin: () => dispatch(authCheckLogin())
   }
 }
 

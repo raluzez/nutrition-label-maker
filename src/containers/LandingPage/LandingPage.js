@@ -1,5 +1,4 @@
 import React from 'react';
-import { changeBackground } from '../../Utility/Helpers';
 import { useHistory } from "react-router-dom";
 import Styles from './LandingPage.module.css';
 

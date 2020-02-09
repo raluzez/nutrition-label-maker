@@ -6,11 +6,3 @@ export {
 export {
     recipeClicked
 } from "./recipe";
-
-export {
-    closeSignUp,
-    openSignUp,
-    auth,
-    logout,
-    authCheckLogin
-} from "./auth";
