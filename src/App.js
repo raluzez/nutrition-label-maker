@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./containers/Home/Home";
@@ -14,13 +14,13 @@ import { authCheckLogin } from './Store/requests/auth';
 
 import "./App.css";
 
-const App = (props) => {
-
-  const { onAutoSignin, token } = props
+const App = () => {
+  const dispatch = useDispatch()
+  const token = useSelector(state => state.auth.token)
 
   useEffect(() => {
-    onAutoSignin()
-  }, [onAutoSignin])
+    dispatch(authCheckLogin())
+  }, [dispatch])
 
     let routes = 
       <Switch>
@@ -47,18 +47,6 @@ const App = (props) => {
     return routes
 }  
 
-const mapStateToProps = state => {
-  return {
-      token: state.auth.token
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onAutoSignin: () => dispatch(authCheckLogin())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 
 

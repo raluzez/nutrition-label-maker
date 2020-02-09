@@ -1,50 +1,51 @@
-import React, { useState } from 'react';
-import { connect } from "react-redux";
-import ItemsList from '../../components/ItemsLists/ItemsList';
-import { Portal } from '../../Utility/Portal';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import ItemsList from "../../components/ItemsLists/ItemsList";
+import { Portal } from "../../Utility/Portal";
 import Modal from "../../components/UI/AddProductModal/Modal";
-import SaveModal from '../../components/UI/EditNameModal/Modal';
-import EditName from '../../components/EditName/EditName';
+import SaveModal from "../../components/UI/EditNameModal/Modal";
+import EditName from "../../components/EditName/EditName";
 import AddProduct from "../../components/Product/AddProduct/AddProduct";
-import Nutrients from '../../components/Nutrients/Nutrients';
+import Nutrients from "../../components/Nutrients/Nutrients";
 
-const EditRecipe = (props) => {
-    const [addProductModal, setAddProductModal] = useState(false);
-    const [editNameModal, setEditNameModal] = useState(false)
-    return (
-        <>
-            <Portal>
-                {editNameModal &&
-                    <SaveModal closeModal={() => setEditNameModal(false)}>
-                        <EditName product={props.clickedRecipe} closeModal={() => setEditNameModal(false)} isRecipe={true}/>
-                    </SaveModal>}
-            </Portal>
-            <ItemsList
-                items={props.clickedRecipe.items || []}
-                recipe={props.clickedRecipe}
-                openAddProductModal={() => setAddProductModal(true)}
-                openEditNameModal={()=> setEditNameModal(true)}
+const EditRecipe = () => {
+  const [addProductModal, setAddProductModal] = useState(false);
+  const [editNameModal, setEditNameModal] = useState(false);
+  const clickedRecipe = useSelector(state => state.recipe.clickedRecipe);
+  
+  return (
+    <>
+      <Portal>
+        {editNameModal && (
+          <SaveModal closeModal={() => setEditNameModal(false)}>
+            <EditName
+              product={clickedRecipe}
+              closeModal={() => setEditNameModal(false)}
+              isRecipe={true}
             />
-            <Nutrients productList={props.clickedRecipe.items}/>
-            <Portal>
-                {addProductModal &&
-                <Modal closeModal={() => setAddProductModal(false)}>
-                <AddProduct
-                    selectedProducts={props.clickedRecipe.items}
-                    closeModal={() => setAddProductModal(false)}
-                    isEditRecipe={true}
-                />
-                </Modal>}
-            </Portal>
-        </>
-    );
-}
+          </SaveModal>
+        )}
+      </Portal>
+      <ItemsList
+        items={clickedRecipe.items || []}
+        recipe={clickedRecipe}
+        openAddProductModal={() => setAddProductModal(true)}
+        openEditNameModal={() => setEditNameModal(true)}
+      />
+      <Nutrients productList={clickedRecipe.items} />
+      <Portal>
+        {addProductModal && (
+          <Modal closeModal={() => setAddProductModal(false)}>
+            <AddProduct
+              selectedProducts={clickedRecipe.items}
+              closeModal={() => setAddProductModal(false)}
+              isEditRecipe={true}
+            />
+          </Modal>
+        )}
+      </Portal>
+    </>
+  );
+};
 
-const mapStateToProps = state => {
-    return {
-      clickedRecipe: state.recipe.clickedRecipe,
-      products: state.productList.products
-    };
-  };
-
-export default connect(mapStateToProps)(EditRecipe);
+export default EditRecipe;

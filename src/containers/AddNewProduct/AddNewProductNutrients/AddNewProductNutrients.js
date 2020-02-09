@@ -14,10 +14,10 @@ const AddNewProductNutrients = props => {
   const calculateDaylyPart = nutrientsObj => {
     const newNutrients = JSON.parse(JSON.stringify(nutrientsObj));
     Object.keys(dailyIntake).map(key => {
-      newNutrients[key].quantity = (
+      return (newNutrients[key].quantity = (
         (nutrientsObj[key].quantity / dailyIntake[key]) *
         100
-      ).toFixed(1);
+      ).toFixed(1));
     });
     return newNutrients;
   };
@@ -36,7 +36,7 @@ const AddNewProductNutrients = props => {
               props.onchange(nutrientsInputHandler("FAT", e));
               setNutrients(nutrientsInputHandler("FAT", e));
             }}
-            value = {nutrients.FAT.quantity}
+            value={nutrients.FAT.quantity}
           />
           <span>g</span>
         </div>
