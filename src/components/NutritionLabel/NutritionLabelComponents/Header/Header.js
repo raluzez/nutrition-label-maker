@@ -8,9 +8,8 @@ const header = (props) => (
             <span>Facts</span>
         </div>
         <div className={Styles.Summary}>
-            {typeof props.servingSize !== "undefined" ?
-                <div>{`Serving size ${props.servingSize} g`}</div> :
-                null
+            {typeof props.servingSize !== "undefined" &&
+                <div>{`Serving size ${props.servingSize} g`}</div> 
             }  
         </div>
     </div>

@@ -142,6 +142,20 @@
     font-size: 13px;
 }
 
+.StatusBarLegendCarbs {
+    color: #FDB170;
+}
+
+.StatusBarLegendProtein {
+    color: #85C5E4;
+    margin-left: 1em;
+}
+
+.StatusBarLegendFat {
+    color: #F57899;
+    margin-left: 1em;
+}
+
 @media (min-width: 2560px ) {
     .Container {
         width:800px;

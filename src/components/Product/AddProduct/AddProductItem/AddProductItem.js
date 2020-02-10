@@ -1,29 +1,32 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { productSelected } from "../../../../Store/actions/index";
-import { addItemToRecipe } from '../../../../Store/requests/recipe';
+import { addItemToRecipe } from "../../../../Store/requests/recipe";
 import Styles from "./AddProductItem.module.css";
 
 const AddProductItem = props => {
+  const dispatch = useDispatch();
   const [productAmount, setProductAmount] = useState(null);
-
-  const product = JSON.parse(JSON.stringify(props.product))
+  const product = JSON.parse(JSON.stringify(props.product));
 
   const inputChangeHandler = e => {
     setProductAmount(e.target.value);
   };
 
-  product.quantity = productAmount
+  product.quantity = productAmount;
 
-  let onAddProduct = () => props.onSelectProduct(product)
+  let addProduct = () => dispatch(productSelected(product));
 
-  if(props.isEdit){
-    onAddProduct = () => props.onAddItemToRecipe(props.product)
+  if (props.isEdit) {
+    addProduct = () => dispatch(addItemToRecipe(product));
   }
 
   return (
     <div className={Styles.Container}>
-      <div className={Styles.ProductAvatar} style={{background: props.product.color}}>
+      <div
+        className={Styles.ProductAvatar}
+        style={{ background: props.product.color }}
+      >
         <i className={props.product.icon}></i>
       </div>
       <div className={Styles.ProductBody}>
@@ -40,7 +43,7 @@ const AddProductItem = props => {
               className={Styles.AddProductButton}
               onClick={() => {
                 props.closeModal();
-                onAddProduct();
+                addProduct();
               }}
             >
               Add
@@ -52,11 +55,4 @@ const AddProductItem = props => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSelectProduct: product => dispatch(productSelected(product)),
-    onAddItemToRecipe: (product) => dispatch(addItemToRecipe(product))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(AddProductItem);
+export default AddProductItem;

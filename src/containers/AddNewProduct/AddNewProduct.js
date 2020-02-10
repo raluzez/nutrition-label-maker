@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddNewProductNutrients from "./AddNewProductNutrients/AddNewProductNutrients";
+import AddNewProductNutrients from "../../components/AddNewProductNutrients/AddNewProductNutrients";
 import { Portal } from "../../Utility/Portal";
 import Modal from "../../components/UI/AddProductModal/Modal";
 import SaveProduct from "../../components/SaveRecipe/SaveRecipe";

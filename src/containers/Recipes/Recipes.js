@@ -53,6 +53,11 @@ const Recipes = () => {
         </button>
       </div>
       <div className={Styles.Recipe}>{recipesList}</div>
+      {!recipes.length && (
+        <div className={Styles.NoProductsMessage}>
+          No recipes yet! Add some
+        </div>
+      )}
     </>
   );
 };

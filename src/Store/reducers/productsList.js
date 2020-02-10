@@ -24,9 +24,7 @@ const reducer = (state = initialState, action) => {
       };
     case actionTypes.CHANGE_AMOUNT:
       const selectedProducts = changeProductAmount(
-        state,
-        action.product,
-        action.amount
+        state, action.product, action.amount
       );
       return {
         ...state,

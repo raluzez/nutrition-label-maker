@@ -60,6 +60,11 @@ const ProductsList = () => {
         </button>
       </div>
       <div className={Styles.ProductList}>{productsList}</div>
+      {!products.length && (
+        <div className={Styles.NoProductsMessage}>
+          No products yet! Add some
+        </div>
+      )}
     </>
   );
 };

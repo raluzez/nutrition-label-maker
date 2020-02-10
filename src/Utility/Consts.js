@@ -1,18 +1,18 @@
 export const newNutrientsObject = {
-    ENERC_KCAL:{quantity:''},
-    FAT:{quantity:''},
-    FASAT:{quantity:''},
-    FATRN:{quantity:''}, 
-    CHOLE:{quantity:''},
-    NA:{quantity:''},
-    CHOCDF:{quantity:''},
-    FIBTG:{quantity:''},
-    SUGAR:{quantity:''},
-    PROCNT:{quantity:''},
-    VITA_RAE:{quantity:''},
-    VITC:{quantity:''},
-    FE:{quantity:''},
-    CA:{quantity:''}
+  ENERC_KCAL:{quantity:0},
+  FAT:{quantity:0},
+  FASAT:{quantity:0},
+  FATRN:{quantity:0}, 
+  CHOLE:{quantity:0},
+  NA:{quantity:0},
+  CHOCDF:{quantity:0},
+  FIBTG:{quantity:0},
+  SUGAR:{quantity:0},
+  PROCNT:{quantity:0},
+  VITA_RAE:{quantity:0},
+  VITC:{quantity:0},
+  FE:{quantity:0},
+  CA:{quantity:0}
 }
 
 export const dailyIntake = {
@@ -32,6 +32,73 @@ export const dailyIntake = {
     CA:1300
 }
 
+export const firstNutrientsColumn = {
+    FAT: {
+      name: 'Total Fat',
+      units: 'g'
+    },
+    FASAT: {
+      name: 'Saturated Fat',
+      units: 'g'
+    },
+    FATRN: {
+      name: 'Trans Fat',
+      units: 'g'
+    },
+    CHOCDF: {
+      name: 'Total Carbs',
+      units: 'g'
+    },
+    FIBTG: {
+      name: 'Dietry Fiber',
+      units: 'g'
+    },
+    SUGAR: {
+      name: 'Sugars',
+      units: 'g'
+    },
+    PROCNT: {
+      name: 'Protein',
+      units: 'g'
+    }
+}
+
+export const secondNutrientsColumn = {
+    ENERC_KCAL: {
+      name: 'Calories',
+      units: 'kcal'
+    },
+    CHOLE: {
+      name: 'Cholesterol',
+      units: 'mg'
+    },
+    NA: {
+      name: 'Sodium',
+      units: 'mg'
+    },
+    FE: {
+      name: 'Iron',
+      units: 'mg'
+    },
+    CA: {
+      name: 'Calcium',
+      units: 'mg'
+    },
+    VITA_RAE: {
+      name: 'Vitamin A',
+      units: 'µg'
+    },
+    VITC: {
+      name: 'Vitamin C',
+      units: 'mg'
+    }
+}
+export const selected = 'inset 2px 2px 6px rgba(0, 0, 0, 0.5)'
+
+export const colorsArray = ['orange', 'red', 'blue', 'green', 'purple']
+export const productsIconsArray = ['cheeseIcon','breadIcon','baconIcon','carrotIcon','appleIcon']
+export const recipeIconsArray = ['defaultIcon','healthyIcon','hotIcon','sweetIcon','fastIcon']
+
 export const cheeseIcon = 'fas fa-cheese';
 export const breadIcon = 'fas fa-bread-slice';
 export const baconIcon = 'fas fa-bacon';
@@ -43,7 +110,6 @@ export const healthyIcon = "fas fa-seedling";
 export const hotIcon = "fas fa-pepper-hot";
 export const sweetIcon = "fas fa-birthday-cake";
 export const fastIcon = "fas fa-hamburger";
-
 
 export const orange = 'linear-gradient(315deg, #F5DEC5 0%, rgba(255, 255, 255, 0) 50%), #FDB170';
 export const red = 'linear-gradient(315deg, #FABACB 0%, rgba(245, 120, 153, 0.5) 50%), #F696B0';

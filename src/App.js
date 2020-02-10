@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Layout from "./components/Layout/Layout";
+import Layout from "./components/UI/Layout/Layout";
 import Home from "./containers/Home/Home";
 import Logout from "./containers/Auth/Logout/Logout";
 import Recipes from "./containers/Recipes/Recipes";

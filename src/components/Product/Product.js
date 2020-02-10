@@ -1,38 +1,29 @@
 import React from "react";
-import { connect } from "react-redux";
-import { deleteRecipe } from '../../Store/requests/recipe';
-import { deleteProduct } from '../../Store/requests/productList';
-import { productListToNutrientsHelper } from '../../Utility/Helpers';
+import { useDispatch } from "react-redux";
+import { deleteRecipe } from "../../Store/requests/recipe";
+import { deleteProduct } from "../../Store/requests/productList";
+import { productListToNutrientsHelper } from "../../Utility/Helpers";
 import Styles from "./Product.module.css";
 
 const Product = props => {
-  const currentProduct = productListToNutrientsHelper(props.productList)
-  const totalProductNutrients = currentProduct.totalNutrients
+  const dispatch = useDispatch();
+  const currentProduct = productListToNutrientsHelper(props.productList);
+  const totalProductNutrients = currentProduct.totalNutrients;
   const total = totalProductNutrients.FAT.quantity + totalProductNutrients.CHOCDF.quantity + totalProductNutrients.PROCNT.quantity;
   const carbs = (totalProductNutrients.CHOCDF.quantity / total) * 100;
   const protein = (totalProductNutrients.PROCNT.quantity / total) * 100;
   const fat = (totalProductNutrients.FAT.quantity / total) * 100;
+  const { name, icon, color } = props.product ? props.product : props.recipe;
 
-  let onDelete = () => props.onDeleteRecipe(props.recipe.key)
-  let name ,icon, color
+  let onDelete = () => dispatch(deleteRecipe(props.recipe.key));
 
-  if(props.product){
-    onDelete = () => props.onDeleteProduct(props.product.key)
-    name = props.product.name
-    icon = props.product.icon
-    color = props.product.color 
-  } else {
-    name = props.recipe.name
-    icon = props.recipe.icon
-    color = props.recipe.color 
+  if (props.product) {
+    onDelete = () => dispatch(deleteProduct(props.product.key));
   }
 
-
   return (
-    <div
-      className={Styles.Container}
-    >
-      <div className={Styles.ProductAvatar} style={{background: color}}>
+    <div className={Styles.Container}>
+      <div className={Styles.ProductAvatar} style={{ background: color }}>
         <i className={icon}></i>
       </div>
       <div className={Styles.ProductBody}>
@@ -73,13 +64,13 @@ const Product = props => {
           ></div>
         </div>
         <div className={Styles.StatusBarLegend}>
-          <div style={{ color: "#FDB170" }}>{`${Math.round(
+          <div className={Styles.StatusBarLegendCarbs}>{`${Math.round(
             carbs
           )}% CARBS`}</div>
-          <div style={{ color: "#85C5E4", marginLeft: "1em" }}>{`${Math.round(
+          <div className={Styles.StatusBarLegendProtein}>{`${Math.round(
             protein
           )}% PROTEIN`}</div>
-          <div style={{ color: "#F57899", marginLeft: "1em" }}>{`${Math.round(
+          <div className={Styles.StatusBarLegendFat}>{`${Math.round(
             fat
           )}% FAT`}</div>
         </div>
@@ -88,11 +79,4 @@ const Product = props => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onDeleteRecipe: recipeKey => dispatch(deleteRecipe(recipeKey)),
-    onDeleteProduct: productKey => dispatch(deleteProduct(productKey))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Product);
+export default Product;
