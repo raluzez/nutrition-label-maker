@@ -87,8 +87,8 @@
 }
 
 .Button:active {
-    top: calc(10vh+2px);
-    right: calc(20vw+2px);
+    top: calc(10vh + 62px);
+    right: calc(20vw + 2px);
 }
 
 @media (min-width:2200px) {
@@ -175,6 +175,10 @@
         top: calc(10vh + 150px);
         left: calc(50vw - 100px)
     }
+    .Button:active{
+        top: calc(10vh + 152px);
+        left: calc(50vw - 98px)
+    }
 }
 
 @media (max-width:600px) {
@@ -185,10 +189,6 @@
     .HeaderText span:first-of-type {
         font-size: 32px;
         letter-spacing: 2px;
-    }
-    .Button {
-        top: calc(10vh + 150px);
-        left: calc(50vw - 100px)
     }
 }
 
@@ -207,5 +207,9 @@
         top: calc(10vh + 100px);
         left: calc(50vw - 80px);
         font-size:16px;
+    }
+    .Button:active{
+        top: calc(10vh + 102px);
+        left: calc(50vw - 78px);
     }
 }
