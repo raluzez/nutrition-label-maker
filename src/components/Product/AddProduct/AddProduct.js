@@ -24,7 +24,7 @@ const AddProduct = props => {
             )
         )
       ) : (
-        <span>No more products</span>
+        <div className={Styles.NoProducts}>No products</div>
       )}
     </div>
   );

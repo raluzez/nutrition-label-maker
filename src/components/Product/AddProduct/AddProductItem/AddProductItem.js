@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { productSelected } from "../../../../Store/actions/index";
+import { productSelected } from "../../../../Store/actions/productsList";
 import { addItemToRecipe } from "../../../../Store/requests/recipe";
 import Styles from "./AddProductItem.module.css";
 

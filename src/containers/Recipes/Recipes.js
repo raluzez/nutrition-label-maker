@@ -5,7 +5,7 @@ import Product from "../../components/Product/Product";
 import { Portal } from "../../Utility/Portal";
 import Nutrients from "../../components/Nutrients/Nutrients";
 import { changeBackground } from "../../Utility/Helpers";
-import { recipeClicked } from "../../Store/actions";
+import { recipeClicked } from "../../Store/actions/recipe";
 import Styles from "./Recipes.module.css";
 
 const Recipes = () => {

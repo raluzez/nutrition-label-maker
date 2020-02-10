@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { editRecipeItemAmount, removeRecipeItem } from "../../../Store/requests/recipe";
 import { removeSelectedItem } from "../../../Store/actions/productsList";
-import { changeItemAmount } from "../../../Store/actions";
+import { changeItemAmount } from "../../../Store/actions/productsList";
 import Styles from "./Item.module.css";
 
 const Item = props => {

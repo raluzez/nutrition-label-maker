@@ -18,8 +18,8 @@
     text-decoration: underline;
 }
 
-@media(max-width : 460px){
+@media(max-width : 500px){
     .NavigationItem a {
-        padding: 10px 5px;
+        padding: 10px 6px;
     }
 }
